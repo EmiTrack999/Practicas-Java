@@ -81,22 +81,18 @@ public class Inicio extends JFrame {
 
         // Crear y añadir botones
         btnNewButton = createButton("Iniciar nuevo viaje");
-        btnNewButton.setBounds(300, 200, 200, 30); // Posición inicial
         layeredPane.add(btnNewButton, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
         btnNewButton_1 = createButton("Iniciar transporte");
-        btnNewButton_1.setBounds(300, 250, 200, 30); // Posición inicial
         layeredPane.add(btnNewButton_1, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
         btnNewButton_1_1 = createButton("Iniciar pedido");
-        btnNewButton_1_1.setBounds(300, 300, 200, 30); // Posición inicial
         layeredPane.add(btnNewButton_1_1, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
         // Añadir JLabel para el mensaje
         lblNewLabel = new JLabel("Selecciona el servicio que necesite");
         lblNewLabel.setForeground(new Color(128, 255, 255));
         lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 17));
-        lblNewLabel.setBounds(300, 150, 348, 30); // Posición inicial
         layeredPane.add(lblNewLabel, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
         // Listener para manejar el redimensionamiento de la ventana
@@ -136,10 +132,10 @@ public class Inicio extends JFrame {
         lblNewLabel_2.setBounds(0, 0, width, height); 
         resizeImage(width, height);
 
-        // Calcular nuevas posiciones y tamaños para los botones
-        int buttonWidth = 200; // Ancho fijo para los botones
-        int buttonHeight = 30; // Altura fija para los botones
-        int spacing = 10; // Espacio entre botones
+        // Calcular nuevas posiciones y tamaños para los botones en función de la ventana
+        int buttonWidth = (int) (width * 0.25); // 25% del ancho de la ventana
+        int buttonHeight = (int) (height * 0.07); // 7% de la altura de la ventana
+        int spacing = (int) (height * 0.02); // 2% de la altura de la ventana
 
         // Recalcular posiciones centradas
         int xPosition = (width - buttonWidth) / 2;
