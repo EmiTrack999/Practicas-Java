@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JMenuBar;
 
 public class Pedir_Pedido extends JFrame {
 
@@ -49,6 +50,9 @@ public class Pedir_Pedido extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 814, 535);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -58,98 +62,98 @@ public class Pedir_Pedido extends JFrame {
 		JLabel lblNewLabel = new JLabel("Nombre del Usuario:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(53, 57, 131, 14);
+		lblNewLabel.setBounds(53, 118, 131, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Fecha de pedido:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(53, 109, 131, 14);
+		lblNewLabel_1.setBounds(53, 171, 131, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Correo Electronico:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setBounds(50, 154, 119, 14);
+		lblNewLabel_2.setBounds(53, 217, 119, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Telefono:");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setBounds(70, 201, 92, 14);
+		lblNewLabel_3.setBounds(77, 251, 92, 14);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Segundo Telefono:");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_4.setForeground(new Color(255, 255, 255));
-		lblNewLabel_4.setBounds(53, 246, 124, 14);
+		lblNewLabel_4.setBounds(53, 295, 124, 14);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("¿Cual seria su pedido?");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
-		lblNewLabel_5.setBounds(43, 288, 141, 14);
+		lblNewLabel_5.setBounds(50, 327, 141, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		textField = new JTextField();
-		textField.setBounds(199, 55, 267, 20);
+		textField.setBounds(194, 116, 267, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(199, 107, 141, 20);
+		textField_1.setBounds(201, 169, 141, 20);
 		contentPane.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(198, 152, 257, 20);
+		textField_2.setBounds(199, 215, 257, 20);
 		contentPane.add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
-		textField_3.setBounds(199, 199, 221, 20);
+		textField_3.setBounds(199, 249, 221, 20);
 		contentPane.add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
-		textField_4.setBounds(199, 244, 221, 20);
+		textField_4.setBounds(199, 293, 221, 20);
 		contentPane.add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
-		textField_5.setBounds(194, 286, 484, 114);
+		textField_5.setBounds(200, 324, 484, 114);
 		contentPane.add(textField_5);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Localidad.");
-		rdbtnNewRadioButton.setBounds(672, 78, 109, 23);
+		rdbtnNewRadioButton.setBounds(670, 143, 83, 23);
 		contentPane.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Empresa.");
-		rdbtnNewRadioButton_1.setBounds(476, 78, 83, 23);
+		rdbtnNewRadioButton_1.setBounds(486, 143, 71, 23);
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Establecimiento.");
-		rdbtnNewRadioButton_2.setBounds(561, 78, 109, 23);
+		rdbtnNewRadioButton_2.setBounds(559, 143, 109, 23);
 		contentPane.add(rdbtnNewRadioButton_2);
 		
 		JLabel lblNewLabel_6 = new JLabel("Selecciona el tipo de Viaje.");
 		lblNewLabel_6.setForeground(Color.WHITE);
-		lblNewLabel_6.setBounds(563, 57, 141, 14);
+		lblNewLabel_6.setBounds(559, 119, 141, 14);
 		contentPane.add(lblNewLabel_6);
 		
 		JButton btnNewButton = new JButton("Realizar Pedido...");
-		btnNewButton.setBounds(366, 430, 119, 23);
+		btnNewButton.setBounds(362, 449, 119, 23);
 		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_7 = new JLabel("");
-		lblNewLabel_7.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\IMG_QR.png"));
-		lblNewLabel_7.setBounds(0, 0, 798, 496);
+		JLabel lblNewLabel_7 = new JLabel("Comencemos tu Pedido");
+		lblNewLabel_7.setForeground(new Color(255, 255, 255));
+		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
+		lblNewLabel_7.setBounds(270, 25, 257, 31);
 		contentPane.add(lblNewLabel_7);
 		
-		JLabel lblNewLabel_8 = new JLabel("");
-		lblNewLabel_8.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\Logo de la empresa2.png"));
-		lblNewLabel_8.setBounds(27, 370, 157, 102);
+		JLabel lblNewLabel_8 = new JLabel("New label");
+		lblNewLabel_8.setBounds(10, 25, 46, 14);
 		contentPane.add(lblNewLabel_8);
 	}
 }
