@@ -17,6 +17,7 @@ public class Inicio extends JFrame {
     private JLabel lblNewLabel_2; // Mover la declaración a nivel de clase
     private ImageIcon originalImage; // Almacenar la imagen original
     private JLabel lblNewLabel; // Guardar la etiqueta del mensaje
+    private JButton btnNewButton, btnNewButton_1, btnNewButton_1_1; // Guardar referencias a los botones
 
     /*******************************************
      * Launch the application.
@@ -37,10 +38,11 @@ public class Inicio extends JFrame {
      */
     public Inicio() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 179, 173);
+        setBounds(100, 100, 800, 600); // Ajustar la posición y el tamaño inicial de la ventana
+        setResizable(true); // Permitir que la ventana sea redimensionable
 
         JMenuBar menuBar = new JMenuBar();
-        menuBar.setMargin(new Insets(10, 10, 0, 0));
+        menuBar.setMargin(new Insets(100, 100, 100,100));
         setJMenuBar(menuBar);
 
         JMenu mnNewMenu = new JMenu("Opciones");
@@ -67,30 +69,35 @@ public class Inicio extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout());
 
-        JDesktopPane desktopPane = new JDesktopPane();
-        contentPane.add(desktopPane, BorderLayout.CENTER);
+        JLayeredPane layeredPane = new JLayeredPane();
+        contentPane.add(layeredPane, BorderLayout.CENTER);
 
         // Cargar la imagen original
         originalImage = new ImageIcon("E:\\hola_pancho\\Proyecto\\Imagenes\\Camion3.png");
         lblNewLabel_2 = new JLabel();
         lblNewLabel_2.setLayout(new BorderLayout());
-        desktopPane.add(lblNewLabel_2);
+        lblNewLabel_2.setBounds(0, 0, 800, 600); // Tamaño inicial de la imagen
+        layeredPane.add(lblNewLabel_2, Integer.valueOf(0)); // Añadir la imagen en la capa inferior
 
         // Crear y añadir botones
-        JButton btnNewButton = createButton("Iniciar nuevo viaje");
-        desktopPane.add(btnNewButton);
+        btnNewButton = createButton("Iniciar nuevo viaje");
+        btnNewButton.setBounds(300, 200, 200, 30); // Posición inicial
+        layeredPane.add(btnNewButton, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
-        JButton btnNewButton_1 = createButton("Iniciar transporte");
-        desktopPane.add(btnNewButton_1);
+        btnNewButton_1 = createButton("Iniciar transporte");
+        btnNewButton_1.setBounds(300, 250, 200, 30); // Posición inicial
+        layeredPane.add(btnNewButton_1, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
-        JButton btnNewButton_1_1 = createButton("Iniciar pedido");
-        desktopPane.add(btnNewButton_1_1);
+        btnNewButton_1_1 = createButton("Iniciar pedido");
+        btnNewButton_1_1.setBounds(300, 300, 200, 30); // Posición inicial
+        layeredPane.add(btnNewButton_1_1, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
         // Añadir JLabel para el mensaje
-        lblNewLabel = new JLabel("Selecciona el servicio que necesites...");
+        lblNewLabel = new JLabel("Selecciona el servicio que necesite");
         lblNewLabel.setForeground(new Color(128, 255, 255));
         lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 17));
-        desktopPane.add(lblNewLabel, BorderLayout.NORTH);
+        lblNewLabel.setBounds(300, 150, 348, 30); // Posición inicial
+        layeredPane.add(lblNewLabel, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
         // Listener para manejar el redimensionamiento de la ventana
         this.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -99,16 +106,11 @@ public class Inicio extends JFrame {
                 adjustComponents(size.width, size.height);
             }
         });
-
-        // Ajustar tamaño inicial
-        this.pack();
-        resizeImage(getWidth(), getHeight()); // Asegurarse de que la imagen se redimensione inicialmente
     }
 
     // Método para crear botones
     private JButton createButton(String text) {
         JButton button = new JButton(text);
-        button.setPreferredSize(new Dimension(200, 30)); // Ajustar el tamaño preferido
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Lógica para cada botón
@@ -130,27 +132,26 @@ public class Inicio extends JFrame {
 
     // Método para ajustar los componentes
     private void adjustComponents(int width, int height) {
-        // Ajustar botones
-        int buttonWidth = width / 4; // Establecer el ancho de los botones
-        int buttonHeight = 30; // Altura fija para los botones
-        int padding = 10; // Espacio entre botones
-
-        Component[] components = contentPane.getComponents();
-        
-        // Ajustar botones
-        int yPosition = height / 4; // posición inicial
-        for (Component comp : components) {
-            if (comp instanceof JButton) {
-                comp.setBounds((width - buttonWidth) / 2, yPosition, buttonWidth, buttonHeight);
-                yPosition += buttonHeight + padding; // incrementar la posición y
-            }
-        }
-
-        // Ajustar JLabel para el mensaje
-        lblNewLabel.setBounds((width - 250) / 2, (height / 4) - 50, 250, 30);
-
-        // Ajustar imagen
+        // Ajustar el tamaño del JLabel de la imagen al tamaño de la ventana
+        lblNewLabel_2.setBounds(0, 0, width, height); 
         resizeImage(width, height);
+
+        // Calcular nuevas posiciones y tamaños para los botones
+        int buttonWidth = 200; // Ancho fijo para los botones
+        int buttonHeight = 30; // Altura fija para los botones
+        int spacing = 10; // Espacio entre botones
+
+        // Recalcular posiciones centradas
+        int xPosition = (width - buttonWidth) / 2;
+        int yPositionStart = height / 4; // Un cuarto de la altura de la ventana
+
+        // Ajustar cada botón
+        btnNewButton.setBounds(xPosition, yPositionStart, buttonWidth, buttonHeight);
+        btnNewButton_1.setBounds(xPosition, yPositionStart + buttonHeight + spacing, buttonWidth, buttonHeight);
+        btnNewButton_1_1.setBounds(xPosition, yPositionStart + (buttonHeight + spacing) * 2, buttonWidth, buttonHeight);
+
+        // Ajustar la posición del JLabel del mensaje
+        lblNewLabel.setBounds((width - 250) / 2, yPositionStart - 50, 250, 30);
     }
 
     // Método para redimensionar la imagen
@@ -158,7 +159,6 @@ public class Inicio extends JFrame {
         Image img = originalImage.getImage();
         Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         lblNewLabel_2.setIcon(new ImageIcon(newImg));
-        lblNewLabel_2.setBounds(0, 0, width, height); // Ajustar bounds de la imagen
         lblNewLabel_2.repaint(); // Repintar el JLabel para mostrar los cambios
     }
 }
