@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.Color;
+import java.awt.Font;
 
 public class TerceraVista extends JFrame {
 
@@ -40,30 +42,40 @@ public class TerceraVista extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 721, 474);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 0, 0));
+		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Ingresa tu Telefono:");
-		lblNewLabel.setBounds(289, 53, 115, 14);
+		lblNewLabel.setBounds(252, 97, 185, 20);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBackground(new Color(255, 255, 255));
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Crea tu Contraseña:");
-		lblNewLabel_1.setBounds(289, 140, 109, 14);
+		lblNewLabel_1.setBounds(252, 189, 177, 14);
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_1.setBackground(new Color(255, 255, 255));
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirma tu contraseña:");
-		lblNewLabel_2.setBounds(289, 237, 126, 14);
+		lblNewLabel_2.setBounds(238, 286, 209, 14);
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
 		contentPane.add(lblNewLabel_2);
 		
 		textField = new JTextField();
-		textField.setBounds(238, 80, 209, 20);
+		textField.setBounds(238, 128, 209, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(238, 165, 209, 20);
+		textField_1.setBounds(238, 216, 209, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -73,8 +85,14 @@ public class TerceraVista extends JFrame {
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(238, 262, 209, 20);
+		textField_3.setBounds(238, 311, 209, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel_3 = new JLabel("Bienvenido");
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 40));
+		lblNewLabel_3.setBounds(238, 25, 209, 39);
+		contentPane.add(lblNewLabel_3);
 	}
 }

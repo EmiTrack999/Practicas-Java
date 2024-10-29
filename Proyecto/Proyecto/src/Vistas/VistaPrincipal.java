@@ -38,6 +38,7 @@ public class VistaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VistaPrincipal() {
+		setBackground(new Color(0, 0, 0));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		setResizable(true);
@@ -62,6 +63,7 @@ public class VistaPrincipal extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout());
@@ -72,7 +74,9 @@ public class VistaPrincipal extends JFrame {
 		// Cargar la imagen original
 		originalImage = new ImageIcon("C:/Users/Alumno.SC3PC34.000/Desktop/PRACTICAS%202.0/Practicas-Java/Proyecto/Proyecto/Imagenes/Imagenes/fondo-diseno-presentacion-abstracto-azul-moderno_181182-27413.jpg");
 		lblNewLabel_2 = new JLabel();
-		lblNewLabel_2.setBounds(0, 0, 800, 600);
+		lblNewLabel_2.setBackground(new Color(0, 0, 0));
+		lblNewLabel_2.setForeground(new Color(0, 0, 0));
+		lblNewLabel_2.setBounds(0, 0, 784, 600);
 		layeredPane.add(lblNewLabel_2, Integer.valueOf(0));
 
 		// Crear y añadir botones
@@ -126,6 +130,7 @@ public class VistaPrincipal extends JFrame {
 	// Método para crear etiquetas
 	private JLabel createLabel(String text) {
 		JLabel label = new JLabel(text);
+		label.setForeground(new Color(255, 255, 255));
 		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		return label;
 	}
