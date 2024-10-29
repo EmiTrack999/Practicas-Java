@@ -38,7 +38,7 @@ public class Inicio extends JFrame {
      */
     public Inicio() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 800, 600); // Ajustar la posición y el tamaño inicial de la ventana
+        setBounds(100, 100, 800, 514); // Ajustar la posición y el tamaño inicial de la ventana
         setResizable(true); // Permitir que la ventana sea redimensionable
 
         JMenuBar menuBar = new JMenuBar();
@@ -65,6 +65,7 @@ public class Inicio extends JFrame {
         mnNewMenu.add(mntmNewMenuItem_1);
 
         contentPane = new JPanel();
+        contentPane.setBackground(new Color(0, 0, 0));
         contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
         setContentPane(contentPane);
         contentPane.setLayout(new BorderLayout());
@@ -91,8 +92,8 @@ public class Inicio extends JFrame {
 
         // Añadir JLabel para el mensaje
         lblNewLabel = new JLabel("Selecciona el servicio que necesite");
-        lblNewLabel.setForeground(new Color(128, 255, 255));
-        lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 17));
+        lblNewLabel.setForeground(new Color(255, 255, 255));
+        lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
         layeredPane.add(lblNewLabel, Integer.valueOf(1)); // Asegurar que esté sobre la imagen
 
         // Listener para manejar el redimensionamiento de la ventana
