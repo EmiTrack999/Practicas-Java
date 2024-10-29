@@ -70,7 +70,7 @@ public class VistaPrincipal extends JFrame {
 		contentPane.add(layeredPane, BorderLayout.CENTER);
 
 		// Cargar la imagen original
-		originalImage = new ImageIcon("C:/Users/Alumno.SC3PC34.000/git/Practicas-Java/Practicas-Java/Proyecto/Proyecto/Imagenes/Imagenes/fondo-diseno-presentacion-abstracto-azul-moderno_181182-27413.jpg");
+		originalImage = new ImageIcon("C:/Users/Alumno.SC3PC34.000/Desktop/PRACTICAS%202.0/Practicas-Java/Proyecto/Proyecto/Imagenes/Imagenes/fondo-diseno-presentacion-abstracto-azul-moderno_181182-27413.jpg");
 		lblNewLabel_2 = new JLabel();
 		lblNewLabel_2.setBounds(0, 0, 800, 600);
 		layeredPane.add(lblNewLabel_2, Integer.valueOf(0));

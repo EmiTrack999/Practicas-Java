@@ -73,7 +73,7 @@ public class Inicio extends JFrame {
         contentPane.add(layeredPane, BorderLayout.CENTER);
 
         // Cargar la imagen original
-        originalImage = new ImageIcon("C:/Users/Alumno.SC3PC36.000/git/Practicas-Java/Practicas-Java/Practicas-Java/Practicas-Java/Practicas-Java/Practicas-Java/Practicas-Java/Proyecto/Proyecto/Imagenes/Imagenes/Camion2.png");
+        originalImage = new ImageIcon("C:/Users/Alumno.SC3PC34.000/Desktop/PRACTICAS%202.0/Practicas-Java/Proyecto/Proyecto/Imagenes/Imagenes/Camion2.png");
         lblNewLabel_2 = new JLabel();
         lblNewLabel_2.setLayout(new BorderLayout());
         lblNewLabel_2.setBounds(0, 0, 800, 600); // Tamaño inicial de la imagen
