@@ -131,9 +131,10 @@ public class SegundaVista extends JFrame {
 				String confirmarContraseña = txtConfir.getText();
 				String correo = txtCorreo.getText();
 				Inicio in = new Inicio();
-
+				B_Datos bd=new B_Datos();
 				if (correo.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
+				  
 				} else if (!db.validarCorreo(correo)) {
 				    JOptionPane.showMessageDialog(null, "Correo inválido");
 				} else if (contraseña.isEmpty()) {
@@ -142,10 +143,10 @@ public class SegundaVista extends JFrame {
 				    JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
 				} else if (!contraseña.equals(confirmarContraseña)) {
 				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-				} else {
-				    verificarCorreo();
-				    registrar();  
-				}
+				 
+				 } else {
+					 registrar();
+				 }
 				
 				
 				
@@ -163,40 +164,22 @@ public class SegundaVista extends JFrame {
 	}
 	public void registrar() {
 		B_Datos bd=new B_Datos();
-		Modelo mo=new Modelo();
-		mo.setCorreo(txtCorreo.getText());
-		mo.setContraseña(txtContra.getText());
-		mo.setConfir(txtConfir.getText());
-		bd.registrarse(mo);
-		
-	}
-	 
-	  private void verificarCorreo() {
-	        String correo = txtCorreo.getText().toLowerCase();
-			B_Datos bd=new B_Datos();
-			Inicio in=new Inicio();
-	        if (bd.verificarCorreo(correo)) {
-	        	JOptionPane.showMessageDialog(contentPane, "El correo ya está registrado.");
-	        } else {
-	            JOptionPane.showMessageDialog(contentPane, "bienvenido");
-	            in.setVisible(true);
-	        }
+		Inicio in=new Inicio();
+		String correo = txtCorreo.getText();
+	    String contraseña = txtContra.getText();
+	    String confirmar = txtConfir.getText();
+	    if (bd.verificarCorreo(correo)) {
+	        JOptionPane.showMessageDialog(null, "El correo ya está registrado.");
+	        return;
 	    }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}
+	    Modelo mo = new Modelo();
+	    mo.setCorreo(correo);
+	    mo.setContraseña(contraseña);
+	    if (bd.registrarse(mo)) {
+	        JOptionPane.showMessageDialog(null, "Bienvenido  "+ correo);
+	        in.setVisible(true);
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Error al registrar.");
+	    }
+	}
+	    }

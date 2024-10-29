@@ -28,11 +28,9 @@ public class B_Datos {
         try {
             Connection cn = conexion();
             PreparedStatement ps = cn.prepareStatement("INSERT INTO usuarios (correo, contra) VALUES(?, ?)");
-            ps.setString(1, vi.getCorreo().toLowerCase()); // Convertir a minúsculas para evitar problemas de comparación
+            ps.setString(1, vi.getCorreo().toLowerCase());
             ps.setString(2, vi.getContraseña());
             int guardar = ps.executeUpdate();
-            
-            
             if (guardar == 1) {
                 reg = true;
             } else {
@@ -47,16 +45,35 @@ public class B_Datos {
     }
     public boolean verificarCorreo(String correo) {
         String sql = "SELECT COUNT(*) FROM usuarios WHERE correo = ?";
-        try (Connection conn = conexion();
+        try (Connection conn = conexion(); // Método que retorna la conexión a la base de datos
              PreparedStatement pst = conn.prepareStatement(sql)) {
              
             pst.setString(1, correo);
             ResultSet rs = pst.executeQuery();
+            
             if (rs.next()) {
-                return rs.getInt(1) > 0;
+                return rs.getInt(1) > 0; // Retorna true si el correo ya está registrado
             }
         } catch (SQLException e) {
-           JOptionPane.showMessageDialog(null,"error al verificar correo"+ e);
+            JOptionPane.showMessageDialog(null, "Error al verificar correo: " + e.getMessage());
+        }
+        return false; // Retorna false si el correo no está registrado o si ocurre un error
+    }
+    
+    public boolean iniciarSesion(String correo, String contraseña) {
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE correo = ? AND contra = ?";
+        try (Connection conn = conexion();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+             
+            pst.setString(1, correo.toLowerCase());
+            pst.setString(2, contraseña);
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1) > 0; 
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al iniciar sesión: " + e);
         }
         return false;
     }

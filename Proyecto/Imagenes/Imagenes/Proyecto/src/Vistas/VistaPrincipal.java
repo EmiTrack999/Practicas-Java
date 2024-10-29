@@ -3,6 +3,10 @@ package Vistas;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.B_Datos;
+import Controlador.Modelo;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -111,7 +115,25 @@ public class VistaPrincipal extends JFrame {
 	private JButton createButton(String text) {
 		JButton button = new JButton(text);
 		button.addActionListener(e -> {
-			// Aquí puedes agregar la lógica específica para cada botón
+			Modelo db = new Modelo();
+			String contraseña = txtContra.getText();
+			String confirmarContraseña =txtConfir.getText();
+			String correo = txtCorreo.getText();
+			Inicio in = new Inicio();
+			String iniciar=new String();
+			if (correo.isEmpty()) {
+			    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
+			} else if (!db.validarCorreo(correo)) {
+			    JOptionPane.showMessageDialog(null, "Correo inválido");
+			} else if (contraseña.isEmpty()) {
+			    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
+			} else if (confirmarContraseña.isEmpty()) {
+			    JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
+			} else if (!contraseña.equals(confirmarContraseña)) {
+			    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+			} else {
+				iniciarSesion(); 
+			}
 		});
 		return button;
 	}
@@ -168,4 +190,18 @@ public class VistaPrincipal extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(newImg));
 		lblNewLabel_2.repaint();
 	}
+	 private void iniciarSesion() {
+			B_Datos bd=new B_Datos();
+			Inicio in=new Inicio();
+			
+	        String correo = txtCorreo.getText();
+	        String contraseña =txtContra.getText();
+	        boolean exito = bd.iniciarSesion(correo, contraseña);
+	        if (exito) {
+	            JOptionPane.showMessageDialog(this, "Bienevenido"+correo);
+	           in.setVisible(true);
+	        } else {
+	            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
+	        }
+	    }
 }
