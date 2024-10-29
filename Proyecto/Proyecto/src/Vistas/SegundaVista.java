@@ -55,7 +55,7 @@ public class SegundaVista extends JFrame {
 	 */
 	public SegundaVista() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
-		setBounds(100, 100, 753, 520);
+		setBounds(100, 100, 753, 428);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -143,9 +143,8 @@ public class SegundaVista extends JFrame {
 				} else if (!contraseña.equals(confirmarContraseña)) {
 				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
 				} else {
-				    JOptionPane.showMessageDialog(null, "Registrado");
-				    in.setVisible(true);
-				    registrar();
+				    verificarCorreo();
+				    registrar();  
 				}
 				
 				
@@ -171,4 +170,33 @@ public class SegundaVista extends JFrame {
 		bd.registrarse(mo);
 		
 	}
+	 
+	  private void verificarCorreo() {
+	        String correo = txtCorreo.getText().toLowerCase();
+			B_Datos bd=new B_Datos();
+			Inicio in=new Inicio();
+	        if (bd.verificarCorreo(correo)) {
+	        	JOptionPane.showMessageDialog(contentPane, "El correo ya está registrado.");
+	        } else {
+	            JOptionPane.showMessageDialog(contentPane, "bienvenido");
+	            in.setVisible(true);
+	        }
+	    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

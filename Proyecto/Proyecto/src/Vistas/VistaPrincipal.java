@@ -203,7 +203,6 @@ public class VistaPrincipal extends JFrame {
 				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
 				} else {
 				
-				consultar();
 				  
 				    
 				}
@@ -234,23 +233,7 @@ public class VistaPrincipal extends JFrame {
 	}
 	
 	
-	private void consultar() {
-	    B_Datos bd = new B_Datos();
-	    Modelo mo = new Modelo();
-
-	    try {
-	        String correo = mo.getCorreo();
-	        // ... (tu código existente)
-
-	        // Verificar si el correo está registrado antes de continuar
-	        bd.verificarCorreo(correo);
-
-	        // ... (tu código existente)
-
-	    } catch (Exception e) {
-	        // ... (tu código existente)
-	    }
-	}
+	
 
 
 	

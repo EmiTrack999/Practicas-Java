@@ -151,9 +151,5 @@ public class Pedir_Pedido extends JFrame {
 		lblNewLabel_7.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
 		lblNewLabel_7.setBounds(270, 25, 257, 31);
 		contentPane.add(lblNewLabel_7);
-		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		lblNewLabel_8.setBounds(10, 25, 46, 14);
-		contentPane.add(lblNewLabel_8);
 	}
 }
