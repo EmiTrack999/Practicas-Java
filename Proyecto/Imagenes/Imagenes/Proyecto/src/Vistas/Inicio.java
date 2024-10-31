@@ -42,23 +42,14 @@ public class Inicio extends JFrame {
         setResizable(true); // Permitir que la ventana sea redimensionable
 
         JMenuBar menuBar = new JMenuBar();
-        menuBar.setMargin(new Insets(100, 100, 100,100));
+        menuBar.setMargin(new Insets(100, 100, 100, 100));
         setJMenuBar(menuBar);
 
         JMenu mnNewMenu = new JMenu("Opciones");
         menuBar.add(mnNewMenu);
 
         JMenuItem mntmNewMenuItem = new JMenuItem("Ayuda");
-        mntmNewMenuItem.addActionListener(e -> {
-            String url = "https://ayudaacliente.netlify.app/";
-            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                try {
-                    Desktop.getDesktop().browse(new URI(url));
-                } catch (IOException | URISyntaxException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
+        mntmNewMenuItem.addActionListener(e -> openHelpUrl());
         mnNewMenu.add(mntmNewMenuItem);
 
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Cerrar sesión");
@@ -103,6 +94,18 @@ public class Inicio extends JFrame {
                 adjustComponents(size.width, size.height);
             }
         });
+    }
+
+    // Método para abrir la URL de ayuda
+    private void openHelpUrl() {
+        String url = "https://ayudaacliente.netlify.app/";
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (IOException | URISyntaxException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // Método para crear botones

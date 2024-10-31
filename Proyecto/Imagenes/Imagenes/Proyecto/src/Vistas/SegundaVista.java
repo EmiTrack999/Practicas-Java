@@ -1,14 +1,11 @@
 package Vistas;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Controlador.B_Datos;
 import Controlador.Modelo;
-
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -19,12 +16,10 @@ import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
+import java.util.regex.Pattern;
 
 public class SegundaVista extends JFrame {
 
@@ -33,10 +28,8 @@ public class SegundaVista extends JFrame {
 	private JTextField txtCorreo;
 	private JTextField txtContra;
 	private JTextField txtConfir;
+	private JTextField txtTelefono;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,12 +43,9 @@ public class SegundaVista extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public SegundaVista() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
-		setBounds(100, 100, 753, 428);
+		setBounds(100, 100, 753, 500);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -66,8 +56,8 @@ public class SegundaVista extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Regresar al menu");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VistaPrincipal prin=new VistaPrincipal();
-				SegundaVista vis=new SegundaVista();
+				VistaPrincipal prin = new VistaPrincipal();
+				SegundaVista vis = new SegundaVista();
 				prin.setVisible(true);
 				vis.setVisible(false);
 			}
@@ -77,51 +67,62 @@ public class SegundaVista extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Iniciar con N. Telefonico");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TerceraVista ter= new TerceraVista();
+				TerceraVista ter = new TerceraVista();
 				ter.setVisible(true);
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBounds(0, 0, 766, 481);
+		desktopPane.setBounds(0, 0, 766, 500);
 		contentPane.add(desktopPane);
-		
+
 		JLabel lblNewLabel = new JLabel("Ingresa tu correo");
 		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
 		lblNewLabel.setBounds(308, 43, 127, 14);
 		desktopPane.add(lblNewLabel);
-		
+
 		txtCorreo = new JTextField();
 		txtCorreo.setBounds(242, 67, 241, 20);
 		desktopPane.add(txtCorreo);
 		txtCorreo.setColumns(10);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Crea tu contraseña");
 		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(308, 110, 156, 14);
 		desktopPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Confirma tu contraseña");
 		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
 		lblNewLabel_2.setBounds(297, 178, 148, 14);
 		desktopPane.add(lblNewLabel_2);
-		
+
 		txtContra = new JTextField();
 		txtContra.setBounds(242, 137, 241, 20);
 		desktopPane.add(txtContra);
 		txtContra.setColumns(10);
-		
+
 		txtConfir = new JTextField();
 		txtConfir.setBounds(242, 203, 241, 20);
 		desktopPane.add(txtConfir);
 		txtConfir.setColumns(10);
-		
+
+		// Nuevo campo para el teléfono
+		JLabel lblTelefono = new JLabel("Ingresa tu número de teléfono");
+		lblTelefono.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
+		lblTelefono.setBounds(297, 233, 180, 14);
+		desktopPane.add(lblTelefono);
+
+		txtTelefono = new JTextField();
+		txtTelefono.setBounds(242, 258, 241, 20);
+		desktopPane.add(txtTelefono);
+		txtTelefono.setColumns(10);
+
 		JButton btnNewButton = new JButton("Registrarme");
 		btnNewButton.setSelectedIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\goku.jpg"));
 		btnNewButton.addActionListener(new ActionListener() {
@@ -130,56 +131,58 @@ public class SegundaVista extends JFrame {
 				String contraseña = txtContra.getText();
 				String confirmarContraseña = txtConfir.getText();
 				String correo = txtCorreo.getText();
-				Inicio in = new Inicio();
-				B_Datos bd=new B_Datos();
-				if (correo.isEmpty()) {
-				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
-				  
-				} else if (!db.validarCorreo(correo)) {
+				String telefono = txtTelefono.getText();
+
+				if (correo.isEmpty() && telefono.isEmpty()) {
+				    JOptionPane.showMessageDialog(null, "Ingresa tu correo o número de teléfono");
+				} else if (!correo.isEmpty() && !db.validarCorreo(correo)) {
 				    JOptionPane.showMessageDialog(null, "Correo inválido");
+				} else if (!telefono.isEmpty() && !validarTelefono(telefono)) {
+				    JOptionPane.showMessageDialog(null, "Número de teléfono inválido");
 				} else if (contraseña.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
 				} else if (confirmarContraseña.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
 				} else if (!contraseña.equals(confirmarContraseña)) {
 				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-				 
-				 } else {
-					 registrar();
-				 }
-				
-				
-				
-				
-				
+				} else {
+				    verificarCorreo();
+				    registrar();  
+				}
 			}
 		});
-		btnNewButton.setBounds(308, 265, 108, 14);
+		btnNewButton.setBounds(308, 300, 108, 14);
 		desktopPane.add(btnNewButton);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\125757761-fondo-creativo-de-onda-para-fondos-de-pantalla-de-presentaciones-de-negocios-folletos-portadas.jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\fondo.jpg"));
 		lblNewLabel_3.setBounds(0, 0, 737, 459);
 		desktopPane.add(lblNewLabel_3);
 	}
-	public void registrar() {
-		B_Datos bd=new B_Datos();
-		Inicio in=new Inicio();
-		String correo = txtCorreo.getText();
-	    String contraseña = txtContra.getText();
-	    String confirmar = txtConfir.getText();
-	    if (bd.verificarCorreo(correo)) {
-	        JOptionPane.showMessageDialog(null, "El correo ya está registrado.");
-	        return;
-	    }
-	    Modelo mo = new Modelo();
-	    mo.setCorreo(correo);
-	    mo.setContraseña(contraseña);
-	    if (bd.registrarse(mo)) {
-	        JOptionPane.showMessageDialog(null, "Bienvenido  "+ correo);
-	        in.setVisible(true);
-	    } else {
-	        JOptionPane.showMessageDialog(null, "Error al registrar.");
-	    }
+
+	// Método para validar el formato del número de teléfono
+	private boolean validarTelefono(String telefono) {
+		return Pattern.matches("\\d{10}", telefono); // Asegura que tenga 10 dígitos
 	}
-	    }
+
+	public void registrar() {
+		B_Datos bd = new B_Datos();
+		Modelo mo = new Modelo();
+		mo.setCorreo(txtCorreo.getText());
+		mo.setContraseña(txtContra.getText());
+		mo.setConfir(txtConfir.getText());
+		bd.registrarse(mo);
+	}
+
+	private void verificarCorreo() {
+		String correo = txtCorreo.getText().toLowerCase();
+		B_Datos bd = new B_Datos();
+		Inicio in = new Inicio();
+		if (bd.verificarCorreo(correo)) {
+			JOptionPane.showMessageDialog(contentPane, "El correo ya está registrado.");
+		} else {
+			JOptionPane.showMessageDialog(contentPane, "Bienvenido");
+			in.setVisible(true);
+		}
+	}
+}

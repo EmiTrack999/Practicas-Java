@@ -4,204 +4,166 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import Controlador.B_Datos;
 import Controlador.Modelo;
 
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 public class VistaPrincipal extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField txtCorreo;
-	private JTextField txtContra;
-	private JTextField txtConfir;
-	JLabel lbCorreo, lbContraseña, lbConfirmarContraseña, lblNewLabel_2;
-	private JButton btRegis, btIniciar;
-	private ImageIcon originalImage;
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    private JTextField txtCorreo;
+    private JTextField txtContra;
+    private JTextField txtConfir;
+    private JLabel lbContraseña;
+    
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                VistaPrincipal frame = new VistaPrincipal();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(() -> {
-			try {
-				VistaPrincipal frame = new VistaPrincipal();
-				frame.setVisible(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
-	}
+    public VistaPrincipal() {
+        setTitle("Vista Principal");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
+        setBounds(100, 100, 631, 494);
+        setResizable(false);
 
-	/**
-	 * Create the frame.
-	 */
-	public VistaPrincipal() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 600);
-		setResizable(true);
+        initMenuBar();
+        initContentPane();
+        initComponents();
+    }
 
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
+    private void initMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
 
-		JMenu mnNewMenu = new JMenu("Opciones");
-		menuBar.add(mnNewMenu);
+        JMenu mnOptions = new JMenu("Opciones");
+        menuBar.add(mnOptions);
 
-		JMenuItem mntmNewMenuItem = new JMenuItem("Ayuda");
-		mntmNewMenuItem.addActionListener(e -> {
-			String url = "https://ayudaacliente.netlify.app/";
-			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-				try {
-					Desktop.getDesktop().browse(new URI(url));
-				} catch (IOException | URISyntaxException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
-		mnNewMenu.add(mntmNewMenuItem);
+        JMenuItem menuHelp = new JMenuItem("Ayuda");
+        menuHelp.addActionListener(e -> openHelpURL("https://ayudaacliente.netlify.app/"));
+        mnOptions.add(menuHelp);
 
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout());
+        JMenuItem menuInfo = new JMenuItem("Informacion");
+        mnOptions.add(menuInfo);
 
-		JLayeredPane layeredPane = new JLayeredPane();
-		contentPane.add(layeredPane, BorderLayout.CENTER);
+        JMenu mnWebPage = new JMenu("Pagina Web");
+        menuBar.add(mnWebPage);
 
-		// Cargar la imagen original
-		originalImage = new ImageIcon("C:/Users/Alumno.SC3PC34.000/Desktop/PRACTICAS%202.0/Practicas-Java/Proyecto/Proyecto/Imagenes/Imagenes/fondo-diseno-presentacion-abstracto-azul-moderno_181182-27413.jpg");
-		lblNewLabel_2 = new JLabel();
-		lblNewLabel_2.setBounds(0, 0, 800, 600);
-		layeredPane.add(lblNewLabel_2, Integer.valueOf(0));
+        JMenuItem menuQR = new JMenuItem("QR");
+        menuQR.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\QR3.png"));
+        menuQR.addActionListener(e -> openQRWindow());
+        mnWebPage.add(menuQR);
 
-		// Crear y añadir botones
-		btRegis = createButton("Registrar");
-		btIniciar = createButton("Iniciar");
+        JMenuItem menuLink = new JMenuItem("Enlace");
+        menuLink.addActionListener(e -> openHelpURL("https://cargofleetsolutionsempresa.netlify.app"));
+        mnWebPage.add(menuLink);
+    }
 
-		// Crear y añadir campos de texto y etiquetas
-		txtCorreo = createTextField();
-		txtContra = createTextField();
-		txtConfir = createTextField();
+    private void initContentPane() {
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setLayout(null);
+        setContentPane(contentPane);
+    }
 
-		lbCorreo = createLabel("Correo/Telefono:");
-		lbContraseña = createLabel("Contraseña:");
-		lbConfirmarContraseña = createLabel("Confirmar Contraseña:");
+    private void initComponents() {
+        JLabel lblCorreo = new JLabel("CORREO/TELEFONO");
+        lblCorreo.setFont(new Font("Wide Latin", Font.PLAIN, 14));
+        lblCorreo.setBounds(185, 54, 321, 31);
+        contentPane.add(lblCorreo);
 
-		// Agregar los componentes al panel
-		layeredPane.add(lbCorreo, Integer.valueOf(1));
-		layeredPane.add(txtCorreo, Integer.valueOf(1));
-		layeredPane.add(lbContraseña, Integer.valueOf(1));
-		layeredPane.add(txtContra, Integer.valueOf(1));
-		layeredPane.add(lbConfirmarContraseña, Integer.valueOf(1));
-		layeredPane.add(txtConfir, Integer.valueOf(1));
-		layeredPane.add(btRegis, Integer.valueOf(1));
-		layeredPane.add(btIniciar, Integer.valueOf(1));
+        txtCorreo = new JTextField();
+        txtCorreo.setBounds(208, 96, 203, 31);
+        txtCorreo.setColumns(10);
+        contentPane.add(txtCorreo);
 
-		// Listener para manejar el redimensionamiento de la ventana
-		this.addComponentListener(new java.awt.event.ComponentAdapter() {
-			public void componentResized(java.awt.event.ComponentEvent evt) {
-				Dimension size = getSize();
-				adjustComponents(size.width, size.height);
-			}
-		});
-	}
+        lbContraseña = new JLabel("CONTRASEÑA");
+        lbContraseña.setFont(new Font("Wide Latin", Font.PLAIN, 14));
+        lbContraseña.setBounds(208, 126, 224, 26);
+        contentPane.add(lbContraseña);
 
-	// Método para crear botones con ActionListener
-	private JButton createButton(String text) {
-		JButton button = new JButton(text);
-		button.addActionListener(e -> {
-			Modelo db = new Modelo();
-			String contraseña = txtContra.getText();
-			String confirmarContraseña =txtConfir.getText();
-			String correo = txtCorreo.getText();
-			Inicio in = new Inicio();
-			String iniciar=new String();
-			if (correo.isEmpty()) {
-			    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
-			} else if (!db.validarCorreo(correo)) {
-			    JOptionPane.showMessageDialog(null, "Correo inválido");
-			} else if (contraseña.isEmpty()) {
-			    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
-			} else if (confirmarContraseña.isEmpty()) {
-			    JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
-			} else if (!contraseña.equals(confirmarContraseña)) {
-			    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-			} else {
-				iniciarSesion(); 
-			}
-		});
-		return button;
-	}
+        txtContra = new JTextField();
+        txtContra.setBounds(208, 163, 203, 31);
+        txtContra.setColumns(10);
+        contentPane.add(txtContra);
 
-	// Método para crear campos de texto
-	private JTextField createTextField() {
-		JTextField textField = new JTextField();
-		textField.setColumns(10);
-		return textField;
-	}
+        JLabel lblConfirmPass = new JLabel("Confirmar contraseña");
+        lblConfirmPass.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 11));
+        lblConfirmPass.setBounds(218, 204, 168, 20);
+        contentPane.add(lblConfirmPass);
 
-	// Método para crear etiquetas
-	private JLabel createLabel(String text) {
-		JLabel label = new JLabel(text);
-		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		return label;
-	}
+        txtConfir = new JTextField();
+        txtConfir.setBounds(208, 235, 203, 20);
+        txtConfir.setColumns(10);
+        contentPane.add(txtConfir);
 
-	// Método para ajustar los componentes
-	private void adjustComponents(int width, int height) {
-		lblNewLabel_2.setBounds(0, 0, width, height); 
-		resizeImage(width, height);
+        JButton btRegis = new JButton("Registrar");
+        btRegis.setBounds(265, 329, 89, 14);
+        btRegis.addActionListener(e -> openRegisterWindow());
+        contentPane.add(btRegis);
 
-		int labelWidth = width / 4;
-		int labelHeight = height / 15;
-		int textFieldWidth = width / 3;
-		int buttonWidth = width / 6;
-		int buttonHeight = height / 15;
-		int spacing = 15;
+        JButton btIniciar = new JButton("Iniciar");
+        btIniciar.setBounds(265, 287, 89, 14);
+        btIniciar.addActionListener(e -> iniciarSesion());
+        contentPane.add(btIniciar);
 
-		// Posiciones de las etiquetas y campos de texto centrados
-		int centerX = width / 2;
-		int startY = height / 4;
+        JLabel lblBackground = new JLabel();
+        lblBackground.setIcon(new ImageIcon("E:\\hola_pancho\\Proyecto\\Imagenes\\fondo-diseno-presentacion-abstracto-azul-moderno_181182-27413.jpg"));
+        lblBackground.setBounds(0, -23, 621, 491);
+        contentPane.add(lblBackground);
+    }
 
-		// Ajustar etiquetas un poco más a la izquierda
-		lbCorreo.setBounds(centerX - labelWidth - 50, startY, labelWidth, labelHeight);
-		txtCorreo.setBounds(centerX - textFieldWidth / 2, startY, textFieldWidth, labelHeight);
+    private void openHelpURL(String url) {
+        try {
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                Desktop.getDesktop().browse(new URI(url));
+            }
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 
-		lbContraseña.setBounds(centerX - labelWidth - 25, startY + labelHeight + spacing, labelWidth, labelHeight);
-		txtContra.setBounds(centerX - textFieldWidth / 2, startY + labelHeight + spacing, textFieldWidth, labelHeight);
+    private void openQRWindow() {
+        // Lógica para abrir la ventana QR
+        qr qrWindow = new qr();
+        qrWindow.setVisible(true);
+    }
 
-		lbConfirmarContraseña.setBounds(centerX - labelWidth - 90, startY + 2 * (labelHeight + spacing), labelWidth, labelHeight);
-		txtConfir.setBounds(centerX - textFieldWidth / 2, startY + 2 * (labelHeight + spacing), textFieldWidth, labelHeight);
+    private void openRegisterWindow() {
+        SegundaVista registerWindow = new SegundaVista();
+        registerWindow.setVisible(true);
+    }
 
-		// Posicionar botones centrados
-		btRegis.setBounds(centerX - buttonWidth - spacing, startY + 3 * (labelHeight + spacing), buttonWidth, buttonHeight);
-		btIniciar.setBounds(centerX + spacing, startY + 3 * (labelHeight + spacing), buttonWidth, buttonHeight);
-	}
+    private void iniciarSesion() {
+        String correo = txtCorreo.getText();
+        String contraseña = txtContra.getText();
+        String confirmarContraseña = txtConfir.getText();
+        Modelo db = new Modelo();
 
-	// Método para redimensionar la imagen
-	private void resizeImage(int width, int height) {
-		Image img = originalImage.getImage();
-		Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-		lblNewLabel_2.setIcon(new ImageIcon(newImg));
-		lblNewLabel_2.repaint();
-	}
-	 private void iniciarSesion() {
-			B_Datos bd=new B_Datos();
-			Inicio in=new Inicio();
-			
-	        String correo = txtCorreo.getText();
-	        String contraseña =txtContra.getText();
-	        boolean exito = bd.iniciarSesion(correo, contraseña);
-	        if (exito) {
-	            JOptionPane.showMessageDialog(this, "Bienevenido"+correo);
-	           in.setVisible(true);
-	        } else {
-	            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
-	        }
-	    }
+        if (correo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingresa tu correo");
+        } else if (!db.validarCorreo(correo)) {
+            JOptionPane.showMessageDialog(null, "Correo inválido");
+        } else if (contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
+        } else if (confirmarContraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
+        } else if (!contraseña.equals(confirmarContraseña)) {
+            JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+        } else {
+            // Lógica para iniciar sesión
+        }
+    }
 }
