@@ -1,89 +1,144 @@
 package Modelo;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class calculadora {
+public class calculadora extends JFrame {
 
-    private double costoPorKilometro;
-    private double distancia;
-    private double iva = 0.16; 
+    private JTextField distanciaField;
+    private JComboBox<String> tipoViajeCombo;
+    private JCheckBox incluirIvaCheckbox;
+    private JTextArea historialArea;
+    private JLabel resultadoLabel;
     private ArrayList<String> historial;
+    private double costoPorKilometro;
+    private double iva = 0.16;
 
     public calculadora() {
-        this.costoPorKilometro = 0.0;
-        this.distancia = 0.0;
-        this.historial = new ArrayList<>();
+        setTitle("Calculadora de Costo de Viaje");
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        historial = new ArrayList<>();
+        
+        // Configuración de layout
+        getContentPane().setLayout(new BorderLayout());
+
+        // Panel principal
+        JPanel panel = new JPanel();
+        panel.setLayout(null);  // Layout nulo para compatibilidad con WindowBuilder
+        getContentPane().add(panel, BorderLayout.CENTER);
+
+        // Tipo de viaje
+        JLabel tipoViajeLabel = new JLabel("Tipo de Viaje:");
+        tipoViajeLabel.setBounds(20, 20, 100, 20);
+        panel.add(tipoViajeLabel);
+        
+        tipoViajeCombo = new JComboBox<>(new String[]{"Ligero", "Pesado", "Pasajeros"});
+        tipoViajeCombo.setBounds(130, 20, 100, 20);
+        panel.add(tipoViajeCombo);
+
+        // Distancia
+        JLabel distanciaLabel = new JLabel("Distancia (km):");
+        distanciaLabel.setBounds(20, 60, 100, 20);
+        panel.add(distanciaLabel);
+        
+        distanciaField = new JTextField();
+        distanciaField.setBounds(130, 60, 100, 20);
+        panel.add(distanciaField);
+
+        // Incluir IVA
+        JLabel incluirIvaLabel = new JLabel("Incluir IVA:");
+        incluirIvaLabel.setBounds(20, 100, 100, 20);
+        panel.add(incluirIvaLabel);
+        
+        incluirIvaCheckbox = new JCheckBox();
+        incluirIvaCheckbox.setBounds(130, 100, 20, 20);
+        panel.add(incluirIvaCheckbox);
+
+        // Botón Calcular
+        JButton calcularButton = new JButton("Calcular Costo");
+        calcularButton.setBounds(20, 140, 150, 30);
+        calcularButton.addActionListener(new CalcularListener());
+        panel.add(calcularButton);
+
+        // Resultado
+        resultadoLabel = new JLabel("Resultado:");
+        resultadoLabel.setBounds(20, 180, 350, 30);
+        panel.add(resultadoLabel);
+
+        // Botón para mostrar historial
+        JButton historialButton = new JButton("Mostrar Historial");
+        historialButton.setBounds(20, 220, 150, 30);
+        historialButton.addActionListener(e -> mostrarHistorial());
+        panel.add(historialButton);
+
+        // Área de historial
+        historialArea = new JTextArea();
+        historialArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(historialArea);
+        scrollPane.setBounds(20, 260, 350, 80);
+        panel.add(scrollPane);
     }
 
-    public void establecerCostoPorKilometro(double costo) {
-        if (costo < 0) {
-            throw new IllegalArgumentException("El costo por kilómetro no puede ser negativo.");
+    private class CalcularListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                // Obtener valores del formulario
+                String tipoViaje = (String) tipoViajeCombo.getSelectedItem();
+                double distancia = Double.parseDouble(distanciaField.getText());
+                boolean incluirIva = incluirIvaCheckbox.isSelected();
+
+                // Configurar costo por kilómetro según el tipo de viaje
+                switch (tipoViaje) {
+                    case "Ligero":
+                        costoPorKilometro = 2.0;
+                        break;
+                    case "Pesado":
+                        costoPorKilometro = 5.0;
+                        break;
+                    case "Pasajeros":
+                        costoPorKilometro = 3.0;
+                        break;
+                }
+
+                // Calcular el costo del viaje
+                double costoBase = costoPorKilometro * distancia;
+                double costoConIva = incluirIva ? costoBase + (costoBase * iva) : costoBase;
+                String resultado = String.format("El costo del viaje es: %.2f $pesos", costoConIva);
+
+                // Mostrar el resultado en la etiqueta
+                resultadoLabel.setText(resultado);
+
+                // Agregar al historial
+                agregarHistorial(resultado);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(calculadora.this, "Por favor ingrese un valor válido para la distancia.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        this.costoPorKilometro = costo;
     }
 
-    public void establecerDistancia(double distancia) {
-        if (distancia < 0) {
-            throw new IllegalArgumentException("La distancia no puede ser negativa.");
-        }
-        this.distancia = distancia;
-    }
-
-    public double calcularCostoViaje(boolean incluirIva) {
-        double costoBase = costoPorKilometro * distancia;
-        double costoConIva = incluirIva ? costoBase + (costoBase * iva) : costoBase;
-        return costoConIva;
-    }
-
-    public void agregarHistorial(String entrada) {
+    private void agregarHistorial(String entrada) {
         historial.add(entrada);
+        historialArea.append(entrada + "\n");
     }
 
-    public void mostrarHistorial() {
+    private void mostrarHistorial() {
         StringBuilder sb = new StringBuilder("Historial de Cálculos:\n");
         for (String entry : historial) {
             sb.append(entry).append("\n");
         }
-        JOptionPane.showMessageDialog(null, sb.toString(), "Historial", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, sb.toString(), "Historial", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static void main(String[] args) {
-        calculadora calculadora = new calculadora();
-
-        String[] opciones = {"Ligero", "Pesado", "Pasajeros"};
-        String tipoViaje = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de viaje:",
-                "Tipo de Viaje", JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
-
-        switch (tipoViaje) {
-            case "Ligero":
-                calculadora.establecerCostoPorKilometro(2.0); 
-                break;
-            case "Pesado":
-                calculadora.establecerCostoPorKilometro(5.0); 
-                break;
-            case "Pasajeros":
-                calculadora.establecerCostoPorKilometro(3.0); 
-                break;
-        }
-
-        String distanciaInput = JOptionPane.showInputDialog("Ingrese la distancia del viaje (en km):");
-        double distancia = Double.parseDouble(distanciaInput);
-        calculadora.establecerDistancia(distancia);
-
-        String incluirIvaInput = (String) JOptionPane.showInputDialog(null, "¿Incluir IVA?",
-                "IVA", JOptionPane.QUESTION_MESSAGE, null, new String[]{"Sí", "No"}, "Sí");
-        
-        boolean incluirIva = incluirIvaInput.equals("Sí");
-
-        double costoViaje = calculadora.calcularCostoViaje(incluirIva);
-        String resultado = String.format("El costo del viaje es: %.2f $pesos", costoViaje);
-        JOptionPane.showMessageDialog(null, resultado);
-        calculadora.agregarHistorial(resultado);
-
-        // Opción para mostrar el historial
-        if (JOptionPane.showConfirmDialog(null, "¿Desea ver el historial de cálculos?", "Historial", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            calculadora.mostrarHistorial();
-        }
+        SwingUtilities.invokeLater(() -> {
+            calculadora frame = new calculadora();
+            frame.setVisible(true);
+        });
     }
 }

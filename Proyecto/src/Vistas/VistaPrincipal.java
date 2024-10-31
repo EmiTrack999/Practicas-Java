@@ -140,7 +140,7 @@ public class VistaPrincipal extends JFrame {
 		contentPane.add(dkpane);
 		
 		JButton btRegis = new JButton("Registrar");
-		btRegis.setBounds(265, 329, 89, 14);
+		btRegis.setBounds(265, 317, 89, 26);
 		btRegis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VistaPrincipal vist=new VistaPrincipal();
@@ -162,7 +162,7 @@ public class VistaPrincipal extends JFrame {
 		txtCorreo.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("CORREO/TELEFONO");
-		lblNewLabel.setBounds(185, 54, 321, 31);
+		lblNewLabel.setBounds(168, 57, 321, 31);
 		lblNewLabel.setFont(new Font("Wide Latin", Font.PLAIN, 14));
 		dkpane.add(lblNewLabel);
 		
@@ -181,43 +181,24 @@ public class VistaPrincipal extends JFrame {
 		txtConfir.setColumns(10);
 		
 		
-		JButton btIniciar = new JButton("Iniciar");
-		btIniciar.setBounds(265, 287, 89, 14);
+		
+		JLabel lblNewLabel_1 = new JLabel("Confirmar contraseña");
+		lblNewLabel_1.setBounds(218, 204, 168, 20);
+		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 11));
+		dkpane.add(lblNewLabel_1);
+		
+		JButton btIniciar = new JButton("INICIAR");
 		btIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Modelo db = new Modelo();
-				String contraseña = txtContra.getText();
-				String confirmarContraseña = txtConfir.getText();
-				String correo = txtCorreo.getText();
-				Inicio in = new Inicio();
-
-				if (correo.isEmpty()) {
-				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
-				} else if (!db.validarCorreo(correo)) {
-				    JOptionPane.showMessageDialog(null, "Correo inválido");
-				} else if (contraseña.isEmpty()) {
-				    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
-				} else if (confirmarContraseña.isEmpty()) {
-				    JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
-				} else if (!contraseña.equals(confirmarContraseña)) {
-				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-				} else {
-				}
-				}
+				
+			}
 		});
+		btIniciar.setBounds(265, 266, 89, 23);
 		dkpane.add(btIniciar);
 		
 		
 		
-		JLabel lblNewLabel_1 = new JLabel("Confirmar contraseña");
-		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 11));
-		lblNewLabel_1.setBounds(218, 204, 168, 20);
-		dkpane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("E:\\hola_pancho\\Proyecto\\Imagenes\\fondo-diseno-presentacion-abstracto-azul-moderno_181182-27413.jpg"));
-		lblNewLabel_2.setBounds(0, -23, 621, 491);
-		dkpane.add(lblNewLabel_2);
 	}
 	
 	public void registrar() {
