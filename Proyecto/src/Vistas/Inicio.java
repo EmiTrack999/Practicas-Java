@@ -14,9 +14,9 @@ public class Inicio extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private JLabel lblNewLabel_2; // Mover la declaración a nivel de clase
-    private ImageIcon originalImage; // Almacenar la imagen original
-    private JLabel lblNewLabel; // Guardar la etiqueta del mensaje
+    private JLabel lblNewLabel_2;
+    private ImageIcon originalImage; 
+    private JLabel lblNewLabel; 
 
     /*******************************************
      * Launch the application.

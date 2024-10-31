@@ -31,6 +31,7 @@ import java.awt.Dialog.ModalExclusionType;
 import java.awt.Frame;
 import java.awt.Window.Type;
 import java.awt.Cursor;
+import java.awt.Color;
 
 public class VistaPrincipal extends JFrame {
 
@@ -62,10 +63,11 @@ public class VistaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VistaPrincipal() {
+		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setLocationByPlatform(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Alumno.SC3PC36.000\\Downloads\\WhatsApp Image 2024-10-10 at 3.44.30 PM (1).jpeg"));
 		setBounds(100, 100, 631, 494);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -136,10 +138,13 @@ public class VistaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		dkpane = new JDesktopPane();
+		dkpane.setBackground(new Color(0, 0, 0));
 		dkpane.setBounds(0, 0, 624, 468);
 		contentPane.add(dkpane);
 		
 		JButton btRegis = new JButton("Registrar");
+		btRegis.setForeground(new Color(255, 255, 255));
+		btRegis.setBackground(new Color(255, 0, 0));
 		btRegis.setBounds(265, 317, 89, 26);
 		btRegis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -162,11 +167,14 @@ public class VistaPrincipal extends JFrame {
 		txtCorreo.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("CORREO/TELEFONO");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBackground(new Color(255, 255, 255));
 		lblNewLabel.setBounds(168, 57, 321, 31);
 		lblNewLabel.setFont(new Font("Wide Latin", Font.PLAIN, 14));
 		dkpane.add(lblNewLabel);
 		
 		lbContraseña = new JLabel("CONTRASEÑA");
+		lbContraseña.setForeground(new Color(255, 255, 255));
 		lbContraseña.setBounds(208, 126, 224, 26);
 		lbContraseña.setFont(new Font("Wide Latin", Font.PLAIN, 14));
 		dkpane.add(lbContraseña);
@@ -183,11 +191,14 @@ public class VistaPrincipal extends JFrame {
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("Confirmar contraseña");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setBounds(256, 204, 98, 20);
 		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 11));
 		dkpane.add(lblNewLabel_1);
 		
 		JButton btIniciar = new JButton("INICIAR");
+		btIniciar.setForeground(new Color(255, 255, 255));
+		btIniciar.setBackground(new Color(255, 0, 0));
 		btIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Modelo db = new Modelo();
