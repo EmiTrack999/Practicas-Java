@@ -224,12 +224,7 @@ public class VistaPrincipal extends JFrame {
 		});
 		btIniciar.setBounds(265, 266, 89, 23);
 		dkpane.add(btIniciar);
-		
-		
-		
-		
 	}
-	
 	  private void iniciarSesion() {
 			B_Datos bd=new B_Datos();
 			Inicio in=new Inicio();
@@ -238,7 +233,7 @@ public class VistaPrincipal extends JFrame {
 	        String contraseña =txtContra.getText();
 	        boolean exito = bd.iniciarSesion(correo, contraseña);
 	        if (exito) {
-	            JOptionPane.showMessageDialog(this, "Bienevenido"+correo);
+	            JOptionPane.showMessageDialog(this, "Bienevenido  :  "+correo);
 	           in.setVisible(true);
 	        } else {
 	            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");

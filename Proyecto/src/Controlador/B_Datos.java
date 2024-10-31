@@ -45,19 +45,19 @@ public class B_Datos {
     }
     public boolean verificarCorreo(String correo) {
         String sql = "SELECT COUNT(*) FROM usuarios WHERE correo = ?";
-        try (Connection conn = conexion(); // Método que retorna la conexión a la base de datos
+        try (Connection conn = conexion(); 
              PreparedStatement pst = conn.prepareStatement(sql)) {
              
             pst.setString(1, correo);
             ResultSet rs = pst.executeQuery();
             
             if (rs.next()) {
-                return rs.getInt(1) > 0; // Retorna true si el correo ya está registrado
+                return rs.getInt(1) > 0;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al verificar correo: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al verificar correo: " + e);
         }
-        return false; // Retorna false si el correo no está registrado o si ocurre un error
+        return false;
     }
     
     public boolean iniciarSesion(String correo, String contraseña) {
