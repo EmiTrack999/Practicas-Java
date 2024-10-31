@@ -132,24 +132,22 @@ public class SegundaVista extends JFrame {
 				String confirmarContraseña = txtConfir.getText();
 				String correo = txtCorreo.getText();
 				Inicio in = new Inicio();
-
+				B_Datos bd=new B_Datos();
 				if (correo.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
-				} else {
-				    System.out.println("Correo ingresado: " + correo); // Mensaje de depuración
-				    if (!db.validarCorreo(correo)) {
-				        JOptionPane.showMessageDialog(null, "Correo inválido");
-				    } else if (contraseña.isEmpty()) {
-				        JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
-				    } else if (confirmarContraseña.isEmpty()) {
-				        JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
-				    } else if (!contraseña.equals(confirmarContraseña)) {
-				        JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-				    } else {
-				        registrarUsuario();
-				        JOptionPane.showMessageDialog(null, "Registrado");
-				        in.setVisible(true);
-				    }
+				  
+				} else if (!db.validarCorreo(correo)) {
+				    JOptionPane.showMessageDialog(null, "Correo inválido");
+				} else if (contraseña.isEmpty()) {
+				    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
+				} else if (confirmarContraseña.isEmpty()) {
+				    JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
+				} else if (!contraseña.equals(confirmarContraseña)) {
+				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+				 
+				 } else {
+					 registrar();
+				 
 				}
 				
 				
@@ -167,33 +165,26 @@ public class SegundaVista extends JFrame {
 		lblNewLabel_3.setBounds(0, 0, 737, 459);
 		desktopPane.add(lblNewLabel_3);
 	}
-	private void registrarUsuario() {
-	    B_Datos bd = new B_Datos();
-		Modelo mo = new Modelo();
-
-	    String correo = txtCorreo.getText();
+	public void registrar() {
+		B_Datos bd=new B_Datos();
+		Inicio in=new Inicio();
+		String correo = txtCorreo.getText();
 	    String contraseña = txtContra.getText();
-	    if (correo.isEmpty() || contraseña.isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos.");
-	        return; 
+	    String confirmar = txtConfir.getText();
+	    if (bd.verificarCorreo(correo)) {
+	        JOptionPane.showMessageDialog(null, "El correo ya está registrado.");
+	        return;
 	    }
-	    
+	    Modelo mo = new Modelo();
 	    mo.setCorreo(correo);
 	    mo.setContraseña(contraseña);
-	}
-	private void iniciarSesion() {
-	    B_Datos bd = new B_Datos();
-	    
-	    String correo = txtCorreo.getText();
-	    String contraseña = txtContra.getText();
-
-	    // Validar que los campos no estén vacíos
-	    if (correo.isEmpty() || contraseña.isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos.");
-	        return; // Salir del método si hay campos vacíos
-	        
-	        
+	    if (bd.registrarse(mo)) {
+	        JOptionPane.showMessageDialog(null, "Bienvenido  "+ correo);
+	        in.setVisible(true);
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Error al registrar.");
 	    }
+	
 
 	}
 }

@@ -183,14 +183,32 @@ public class VistaPrincipal extends JFrame {
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("Confirmar contraseña");
-		lblNewLabel_1.setBounds(218, 204, 168, 20);
+		lblNewLabel_1.setBounds(256, 204, 98, 20);
 		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 11));
 		dkpane.add(lblNewLabel_1);
 		
 		JButton btIniciar = new JButton("INICIAR");
 		btIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Modelo db = new Modelo();
+				String contraseña = txtContra.getText();
+				String confirmarContraseña =txtConfir.getText();
+				String correo = txtCorreo.getText();
+				Inicio in = new Inicio();
+				String iniciar=new String();
+				if (correo.isEmpty()) {
+				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
+				} else if (!db.validarCorreo(correo)) {
+				    JOptionPane.showMessageDialog(null, "Correo inválido");
+				} else if (contraseña.isEmpty()) {
+				    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
+				} else if (confirmarContraseña.isEmpty()) {
+				    JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
+				} else if (!contraseña.equals(confirmarContraseña)) {
+				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
+				} else {
+					iniciarSesion(); 
+				}
 			}
 		});
 		btIniciar.setBounds(265, 266, 89, 23);
@@ -201,17 +219,18 @@ public class VistaPrincipal extends JFrame {
 		
 	}
 	
-	public void registrar() {
-		B_Datos bd=new B_Datos();
-		Modelo mo=new Modelo();
-		mo.setCorreo(txtCorreo.getText());
-		mo.setContraseña(txtContra.getText());
-		bd.registrarse(mo);
-		
-	}
-	 private void iniciarSesion() {
+	  private void iniciarSesion() {
+			B_Datos bd=new B_Datos();
+			Inicio in=new Inicio();
+			
 	        String correo = txtCorreo.getText();
-	        String contraseña = new String(txtContra.getText());
-	        Modelo modelo = new Modelo();
-	 }
+	        String contraseña =txtContra.getText();
+	        boolean exito = bd.iniciarSesion(correo, contraseña);
+	        if (exito) {
+	            JOptionPane.showMessageDialog(this, "Bienevenido"+correo);
+	           in.setVisible(true);
+	        } else {
+	            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
+	        }
+	    }
 }

@@ -5,90 +5,77 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import Vistas.VistaPrincipal;
-
 public class B_Datos {
-	PreparedStatement ps;
-	Connection cn;
-	
-	public Connection conexion() {
-		try {
-			cn=DriverManager.getConnection("jdbc:mysql://localhost:3306/registros311","root","");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			JOptionPane.showMessageDialog(null,"error al acceder a la base de datos"+ e);
-		}
-		return cn;
-	}
-	public boolean registrarse(Modelo vi) {
-		boolean reg=false;
-		conexion();
-		try {
-			PreparedStatement ps=cn.prepareStatement("insert into registro values(?,?)");
-			ps.setString(1, vi.getCorreo());
-			ps.setString(2, vi.getContraseña());
-			int guardar=ps.executeUpdate();
-			if(guardar==1) {
-				reg=true;
-				JOptionPane.showMessageDialog(null, "Registrado");
-				
-			}else {
-				JOptionPane.showMessageDialog(null, "Error al Registrar");
-			}
-			ps.close();
-			cn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			JOptionPane.showMessageDialog(null,"error al registrar datos"+ e);
-		}
-		return reg;
-		
-	}
-		public boolean iniciarSesion(String correo, String contraseña) {
-	        boolean inicioExitoso = false;
-	        conexion();
-    try {
-    	conexion();
-    	Modelo mo=new Modelo();
-        PreparedStatement ps = cn.prepareStatement("SELECT * FROM registro WHERE correo = ? AND contraseña = ?");
-        ps.setString(1, mo.correo);
-        ps.setString(2, mo.contraseña);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            inicioExitoso = true;
-            JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso");
-        } else {
-            JOptionPane.showMessageDialog(null, "Credenciales incorrectas");
+    PreparedStatement ps;
+    Connection cn;
+    // Método para establecer conexión con la base de datos
+    public Connection conexion() {
+        try {
+            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/correos", "root", "");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos: " + e);
         }
-        rs.close();
-        ps.close();
-        cn.close();
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al iniciar sesión: " + e);
+        return cn;
     }
-    return inicioExitoso;
-}
 
-public boolean estaRegistrado(String correo) {
-    boolean registrado = false;
-    conexion();
-    try {
-        PreparedStatement ps = cn.prepareStatement("SELECT * FROM registro WHERE correo = ?");
-        ps.setString(1, correo);
-        ResultSet rs = ps.executeQuery();
-        registrado = rs.next(); // Si hay un resultado, ya está registrado
-        rs.close();
-        ps.close();
-        cn.close();
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al verificar registro: " + e);
+   
+    public boolean registrarse(Modelo vi) {
+        boolean reg = false;
+
+        try {
+            Connection cn = conexion();
+            PreparedStatement ps = cn.prepareStatement("INSERT INTO usuarios (correo, contra) VALUES(?, ?)");
+            ps.setString(1, vi.getCorreo().toLowerCase());
+            ps.setString(2, vi.getContraseña());
+            int guardar = ps.executeUpdate();
+            if (guardar == 1) {
+                reg = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al Registrar.");
+            }
+            ps.close();
+            cn.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al registrar datos: " + e);
+        }
+        return reg;
     }
-    return registrado;
-} }
+    public boolean verificarCorreo(String correo) {
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE correo = ?";
+        try (Connection conn = conexion(); // Método que retorna la conexión a la base de datos
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+             
+            pst.setString(1, correo);
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1) > 0; // Retorna true si el correo ya está registrado
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al verificar correo: " + e.getMessage());
+        }
+        return false; // Retorna false si el correo no está registrado o si ocurre un error
+    }
+    
+    public boolean iniciarSesion(String correo, String contraseña) {
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE correo = ? AND contra = ?";
+        try (Connection conn = conexion();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+             
+            pst.setString(1, correo.toLowerCase());
+            pst.setString(2, contraseña);
+            ResultSet rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1) > 0; 
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al iniciar sesión: " + e);
+        }
+        return false;
+    }
+}
 

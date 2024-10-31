@@ -10,7 +10,6 @@ public class calculadora extends JFrame {
 
     private JTextField distanciaField;
     private JComboBox<String> tipoViajeCombo;
-    private JCheckBox incluirIvaCheckbox;
     private JTextArea historialArea;
     private JLabel resultadoLabel;
     private ArrayList<String> historial;
@@ -23,7 +22,7 @@ public class calculadora extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         historial = new ArrayList<>();
-        
+
         // Configuración de layout
         getContentPane().setLayout(new BorderLayout());
 
@@ -36,7 +35,7 @@ public class calculadora extends JFrame {
         JLabel tipoViajeLabel = new JLabel("Tipo de Viaje:");
         tipoViajeLabel.setBounds(20, 20, 100, 20);
         panel.add(tipoViajeLabel);
-        
+
         tipoViajeCombo = new JComboBox<>(new String[]{"Ligero", "Pesado", "Pasajeros"});
         tipoViajeCombo.setBounds(130, 20, 100, 20);
         panel.add(tipoViajeCombo);
@@ -45,34 +44,25 @@ public class calculadora extends JFrame {
         JLabel distanciaLabel = new JLabel("Distancia (km):");
         distanciaLabel.setBounds(20, 60, 100, 20);
         panel.add(distanciaLabel);
-        
+
         distanciaField = new JTextField();
         distanciaField.setBounds(130, 60, 100, 20);
         panel.add(distanciaField);
 
-        // Incluir IVA
-        JLabel incluirIvaLabel = new JLabel("Incluir IVA:");
-        incluirIvaLabel.setBounds(20, 100, 100, 20);
-        panel.add(incluirIvaLabel);
-        
-        incluirIvaCheckbox = new JCheckBox();
-        incluirIvaCheckbox.setBounds(130, 100, 20, 20);
-        panel.add(incluirIvaCheckbox);
-
         // Botón Calcular
         JButton calcularButton = new JButton("Calcular Costo");
-        calcularButton.setBounds(20, 140, 150, 30);
+        calcularButton.setBounds(20, 100, 150, 30);
         calcularButton.addActionListener(new CalcularListener());
         panel.add(calcularButton);
 
         // Resultado
         resultadoLabel = new JLabel("Resultado:");
-        resultadoLabel.setBounds(20, 180, 350, 30);
+        resultadoLabel.setBounds(20, 140, 350, 30);
         panel.add(resultadoLabel);
 
         // Botón para mostrar historial
         JButton historialButton = new JButton("Mostrar Historial");
-        historialButton.setBounds(20, 220, 150, 30);
+        historialButton.setBounds(20, 180, 150, 30);
         historialButton.addActionListener(e -> mostrarHistorial());
         panel.add(historialButton);
 
@@ -80,7 +70,7 @@ public class calculadora extends JFrame {
         historialArea = new JTextArea();
         historialArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(historialArea);
-        scrollPane.setBounds(20, 260, 350, 80);
+        scrollPane.setBounds(20, 220, 350, 80);
         panel.add(scrollPane);
     }
 
@@ -91,7 +81,6 @@ public class calculadora extends JFrame {
                 // Obtener valores del formulario
                 String tipoViaje = (String) tipoViajeCombo.getSelectedItem();
                 double distancia = Double.parseDouble(distanciaField.getText());
-                boolean incluirIva = incluirIvaCheckbox.isSelected();
 
                 // Configurar costo por kilómetro según el tipo de viaje
                 switch (tipoViaje) {
@@ -106,9 +95,9 @@ public class calculadora extends JFrame {
                         break;
                 }
 
-                // Calcular el costo del viaje
+                // Calcular el costo del viaje con IVA incluido
                 double costoBase = costoPorKilometro * distancia;
-                double costoConIva = incluirIva ? costoBase + (costoBase * iva) : costoBase;
+                double costoConIva = costoBase + (costoBase * iva);
                 String resultado = String.format("El costo del viaje es: %.2f $pesos", costoConIva);
 
                 // Mostrar el resultado en la etiqueta
