@@ -1,17 +1,11 @@
 package Vistas;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
 
 public class Viaje extends JFrame {
 
@@ -72,15 +66,20 @@ public class Viaje extends JFrame {
 		lblelProductoEs.setBounds(325, 115, 185, 19);
 		contentPane.add(lblelProductoEs);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Si");
-		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton.setBounds(278, 140, 103, 21);
-		contentPane.add(rdbtnNewRadioButton);
+		JRadioButton rdbtnSi = new JRadioButton("Si");
+		rdbtnSi.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnSi.setBounds(278, 140, 103, 21);
+		contentPane.add(rdbtnSi);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("No");
-		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		rdbtnNewRadioButton_1.setBounds(454, 140, 103, 21);
-		contentPane.add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnNo = new JRadioButton("No");
+		rdbtnNo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		rdbtnNo.setBounds(454, 140, 103, 21);
+		contentPane.add(rdbtnNo);
+		
+		// Crear el ButtonGroup para agrupar "Si" y "No"
+		ButtonGroup fragilGroup = new ButtonGroup();
+		fragilGroup.add(rdbtnSi);
+		fragilGroup.add(rdbtnNo);
 		
 		JLabel lblLugarDondeSe = new JLabel("Lugar donde Se llevara Acabo el Viaje");
 		lblLugarDondeSe.setForeground(Color.BLACK);
@@ -98,5 +97,4 @@ public class Viaje extends JFrame {
 		btnNewButton.setBounds(371, 344, 139, 45);
 		contentPane.add(btnNewButton);
 	}
-
 }

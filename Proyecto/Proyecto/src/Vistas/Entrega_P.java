@@ -1,17 +1,10 @@
 package Vistas;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
 
 public class Entrega_P extends JFrame {
 
@@ -22,9 +15,6 @@ public class Entrega_P extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_4;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -38,9 +28,6 @@ public class Entrega_P extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public Entrega_P() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 832, 528);
@@ -48,10 +35,9 @@ public class Entrega_P extends JFrame {
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setForeground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Residencia");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 17));
@@ -108,35 +94,48 @@ public class Entrega_P extends JFrame {
 		textField_4.setBounds(318, 227, 306, 44);
 		contentPane.add(textField_4);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Bueno");
-		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton.setBounds(302, 177, 109, 23);
-		contentPane.add(rdbtnNewRadioButton);
+		// Radio buttons para Estado de Paquete
+		JRadioButton rdbtnBueno = new JRadioButton("Bueno");
+		rdbtnBueno.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnBueno.setBounds(302, 177, 109, 23);
+		contentPane.add(rdbtnBueno);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Regular");
-		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton_1.setBounds(428, 177, 109, 23);
-		contentPane.add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnRegular = new JRadioButton("Regular");
+		rdbtnRegular.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnRegular.setBounds(428, 177, 109, 23);
+		contentPane.add(rdbtnRegular);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Malo");
-		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton_2.setBounds(554, 177, 109, 23);
-		contentPane.add(rdbtnNewRadioButton_2);
+		JRadioButton rdbtnMalo = new JRadioButton("Malo");
+		rdbtnMalo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnMalo.setBounds(554, 177, 109, 23);
+		contentPane.add(rdbtnMalo);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Si");
-		rdbtnNewRadioButton_3.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton_3.setBounds(302, 291, 109, 23);
-		contentPane.add(rdbtnNewRadioButton_3);
+		// Agrupar los radio buttons de Estado de Paquete
+		ButtonGroup estadoGroup = new ButtonGroup();
+		estadoGroup.add(rdbtnBueno);
+		estadoGroup.add(rdbtnRegular);
+		estadoGroup.add(rdbtnMalo);
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("No");
-		rdbtnNewRadioButton_4.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton_4.setBounds(499, 291, 109, 23);
-		contentPane.add(rdbtnNewRadioButton_4);
+		// Radio buttons para "Llego en tiempo y forma"
+		JRadioButton rdbtnSi = new JRadioButton("Si");
+		rdbtnSi.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnSi.setBounds(302, 291, 109, 23);
+		contentPane.add(rdbtnSi);
 		
-		JButton btnNewButton = new JButton("Enviar");
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(343, 344, 150, 50);
-		contentPane.add(btnNewButton);
+		JRadioButton rdbtnNo = new JRadioButton("No");
+		rdbtnNo.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnNo.setBounds(499, 291, 109, 23);
+		contentPane.add(rdbtnNo);
+		
+		// Agrupar los radio buttons de "Llego en tiempo y forma"
+		ButtonGroup tiempoFormaGroup = new ButtonGroup();
+		tiempoFormaGroup.add(rdbtnSi);
+		tiempoFormaGroup.add(rdbtnNo);
+		
+		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnEnviar.setBounds(343, 344, 150, 50);
+		contentPane.add(btnEnviar);
 		
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\Entrega_P.png"));

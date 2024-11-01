@@ -1,15 +1,9 @@
 package Vistas;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
 import java.awt.Color;
 
 public class Transporte extends JFrame {
@@ -60,7 +54,7 @@ public class Transporte extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblLugarDondeEl = new JLabel("Lugar donde el persona acude");
+		JLabel lblLugarDondeEl = new JLabel("Lugar donde el personal acude");
 		lblLugarDondeEl.setForeground(Color.WHITE);
 		lblLugarDondeEl.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblLugarDondeEl.setBounds(299, 92, 243, 19);
@@ -78,20 +72,26 @@ public class Transporte extends JFrame {
 		lblSexoDelPersonal.setBounds(342, 150, 169, 19);
 		contentPane.add(lblSexoDelPersonal);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Hombre");
-		rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton.setBounds(276, 185, 103, 21);
-		contentPane.add(rdbtnNewRadioButton);
+		JRadioButton rdbtnHombre = new JRadioButton("Hombre");
+		rdbtnHombre.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnHombre.setBounds(276, 185, 103, 21);
+		contentPane.add(rdbtnHombre);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Mujer");
-		rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton_1.setBounds(439, 185, 103, 21);
-		contentPane.add(rdbtnNewRadioButton_1);
+		JRadioButton rdbtnMujer = new JRadioButton("Mujer");
+		rdbtnMujer.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnMujer.setBounds(439, 185, 103, 21);
+		contentPane.add(rdbtnMujer);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Mixto");
-		rdbtnNewRadioButton_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		rdbtnNewRadioButton_2.setBounds(361, 224, 103, 21);
-		contentPane.add(rdbtnNewRadioButton_2);
+		JRadioButton rdbtnMixto = new JRadioButton("Mixto");
+		rdbtnMixto.setFont(new Font("Tahoma", Font.BOLD, 15));
+		rdbtnMixto.setBounds(361, 224, 103, 21);
+		contentPane.add(rdbtnMixto);
+		
+		// Crear el ButtonGroup para agrupar los radio buttons
+		ButtonGroup sexoGroup = new ButtonGroup();
+		sexoGroup.add(rdbtnHombre);
+		sexoGroup.add(rdbtnMujer);
+		sexoGroup.add(rdbtnMixto);
 		
 		JButton btnNewButton = new JButton("Finalizar");
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
