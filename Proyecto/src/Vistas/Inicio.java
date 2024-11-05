@@ -99,8 +99,7 @@ public class Inicio extends JFrame {
 		JButton btnNewButton_2 = new JButton("Iniciar Viaje");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Viaje via=new Viaje();
-				via.setVisible(true);
+				
 			}
 		});
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
