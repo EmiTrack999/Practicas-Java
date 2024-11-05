@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class SegundaVista extends JFrame {
 
@@ -55,8 +56,9 @@ public class SegundaVista extends JFrame {
 	 * Create the frame.
 	 */
 	public SegundaVista() {
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
-		setBounds(100, 100, 753, 520);
+		setBounds(100, 100, 730, 441);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -90,40 +92,46 @@ public class SegundaVista extends JFrame {
 		contentPane.setLayout(null);
 		
 		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(new Color(0, 0, 0));
 		desktopPane.setBounds(0, 0, 766, 481);
 		contentPane.add(desktopPane);
 		
 		JLabel lblNewLabel = new JLabel("Ingresa tu correo");
+		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
-		lblNewLabel.setBounds(308, 43, 127, 14);
+		lblNewLabel.setBounds(308, 86, 108, 14);
 		desktopPane.add(lblNewLabel);
 		
 		txtCorreo = new JTextField();
-		txtCorreo.setBounds(242, 67, 241, 20);
+		txtCorreo.setBounds(242, 120, 241, 20);
 		desktopPane.add(txtCorreo);
 		txtCorreo.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Crea tu contraseña");
+		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(308, 110, 156, 14);
+		lblNewLabel_1.setBounds(308, 159, 108, 14);
 		desktopPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirma tu contraseña");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
-		lblNewLabel_2.setBounds(297, 178, 148, 14);
+		lblNewLabel_2.setBounds(297, 226, 148, 14);
 		desktopPane.add(lblNewLabel_2);
 		
 		txtContra = new JTextField();
-		txtContra.setBounds(242, 137, 241, 20);
+		txtContra.setBounds(242, 184, 241, 20);
 		desktopPane.add(txtContra);
 		txtContra.setColumns(10);
 		
 		txtConfir = new JTextField();
-		txtConfir.setBounds(242, 203, 241, 20);
+		txtConfir.setBounds(242, 251, 241, 20);
 		desktopPane.add(txtConfir);
 		txtConfir.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Registrarme");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setSelectedIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\goku.jpg"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -157,12 +165,13 @@ public class SegundaVista extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(308, 265, 108, 14);
+		btnNewButton.setBounds(308, 296, 108, 14);
 		desktopPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\125757761-fondo-creativo-de-onda-para-fondos-de-pantalla-de-presentaciones-de-negocios-folletos-portadas.jpg"));
-		lblNewLabel_3.setBounds(0, 0, 737, 459);
+		JLabel lblNewLabel_3 = new JLabel("Registro");
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 40));
+		lblNewLabel_3.setForeground(new Color(255, 255, 255));
+		lblNewLabel_3.setBounds(285, 11, 148, 64);
 		desktopPane.add(lblNewLabel_3);
 	}
 	public void registrar() {

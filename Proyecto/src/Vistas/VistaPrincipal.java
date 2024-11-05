@@ -63,6 +63,7 @@ public class VistaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VistaPrincipal() {
+		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
