@@ -98,7 +98,7 @@ public class SegundaVista extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Ingresa tu correo");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel.setBounds(308, 86, 108, 14);
 		desktopPane.add(lblNewLabel);
 		
@@ -109,13 +109,13 @@ public class SegundaVista extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Crea tu contraseña");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
-		lblNewLabel_1.setBounds(308, 159, 108, 14);
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+		lblNewLabel_1.setBounds(308, 159, 115, 14);
 		desktopPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirma tu contraseña");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 14));
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel_2.setBounds(297, 226, 148, 14);
 		desktopPane.add(lblNewLabel_2);
 		
