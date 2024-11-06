@@ -56,6 +56,7 @@ public class SegundaVista extends JFrame {
 	 * Create the frame.
 	 */
 	public SegundaVista() {
+		setTitle("Cargo Fleets Solutions");
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
 		setBounds(100, 100, 730, 441);

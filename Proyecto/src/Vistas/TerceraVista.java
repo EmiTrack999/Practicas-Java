@@ -57,6 +57,7 @@ public class TerceraVista extends JFrame {
 	 * Create the frame.
 	 */
 	public TerceraVista() {
+		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 721, 436);
 		

@@ -47,6 +47,7 @@ public class Pedir_Pedido extends JFrame {
 	 * Create the frame.
 	 */
 	public Pedir_Pedido() {
+		setTitle("Cargo Fleets Solutions");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 833, 522);
@@ -113,14 +114,15 @@ public class Pedir_Pedido extends JFrame {
 		rdbtnNewRadioButton_4.setBounds(554, 350, 109, 23);
 		contentPane.add(rdbtnNewRadioButton_4);
 		
-		JButton btnNewButton = new JButton("Enviar");
+		JButton btnNewButton = new JButton("Iniciar");
+		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				camposVacios();
 			}
 		});
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
-		btnNewButton.setBounds(329, 407, 164, 23);
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+		btnNewButton.setBounds(329, 407, 109, 14);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Bienvenido Iniciemos tu Pedido");
