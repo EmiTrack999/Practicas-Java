@@ -81,7 +81,7 @@ public class B_Datos {
     //transporte
     public boolean guardarTransporte(String tipoTransporte, boolean materialSensible, boolean materialPesado, boolean transportaPersonal, boolean paradasContinuas) {
         boolean guardado = false;
-        String sql = "INSERT INTO transporte VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO transporte VALUES (0,?, ?, ?, ?, ?)";
 
         try (Connection conn = conexion(); 
              PreparedStatement pst = conn.prepareStatement(sql)) {
