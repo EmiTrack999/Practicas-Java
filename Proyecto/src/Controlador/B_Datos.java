@@ -77,5 +77,91 @@ public class B_Datos {
         }
         return false;
     }
+    
+    //transporte
+    public boolean guardarTransporte(String tipoTransporte, boolean materialSensible, boolean materialPesado, boolean transportaPersonal, boolean paradasContinuas) {
+        boolean guardado = false;
+        String sql = "INSERT INTO transporte VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = conexion(); 
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setString(1, tipoTransporte);
+            pst.setBoolean(2, materialSensible);
+            pst.setBoolean(3, materialPesado);
+            pst.setBoolean(4, transportaPersonal);
+            pst.setBoolean(5, paradasContinuas);
+            int filasAfectadas = pst.executeUpdate();
+            if (filasAfectadas > 0) {
+                guardado = true;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
+        }
+        return guardado;
+    }
+    
+    //Viaje
+    public boolean guardarPedido(String nombre, int codigo, String tCarga,String pedido, boolean ca_emp) {
+		boolean guardado=false;
+		 String sql = "INSERT INTO pedido VALUES (?, ?, ?, ?, ?)";
+		try {
+			ps=cn.prepareStatement(sql);
+			ps.setString(1, nombre);
+			ps.setInt(2, codigo);
+			ps.setString(3,tCarga);
+			ps.setString(4, pedido);
+			ps.setBoolean(5, ca_emp);
+			int filas=ps.executeUpdate();
+			if(filas>0) {
+				guardado=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
+		}
+		return guardado;
+    	
+    }
+    
+    //pedido
+    public boolean viaje(String nombre, int codigo, String tCarga,String pedido, boolean ca_emp) {
+  		boolean guardado=false;
+  		 String sql = "INSERT INTO pedido VALUES (?, ?, ?, ?, ?)";
+  		try {
+  			ps=cn.prepareStatement(sql);
+  			ps.setString(1, nombre);
+  			ps.setInt(2, codigo);
+  			ps.setString(3,tCarga);
+  			ps.setString(4, pedido);
+  			ps.setBoolean(5, ca_emp);
+  			int filas=ps.executeUpdate();
+  			if(filas>0) {
+  				guardado=true;
+  			}
+  		} catch (SQLException e) {
+  			// TODO Auto-generated catch block
+  			//e.printStackTrace();
+              JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
+  		}
+  		return guardado;
+      	
+      }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
