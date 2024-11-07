@@ -2,7 +2,6 @@ package Vistas;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,6 +69,10 @@ public class Transporte extends JFrame {
         RADIONOM.setBounds(442, 149, 103, 21);
         contentPane.add(RADIONOM);
 
+        ButtonGroup materialSensibleGroup = new ButtonGroup();
+        materialSensibleGroup.add(RADIOSIM);
+        materialSensibleGroup.add(RADIONOM);
+
         JLabel lblMaterialPesado = new JLabel("¿El Material es pesado?");
         lblMaterialPesado.setForeground(Color.WHITE);
         lblMaterialPesado.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -85,6 +88,10 @@ public class Transporte extends JFrame {
         rdbtnMaterialPesadoNo.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnMaterialPesadoNo.setBounds(442, 215, 103, 21);
         contentPane.add(rdbtnMaterialPesadoNo);
+
+        ButtonGroup materialPesadoGroup = new ButtonGroup();
+        materialPesadoGroup.add(rdbtnMaterialPesadoSi);
+        materialPesadoGroup.add(rdbtnMaterialPesadoNo);
 
         JLabel lblTransportaPersonal = new JLabel("¿Se Transporta Personal?");
         lblTransportaPersonal.setForeground(Color.WHITE);
@@ -102,6 +109,10 @@ public class Transporte extends JFrame {
         rdbtnTransportaPersonalNo.setBounds(442, 273, 103, 21);
         contentPane.add(rdbtnTransportaPersonalNo);
 
+        ButtonGroup transportaPersonalGroup = new ButtonGroup();
+        transportaPersonalGroup.add(rdbtnTransportaPersonalSi);
+        transportaPersonalGroup.add(rdbtnTransportaPersonalNo);
+
         JLabel lblParadasContinuas = new JLabel("¿El destino Tiene Paradas Continuas?");
         lblParadasContinuas.setForeground(Color.WHITE);
         lblParadasContinuas.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -117,6 +128,10 @@ public class Transporte extends JFrame {
         rdbtnParadasContinuasNo.setFont(new Font("Tahoma", Font.BOLD, 15));
         rdbtnParadasContinuasNo.setBounds(442, 340, 103, 21);
         contentPane.add(rdbtnParadasContinuasNo);
+
+        ButtonGroup paradasContinuasGroup = new ButtonGroup();
+        paradasContinuasGroup.add(rdbtnParadasContinuasSi);
+        paradasContinuasGroup.add(rdbtnParadasContinuasNo);
 
         JButton btnEnviar = new JButton("Enviar");
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -158,22 +173,16 @@ public class Transporte extends JFrame {
     public boolean guardarTransporte(String tipoTransporte, boolean materialSensible, boolean materialPesado, boolean transportaPersonal, boolean paradasContinuas) {
         boolean guardado = false;
         String sql = "INSERT INTO transporte (tipo_transporte, material_sensible, material_pesado, transporta_personal, paradas_continuas) VALUES (?, ?, ?, ?, ?)";
-
-        try (Connection conn = conexion(); 
-             PreparedStatement pst = conn.prepareStatement(sql)) {
-             
-            pst.setString(1, tipoTransporte);
-            pst.setBoolean(2, materialSensible);
-            pst.setBoolean(3, materialPesado);
-            pst.setBoolean(4, transportaPersonal);
-            pst.setBoolean(5, paradasContinuas);
-
-            int filasAfectadas = pst.executeUpdate();
-            if (filasAfectadas > 0) {
-                guardado = true;
-            }
+        try (Connection cn = conexion(); PreparedStatement ps = cn.prepareStatement(sql)) {
+            ps.setString(1, tipoTransporte);
+            ps.setBoolean(2, materialSensible);
+            ps.setBoolean(3, materialPesado);
+            ps.setBoolean(4, transportaPersonal);
+            ps.setBoolean(5, paradasContinuas);
+            ps.executeUpdate();
+            guardado = true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
+            JOptionPane.showMessageDialog(null, "Error al guardar en la base de datos: " + e);
         }
         return guardado;
     }
