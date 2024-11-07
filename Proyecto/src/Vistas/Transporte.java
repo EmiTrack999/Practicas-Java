@@ -3,6 +3,8 @@ package Vistas;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Controlador.B_Datos;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,13 +41,13 @@ public class Transporte extends JFrame {
         JLabel lblNewLabel = new JLabel("Bienvenido ¡Iniciaemos Tu Transporte!");
         lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 25));
         lblNewLabel.setForeground(Color.WHITE);
-        lblNewLabel.setBounds(127, 10, 489, 30);
+        lblNewLabel.setBounds(200, 25, 430, 30);
         contentPane.add(lblNewLabel);
 
-        JLabel lblTipoDeTransporte = new JLabel("Tipo de Transporte");
+        JLabel lblTipoDeTransporte = new JLabel("Tipo de Transporte    :");
         lblTipoDeTransporte.setForeground(Color.WHITE);
-        lblTipoDeTransporte.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblTipoDeTransporte.setBounds(101, 74, 196, 30);
+        lblTipoDeTransporte.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+        lblTipoDeTransporte.setBounds(148, 71, 145, 30);
         contentPane.add(lblTipoDeTransporte);
 
         comboBox = new JComboBox<>();
@@ -54,10 +56,10 @@ public class Transporte extends JFrame {
         comboBox.setBounds(318, 66, 145, 38);
         contentPane.add(comboBox);
 
-        JLabel lblMaterialSensible = new JLabel("¿Material Sensible?");
+        JLabel lblMaterialSensible = new JLabel("¿Material Sensible?    :");
         lblMaterialSensible.setForeground(Color.WHITE);
-        lblMaterialSensible.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblMaterialSensible.setBounds(101, 142, 196, 30);
+        lblMaterialSensible.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+        lblMaterialSensible.setBounds(135, 145, 158, 30);
         contentPane.add(lblMaterialSensible);
 
         RADIOSIM = new JRadioButton("Si");
@@ -70,10 +72,10 @@ public class Transporte extends JFrame {
         RADIONOM.setBounds(442, 149, 103, 21);
         contentPane.add(RADIONOM);
 
-        JLabel lblMaterialPesado = new JLabel("¿El Material es pesado?");
+        JLabel lblMaterialPesado = new JLabel("¿El Material es pesado?      :");
         lblMaterialPesado.setForeground(Color.WHITE);
-        lblMaterialPesado.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblMaterialPesado.setBounds(101, 208, 196, 30);
+        lblMaterialPesado.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+        lblMaterialPesado.setBounds(101, 211, 196, 30);
         contentPane.add(lblMaterialPesado);
 
         rdbtnMaterialPesadoSi = new JRadioButton("Si");
@@ -86,10 +88,10 @@ public class Transporte extends JFrame {
         rdbtnMaterialPesadoNo.setBounds(442, 215, 103, 21);
         contentPane.add(rdbtnMaterialPesadoNo);
 
-        JLabel lblTransportaPersonal = new JLabel("¿Se Transporta Personal?");
+        JLabel lblTransportaPersonal = new JLabel("¿Se Transporta Personal?       :");
         lblTransportaPersonal.setForeground(Color.WHITE);
-        lblTransportaPersonal.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblTransportaPersonal.setBounds(101, 266, 196, 30);
+        lblTransportaPersonal.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+        lblTransportaPersonal.setBounds(82, 269, 204, 30);
         contentPane.add(lblTransportaPersonal);
 
         rdbtnTransportaPersonalSi = new JRadioButton("Si");
@@ -102,9 +104,9 @@ public class Transporte extends JFrame {
         rdbtnTransportaPersonalNo.setBounds(442, 273, 103, 21);
         contentPane.add(rdbtnTransportaPersonalNo);
 
-        JLabel lblParadasContinuas = new JLabel("¿El destino Tiene Paradas Continuas?");
+        JLabel lblParadasContinuas = new JLabel("¿El destino Tiene Paradas Continuas?       :");
         lblParadasContinuas.setForeground(Color.WHITE);
-        lblParadasContinuas.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblParadasContinuas.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
         lblParadasContinuas.setBounds(10, 333, 287, 30);
         contentPane.add(lblParadasContinuas);
 
@@ -122,59 +124,24 @@ public class Transporte extends JFrame {
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 15));
         btnEnviar.setBounds(607, 399, 112, 21);
         contentPane.add(btnEnviar);
-
-        // Configuración del botón para guardar en la base de datos
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String tipoTransporte = comboBox.getSelectedItem().toString();
-                boolean materialSensible = RADIOSIM.isSelected();
-                boolean materialPesado = rdbtnMaterialPesadoSi.isSelected();
-                boolean transportaPersonal = rdbtnTransportaPersonalSi.isSelected();
-                boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
-
-                boolean resultado = guardarTransporte(tipoTransporte, materialSensible, materialPesado, transportaPersonal, paradasContinuas);
-                
-                if (resultado) {
-                    JOptionPane.showMessageDialog(null, "Datos guardados exitosamente en la base de datos.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error al guardar los datos en la base de datos.");
-                }
+            	guardar_transporte();
             }
         });
     }
-
-    // Método para establecer conexión con la base de datos
-    public Connection conexion() {
-        Connection cn = null;
-        try {
-            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/correos", "root", "");
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos: " + e);
-        }
-        return cn;
-    }
-
-    // Método para guardar los datos del transporte en la base de datos
-    public boolean guardarTransporte(String tipoTransporte, boolean materialSensible, boolean materialPesado, boolean transportaPersonal, boolean paradasContinuas) {
-        boolean guardado = false;
-        String sql = "INSERT INTO transporte (tipo_transporte, material_sensible, material_pesado, transporta_personal, paradas_continuas) VALUES (?, ?, ?, ?, ?)";
-
-        try (Connection conn = conexion(); 
-             PreparedStatement pst = conn.prepareStatement(sql)) {
-             
-            pst.setString(1, tipoTransporte);
-            pst.setBoolean(2, materialSensible);
-            pst.setBoolean(3, materialPesado);
-            pst.setBoolean(4, transportaPersonal);
-            pst.setBoolean(5, paradasContinuas);
-
-            int filasAfectadas = pst.executeUpdate();
-            if (filasAfectadas > 0) {
-                guardado = true;
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
-        }
-        return guardado;
+    public void guardar_transporte() {
+    	B_Datos bd=new B_Datos();
+    String tipoTransporte = comboBox.getSelectedItem().toString();
+    boolean materialSensible = RADIOSIM.isSelected();
+    boolean materialPesado = rdbtnMaterialPesadoSi.isSelected();
+    boolean transportaPersonal = rdbtnTransportaPersonalSi.isSelected();
+    boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
+    boolean resultado = bd.guardarTransporte(tipoTransporte, materialSensible, materialPesado, transportaPersonal, paradasContinuas);
+    if (resultado) {
+        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
+    } else {
+        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
+    } 
     }
 }

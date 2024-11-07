@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.B_Datos;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,8 +28,9 @@ public class Pedir_Pedido extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtCodigo;
-	private JTextField txtObserva;
-
+	private JTextField txtPedido;
+	JComboBox cbTipo;
+	JRadioButton rdCasa, rdEmp ;
 	/**
 	 * Launch the application.
 	 */
@@ -99,20 +103,20 @@ public class Pedir_Pedido extends JFrame {
 		txtCodigo.setBounds(339, 162, 306, 20);
 		contentPane.add(txtCodigo);
 		
-		txtObserva = new JTextField();
-		txtObserva.setColumns(10);
-		txtObserva.setBounds(339, 278, 306, 44);
-		contentPane.add(txtObserva);
+		txtPedido = new JTextField();
+		txtPedido.setColumns(10);
+		txtPedido.setBounds(339, 278, 306, 44);
+		contentPane.add(txtPedido);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Casa");
-		rdbtnNewRadioButton_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		rdbtnNewRadioButton_3.setBounds(349, 350, 109, 23);
-		contentPane.add(rdbtnNewRadioButton_3);
+		rdCasa = new JRadioButton("Casa");
+		rdCasa.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		rdCasa.setBounds(349, 350, 109, 23);
+		contentPane.add(rdCasa);
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Empresa");
-		rdbtnNewRadioButton_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		rdbtnNewRadioButton_4.setBounds(554, 350, 109, 23);
-		contentPane.add(rdbtnNewRadioButton_4);
+		 rdEmp = new JRadioButton("Empresa");
+		rdEmp.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		rdEmp.setBounds(554, 350, 109, 23);
+		contentPane.add(rdEmp);
 		
 		JButton btnNewButton = new JButton("Iniciar");
 		btnNewButton.setBackground(new Color(255, 0, 0));
@@ -131,11 +135,11 @@ public class Pedir_Pedido extends JFrame {
 		lblNewLabel.setBounds(234, 23, 342, 36);
 		contentPane.add(lblNewLabel);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"TIPO", "Pesada", "Ligera"}));
-		comboBox.setBounds(339, 222, 134, 22);
-		contentPane.add(comboBox);
+		cbTipo = new JComboBox();
+		cbTipo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
+		cbTipo.setModel(new DefaultComboBoxModel(new String[] {"TIPO", "Pesada", "Ligera"}));
+		cbTipo.setBounds(339, 222, 134, 22);
+		contentPane.add(cbTipo);
 	}
 	
 	public void camposVacios() {
@@ -143,12 +147,27 @@ public class Pedir_Pedido extends JFrame {
 			JOptionPane.showMessageDialog(null, "no dejar campos vacios");
 		}else if(txtCodigo.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "no dejar campos vacios");
-		}else if(txtObserva.getText().isEmpty()) {
+		}else if(txtPedido.getText().isEmpty()) {
 			JOptionPane.showMessageDialog(null, "no dejar campos vacios");
 		} else {
 			Verificacio_Costo veCo=new Verificacio_Costo();
+			guardarPedido();
 			JOptionPane.showMessageDialog(null, "Coticemos tu viaje");
 			veCo.setVisible(true);
 		}
+	}	
+	public void guardarPedido() {
+		    	B_Datos bd=new B_Datos();
+		    String nombre=txtNombre.getText();
+		    int codigo=Integer.parseInt(txtCodigo.getText());
+		    String tipo=cbTipo.getSelectedItem().toString();
+		    String pedido=txtPedido.getText();
+		    boolean casa=rdCasa.isSelected();
+		    boolean empre=rdEmp.isSelected();
+		    boolean resultado =bd.guardarPedido(nombre, codigo, tipo, pedido, empre);
+		    if (resultado) {
+		        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
+		    } else {
+		        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");	    }
 	}
 }
