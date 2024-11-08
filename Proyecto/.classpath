@@ -12,5 +12,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="Librerias/mysql-connector-java-8.0.25 (1).jar"/>
+	<classpathentry kind="lib" path="Librerias/google-maps-services-2.2.0.jar"/>
+	<classpathentry kind="lib" path="Librerias/annotations-13.0.jar"/>
+	<classpathentry kind="lib" path="Librerias/grpc-context-1.27.2.jar"/>
+	<classpathentry kind="lib" path="Librerias/gson-2.10.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
