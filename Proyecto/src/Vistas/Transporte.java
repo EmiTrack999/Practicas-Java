@@ -129,6 +129,23 @@ public class Transporte extends JFrame {
             	guardar_transporte();
             }
         });
+        
+        ButtonGroup bgMaterialSensible = new ButtonGroup();
+        ButtonGroup bgMaterialPesado = new ButtonGroup();
+        ButtonGroup bgTransportaPersonal = new ButtonGroup();
+        ButtonGroup bgParadasContinuas = new ButtonGroup();
+
+        bgMaterialSensible.add(RADIOSIM);
+        bgMaterialSensible.add(RADIONOM);
+
+        bgMaterialPesado.add(rdbtnMaterialPesadoSi);
+        bgMaterialPesado.add(rdbtnMaterialPesadoNo);
+
+        bgTransportaPersonal.add(rdbtnTransportaPersonalSi);
+        bgTransportaPersonal.add(rdbtnTransportaPersonalNo);
+
+        bgParadasContinuas.add(rdbtnParadasContinuasSi);
+        bgParadasContinuas.add(rdbtnParadasContinuasNo);
     }
     public void guardar_transporte() {
     	B_Datos bd=new B_Datos();
@@ -144,4 +161,5 @@ public class Transporte extends JFrame {
         JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
     } 
     }
+    
 }

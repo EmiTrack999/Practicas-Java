@@ -16,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 
@@ -157,5 +158,13 @@ public class Viaje extends JFrame {
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setBounds(340, 385, 106, 14);
 		contentPane.add(btnNewButton);
+		
+		ButtonGroup group = new ButtonGroup();
+		group.add(rdbtnNewRadioButton);
+		group.add(rdbtnNewRadioButton_1);
+
+		ButtonGroup grupodos = new ButtonGroup();
+		grupodos.add(rdbtnNewRadioButton_2);
+		grupodos.add(rdbtnNewRadioButton_1_1);
 	}
 } 
