@@ -102,6 +102,7 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Viaje vi= new Viaje();
 				vi.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton_2.setForeground(new Color(255, 255, 255));

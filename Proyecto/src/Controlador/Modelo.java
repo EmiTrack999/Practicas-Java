@@ -42,4 +42,11 @@ public boolean validarCorreo(String correo) {
     Pattern EMAIL_PATTERN = Pattern.compile(email);
     return correo != null && !correo.isEmpty() && EMAIL_PATTERN.matcher(correo).matches();
 }
+public boolean validarTelefono(String telefono) {
+    // Expresión regular para validar un número de teléfono de 10 dígitos
+    String TELEFONO_PATTERN = "^[0-9]{10}$";  // 10 dígitos numéricos (sin espacios, guiones, etc.)
+    Pattern pattern = Pattern.compile(TELEFONO_PATTERN);
+    
+    return telefono != null && !telefono.isEmpty() && pattern.matcher(telefono).matches();
+}
 }

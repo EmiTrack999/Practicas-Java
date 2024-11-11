@@ -32,16 +32,17 @@ import java.awt.Frame;
 import java.awt.Window.Type;
 import java.awt.Cursor;
 import java.awt.Color;
+import javax.swing.JPasswordField;
 
 public class VistaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtCorreo;
-	private JTextField txtContra;
-	private JTextField txtConfir;
 	JLabel lbContraseña;
 	JDesktopPane dkpane;
+	private JPasswordField txtContra;
+	private JPasswordField txtConfir;
 	
 	/**
 	 * Launch the application.
@@ -163,6 +164,10 @@ public class VistaPrincipal extends JFrame {
 		dkpane.add(btRegis);
 		
 		txtCorreo = new JTextField();
+		txtCorreo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		txtCorreo.setBounds(208, 96, 203, 31);
 		dkpane.add(txtCorreo);
 		txtCorreo.setColumns(10);
@@ -179,15 +184,6 @@ public class VistaPrincipal extends JFrame {
 		lbContraseña.setBounds(208, 126, 224, 26);
 		lbContraseña.setFont(new Font("Wide Latin", Font.PLAIN, 14));
 		dkpane.add(lbContraseña);
-		
-		txtContra = new JTextField();
-		txtContra.setBounds(208, 163, 203, 31);
-		txtContra.setColumns(10);
-		dkpane.add(txtContra);
-		txtConfir = new JTextField();
-		txtConfir.setBounds(208, 235, 203, 20);
-		dkpane.add(txtConfir);
-		txtConfir.setColumns(10);
 		
 		
 		
@@ -210,7 +206,7 @@ public class VistaPrincipal extends JFrame {
 				String iniciar=new String();
 				if (correo.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
-				} else if (!db.validarCorreo(correo)) {
+				} else if (!db.validarCorreo(correo) && !db.validarTelefono(correo)) {
 				    JOptionPane.showMessageDialog(null, "Correo inválido");
 				} else if (contraseña.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
@@ -225,6 +221,14 @@ public class VistaPrincipal extends JFrame {
 		});
 		btIniciar.setBounds(265, 266, 89, 23);
 		dkpane.add(btIniciar);
+		
+		txtContra = new JPasswordField();
+		txtContra.setBounds(208, 163, 203, 20);
+		dkpane.add(txtContra);
+		
+		txtConfir = new JPasswordField();
+		txtConfir.setBounds(208, 235, 203, 20);
+		dkpane.add(txtConfir);
 	}
 	  private void iniciarSesion() {
 			B_Datos bd=new B_Datos();
@@ -236,6 +240,7 @@ public class VistaPrincipal extends JFrame {
 	        if (exito) {
 	            JOptionPane.showMessageDialog(this, "Bienevenido  :  "+correo);
 	           in.setVisible(true);
+	           dispose();
 	        } else {
 	            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
 	        }
