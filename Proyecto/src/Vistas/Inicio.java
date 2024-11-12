@@ -103,7 +103,8 @@ public class Inicio extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pedir_Pedido pp=new Pedir_Pedido();
-				pp.setVisible(true);				
+				pp.setVisible(true);	
+				dispose();
 			}
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
@@ -116,6 +117,7 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Transporte tra=new Transporte();
 				tra.setVisible(true);
+				dispose();
 				
 			}
 		});
@@ -127,7 +129,9 @@ public class Inicio extends JFrame {
 		JButton btnNewButton_2 = new JButton("Iniciar Viaje");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Viaje vi=new Viaje();
+				vi.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
