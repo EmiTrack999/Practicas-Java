@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Window.Type;
 import java.awt.Color;
+import java.awt.Desktop;
+
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -18,6 +20,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.awt.event.ActionEvent;
 
 public class Viaje extends JFrame {
 
@@ -51,6 +58,7 @@ public class Viaje extends JFrame {
 	 * Create the frame.
 	 */
 	public Viaje() {
+		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 812, 512);
@@ -62,9 +70,31 @@ public class Viaje extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		mntmNewMenuItem = new JMenuItem("Regresar al menu");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inicio in=new Inicio();
+				in.setVisible(true);
+				dispose();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		mntmNewMenuItem_1 = new JMenuItem("Ayuda");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 0));

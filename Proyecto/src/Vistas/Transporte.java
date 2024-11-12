@@ -8,6 +8,9 @@ import Controlador.B_Datos;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.*;
 
 public class Transporte extends JFrame {
@@ -30,8 +33,43 @@ public class Transporte extends JFrame {
     }
 
     public Transporte() {
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 834, 500);
+        
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        
+        JMenu mnNewMenu = new JMenu("Opciones");
+        menuBar.add(mnNewMenu);
+        
+        JMenuItem mntmNewMenuItem = new JMenuItem("Regresar al menu");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Inicio in=new Inicio();
+				in.setVisible(true);
+				dispose();  	
+        	}
+        });
+        mnNewMenu.add(mntmNewMenuItem);
+        
+        JMenuItem mntmNewMenuItem_1 = new JMenuItem("Ayuda");
+        mntmNewMenuItem_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+        	}
+        });
+        mnNewMenu.add(mntmNewMenuItem_1);
         contentPane = new JPanel();
         contentPane.setBackground(Color.BLACK);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

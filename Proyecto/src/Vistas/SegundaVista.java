@@ -22,11 +22,15 @@ import javax.swing.JOptionPane;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Desktop;
 
 public class SegundaVista extends JFrame {
 
@@ -70,10 +74,9 @@ public class SegundaVista extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Regresar al menu");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VistaPrincipal prin=new VistaPrincipal();
-				SegundaVista vis=new SegundaVista();
-				prin.setVisible(true);
-				vis.setVisible(false);
+				VistaPrincipal vp=new VistaPrincipal();
+				vp.setVisible(true);
+				dispose();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
@@ -83,9 +86,28 @@ public class SegundaVista extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TerceraVista ter= new TerceraVista();
 				ter.setVisible(true);
+				dispose();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ayuda");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 

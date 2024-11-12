@@ -13,7 +13,14 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.Color;
+import java.awt.Desktop;
+
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.awt.event.ActionEvent;
 
 public class Coti_Viaje extends JFrame {
 
@@ -42,6 +49,7 @@ public class Coti_Viaje extends JFrame {
 	 * Create the frame.
 	 */
 	public Coti_Viaje() {
+		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 833, 497);
@@ -56,9 +64,31 @@ public class Coti_Viaje extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Regresar al menu");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inicio in=new Inicio();
+				in.setVisible(true);
+				dispose();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ayuda");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 0));
