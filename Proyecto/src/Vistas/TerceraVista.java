@@ -12,6 +12,8 @@ import Controlador.Modelo;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.Desktop;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JMenuBar;
@@ -20,22 +22,30 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
 
 public class TerceraVista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtTelefono;
-	private JTextField txtContra;
 	private JTextField textField_2;
-	private JTextField txtConfir;
 	private JLabel lblNewLabel_3;
 	private JButton btnNewButton;
 	private JMenuBar menuBar;
 	private JMenu mnNewMenu;
 	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
+	private JMenuItem mntmNewMenuItem_2;
+	private JPasswordField txtContra;
+	private JPasswordField txtConfir;
+	private JCheckBox MostrarContraseña;
+	 private boolean mostrarContraseña = false;
 
 	/**
 	 * Launch the application.
@@ -57,6 +67,7 @@ public class TerceraVista extends JFrame {
 	 * Create the frame.
 	 */
 	public TerceraVista() {
+		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 721, 436);
@@ -68,10 +79,42 @@ public class TerceraVista extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		mntmNewMenuItem = new JMenuItem("Regresar al menu");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VistaPrincipal vp=new VistaPrincipal();
+				vp.setVisible(true);
+				dispose();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		mntmNewMenuItem_1 = new JMenuItem("Iniciar con Correo");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SegundaVista sg =new SegundaVista();
+				sg.setVisible(true);
+				dispose();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		mntmNewMenuItem_2 = new JMenuItem("Ayuda");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -102,20 +145,10 @@ public class TerceraVista extends JFrame {
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
-		txtContra = new JTextField();
-		txtContra.setBounds(219, 184, 250, 20);
-		contentPane.add(txtContra);
-		txtContra.setColumns(10);
-		
 		textField_2 = new JTextField();
 		textField_2.setBounds(1000, 1000, 1000, 1000);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
-		
-		txtConfir = new JTextField();
-		txtConfir.setBounds(219, 260, 250, 20);
-		contentPane.add(txtConfir);
-		txtConfir.setColumns(10);
 		
 		lblNewLabel_3 = new JLabel("Registro");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 40));
@@ -153,8 +186,37 @@ public class TerceraVista extends JFrame {
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(255, 0, 0));
-		btnNewButton.setBounds(293, 306, 111, 14);
+		btnNewButton.setBounds(299, 333, 111, 14);
 		contentPane.add(btnNewButton);
+		
+		txtContra = new JPasswordField();
+		txtContra.setBounds(219, 184, 250, 20);
+		contentPane.add(txtContra);
+		
+		txtConfir = new JPasswordField();
+		txtConfir.setBounds(219, 259, 250, 20);
+		contentPane.add(txtConfir);
+		
+		MostrarContraseña = new JCheckBox("Mostar Contra...");
+		MostrarContraseña.setForeground(new Color(255, 255, 255));
+		MostrarContraseña.setBackground(new Color(0, 0, 0));
+		MostrarContraseña.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  if (mostrarContraseña) {
+	                   
+	                    txtContra.setEchoChar('x');
+	                    txtConfir.setEchoChar('x');
+	                    mostrarContraseña = false;
+	                } else {
+	                   
+	                    txtContra.setEchoChar((char) 0);
+	                    txtConfir.setEchoChar((char) 0);
+	                    mostrarContraseña = true;
+	                }
+			}
+		});
+		MostrarContraseña.setBounds(299, 286, 111, 14);
+		contentPane.add(MostrarContraseña);
 	}
 	public void registrar() {
 		B_Datos bd=new B_Datos();

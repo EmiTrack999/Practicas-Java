@@ -4,22 +4,38 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Modelo.GoogleM;
+
 import java.awt.Color;
+import java.awt.Desktop;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.awt.event.ActionEvent;
 
 public class Coti_Transporte extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private JTextField textField;
+    private JTextField txttra1;
     private JTextField textField_2;
     private JTextField textField_3;
     private JTextField textField_5;
+    private JTextField txttra2;
 
     /**
      * Launch the application.
@@ -41,8 +57,43 @@ public class Coti_Transporte extends JFrame {
      * Create the frame.
      */
     public Coti_Transporte() {
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 878, 587);
+        
+        JMenuBar menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        
+        JMenu mnNewMenu = new JMenu("Opciones");
+        menuBar.add(mnNewMenu);
+        
+        JMenuItem mntmNewMenuItem = new JMenuItem("Regresar al menu");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Inicio in=new Inicio();
+				in.setVisible(true);
+				dispose();
+        	}
+        });
+        mnNewMenu.add(mntmNewMenuItem);
+        
+        JMenuItem mntmNewMenuItem_1 = new JMenuItem("Ayuda");
+        mntmNewMenuItem_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+        	}
+        });
+        mnNewMenu.add(mntmNewMenuItem_1);
         contentPane = new JPanel();
         contentPane.setBackground(Color.BLACK);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -65,7 +116,7 @@ public class Coti_Transporte extends JFrame {
         JLabel lblNewLabel_1_1_1 = new JLabel("¿Numero De Cargamento?");
         lblNewLabel_1_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_1_1_1.setBounds(57, 176, 224, 31);
+        lblNewLabel_1_1_1.setBounds(57, 204, 224, 31);
         contentPane.add(lblNewLabel_1_1_1);
 
         JLabel lblNewLabel_1_1_2 = new JLabel("¿Deseas Aportar Para el Programa EcoFrend del 10% de Tu costo?");
@@ -86,14 +137,14 @@ public class Coti_Transporte extends JFrame {
         lblNewLabel_1_1_4.setBounds(57, 246, 295, 31);
         contentPane.add(lblNewLabel_1_1_4);
 
-        textField = new JTextField();
-        textField.setBounds(424, 111, 295, 19);
-        contentPane.add(textField);
-        textField.setColumns(10);
+        txttra1 = new JTextField();
+        txttra1.setBounds(424, 111, 295, 19);
+        contentPane.add(txttra1);
+        txttra1.setColumns(10);
 
         textField_2 = new JTextField();
         textField_2.setColumns(10);
-        textField_2.setBounds(424, 184, 295, 19);
+        textField_2.setBounds(424, 211, 295, 19);
         contentPane.add(textField_2);
 
         textField_3 = new JTextField();
@@ -106,12 +157,28 @@ public class Coti_Transporte extends JFrame {
         textField_5.setBounds(559, 405, 295, 19);
         contentPane.add(textField_5);
 
-        JButton btnNewButton = new JButton("Cotizar Transporte");
-        btnNewButton.setBackground(Color.DARK_GRAY);
-        btnNewButton.setForeground(Color.BLACK);
-        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-        btnNewButton.setBounds(288, 487, 224, 53);
-        contentPane.add(btnNewButton);
+        JButton botonc = new JButton("Cotizar Transporte");
+        botonc.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String ciudad1 = txttra1.getText().trim();  // Ciudad de salida
+                String ciudad2 = txttra2.getText().trim();  // Ciudad de destino
+
+                // Verificar que ambos campos tengan texto
+                if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Llamar al método calcularDistanciaYMostrar de la clase GoogleM
+                GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
+        		 
+        	}
+        });
+        botonc.setBackground(new Color(255, 0, 0));
+        botonc.setForeground(new Color(255, 255, 255));
+        botonc.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+        botonc.setBounds(328, 449, 199, 19);
+        contentPane.add(botonc);
 
         // Crear los botones de radio
         JRadioButton rdbtnNewRadioButton = new JRadioButton("Privado");
@@ -128,5 +195,16 @@ public class Coti_Transporte extends JFrame {
         ButtonGroup group = new ButtonGroup();
         group.add(rdbtnNewRadioButton);
         group.add(rdbtnNewRadioButton_1);
+        
+        JLabel lblNewLabel_1_1 = new JLabel("Lugar de donde saldra  el Transporte");
+        lblNewLabel_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_1_1.setBounds(57, 145, 301, 31);
+        contentPane.add(lblNewLabel_1_1);
+        
+        txttra2 = new JTextField();
+        txttra2.setColumns(10);
+        txttra2.setBounds(424, 153, 295, 19);
+        contentPane.add(txttra2);
     }
 }

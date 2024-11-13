@@ -5,22 +5,33 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Modelo.GoogleM;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.Color;
+import java.awt.Desktop;
+
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.awt.event.ActionEvent;
 
 public class Coti_Viaje extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txttra1;
+	private JTextField txttra2;
 
 	/**
 	 * Launch the application.
@@ -42,6 +53,7 @@ public class Coti_Viaje extends JFrame {
 	 * Create the frame.
 	 */
 	public Coti_Viaje() {
+		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 833, 497);
@@ -56,9 +68,31 @@ public class Coti_Viaje extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Regresar al menu");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inicio in=new Inicio();
+				in.setVisible(true);
+				dispose();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ayuda");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 0));
@@ -91,15 +125,15 @@ public class Coti_Viaje extends JFrame {
 		lblNewLabel_3.setBounds(10, 256, 325, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		textField = new JTextField();
-		textField.setBounds(352, 123, 255, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txttra1 = new JTextField();
+		txttra1.setBounds(352, 123, 255, 20);
+		contentPane.add(txttra1);
+		txttra1.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(352, 188, 255, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txttra2 = new JTextField();
+		txttra2.setBounds(352, 188, 255, 20);
+		contentPane.add(txttra2);
+		txttra2.setColumns(10);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("SI");
 		rdbtnNewRadioButton.setBounds(352, 252, 48, 23);
@@ -110,6 +144,21 @@ public class Coti_Viaje extends JFrame {
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JButton btnNewButton = new JButton("Cotizar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ciudad1 = txttra1.getText().trim();  // Ciudad de salida
+                String ciudad2 = txttra2.getText().trim();  // Ciudad de destino
+
+                // Verificar que ambos campos tengan texto
+                if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Llamar al método calcularDistanciaYMostrar de la clase GoogleM
+                GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
+			}
+		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setBounds(341, 343, 97, 14);
 		contentPane.add(btnNewButton);

@@ -9,10 +9,15 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Desktop;
+
 import javax.swing.JButton;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 
 public class Inicio extends JFrame {
@@ -52,12 +57,34 @@ public class Inicio extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Cerrar Sesion");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VistaPrincipal vp=new VistaPrincipal();
+				vp.setVisible(true);
+				dispose();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Info. de Cada Viaje.");
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ayuda");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 0));
@@ -76,7 +103,8 @@ public class Inicio extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pedir_Pedido pp=new Pedir_Pedido();
-				pp.setVisible(true);				
+				pp.setVisible(true);	
+				dispose();
 			}
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
@@ -89,6 +117,7 @@ public class Inicio extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Transporte tra=new Transporte();
 				tra.setVisible(true);
+				dispose();
 				
 			}
 		});
@@ -100,8 +129,9 @@ public class Inicio extends JFrame {
 		JButton btnNewButton_2 = new JButton("Iniciar Viaje");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Viaje vi= new Viaje();
+				Viaje vi=new Viaje();
 				vi.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton_2.setForeground(new Color(255, 255, 255));

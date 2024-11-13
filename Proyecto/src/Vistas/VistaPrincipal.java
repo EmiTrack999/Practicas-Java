@@ -32,17 +32,20 @@ import java.awt.Frame;
 import java.awt.Window.Type;
 import java.awt.Cursor;
 import java.awt.Color;
+import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
 
 public class VistaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtCorreo;
-	private JTextField txtContra;
-	private JTextField txtConfir;
 	JLabel lbContraseña;
 	JDesktopPane dkpane;
-	
+	private JPasswordField txtContra;
+	private JPasswordField txtConfir;
+	private JCheckBox mostrarContra;
+	 private boolean mostrarContraseña = false;
 	/**
 	 * Launch the application.
 	 */
@@ -140,19 +143,19 @@ public class VistaPrincipal extends JFrame {
 		
 		dkpane = new JDesktopPane();
 		dkpane.setBackground(new Color(0, 0, 0));
-		dkpane.setBounds(0, 0, 624, 468);
+		dkpane.setBounds(0, 0, 624, 433);
 		contentPane.add(dkpane);
 		
 		JButton btRegis = new JButton("Registrar");
 		btRegis.setForeground(new Color(255, 255, 255));
 		btRegis.setBackground(new Color(255, 0, 0));
-		btRegis.setBounds(265, 317, 89, 26);
+		btRegis.setBounds(265, 370, 89, 14);
 		btRegis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VistaPrincipal vist=new VistaPrincipal();
 				SegundaVista vis=new SegundaVista();
 				vis.setVisible(true);
-				
+				dispose();
 				
 				
 				
@@ -180,15 +183,6 @@ public class VistaPrincipal extends JFrame {
 		lbContraseña.setFont(new Font("Wide Latin", Font.PLAIN, 14));
 		dkpane.add(lbContraseña);
 		
-		txtContra = new JTextField();
-		txtContra.setBounds(208, 163, 203, 31);
-		txtContra.setColumns(10);
-		dkpane.add(txtContra);
-		txtConfir = new JTextField();
-		txtConfir.setBounds(208, 235, 203, 20);
-		dkpane.add(txtConfir);
-		txtConfir.setColumns(10);
-		
 		
 		
 		JLabel lblNewLabel_1 = new JLabel("Confirmar contraseña");
@@ -210,8 +204,8 @@ public class VistaPrincipal extends JFrame {
 				String iniciar=new String();
 				if (correo.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
-				} else if (!db.validarCorreo(correo)) {
-				    JOptionPane.showMessageDialog(null, "Correo inválido");
+				} else if (!db.validarCorreo(correo)&&!db.validarTelefono(correo)) {
+				    JOptionPane.showMessageDialog(null, "Correo o Telefono inválido");
 				} else if (contraseña.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
 				} else if (confirmarContraseña.isEmpty()) {
@@ -223,8 +217,37 @@ public class VistaPrincipal extends JFrame {
 				}
 			}
 		});
-		btIniciar.setBounds(265, 266, 89, 23);
+		btIniciar.setBounds(265, 322, 89, 14);
 		dkpane.add(btIniciar);
+		
+		txtContra = new JPasswordField();
+		txtContra.setBounds(208, 163, 203, 20);
+		dkpane.add(txtContra);
+		
+		txtConfir = new JPasswordField();
+		txtConfir.setBounds(208, 235, 203, 20);
+		dkpane.add(txtConfir);
+		
+		JCheckBox mostrarcontra = new JCheckBox("Mostrar Contra...");
+		mostrarcontra.setForeground(new Color(255, 255, 255));
+		mostrarcontra.setBackground(new Color(0, 0, 0));
+		mostrarcontra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (mostrarContraseña) {
+                    
+                    txtContra.setEchoChar('x');
+                    txtConfir.setEchoChar('x');
+                    mostrarContraseña = false;
+                } else {
+                   
+                    txtContra.setEchoChar((char) 0);
+                    txtConfir.setEchoChar((char) 0);
+                    mostrarContraseña = true;
+                }
+			}
+		});
+		mostrarcontra.setBounds(251, 262, 111, 23);
+		dkpane.add(mostrarcontra);
 	}
 	  private void iniciarSesion() {
 			B_Datos bd=new B_Datos();
@@ -236,6 +259,7 @@ public class VistaPrincipal extends JFrame {
 	        if (exito) {
 	            JOptionPane.showMessageDialog(this, "Bienevenido  :  "+correo);
 	           in.setVisible(true);
+	           dispose();
 	        } else {
 	            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
 	        }

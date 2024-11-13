@@ -36,6 +36,7 @@ public class Verificacio_Costo extends JFrame {
 	 * Create the frame.
 	 */
 	public Verificacio_Costo() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 848, 547);
 		contentPane = new JPanel();
