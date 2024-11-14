@@ -92,7 +92,7 @@ public class GoogleM {
         ubicaciones.put("San Juan del Río", new double[]{20.394377, -99.982407});
         ubicaciones.put("El Marqués", new double[]{20.6303, -100.2972});
         ubicaciones.put("Colón", new double[]{20.621738, -100.658647});
-        // Agrega más ubicaciones según sea necesario...
+        // ... (los datos permanecen igual)
     }
 
     public static void calcularDistanciaYMostrar(String ciudad1, String ciudad2) {
@@ -117,11 +117,18 @@ public class GoogleM {
 
             String message = String.format("Distancia entre puntos: %.2f km\nCosto estimado: %.2f MXN (%.2f USD)",
                     distance, costMXN, costUSD);
-            JOptionPane.showMessageDialog(null, message, "Distancia y Costo", JOptionPane.INFORMATION_MESSAGE);
 
-            String url = String.format("https://www.google.com/maps/dir/%s,%s/%s,%s",
-                    coords1[0], coords1[1], coords2[0], coords2[1]);
-            Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", url});
+            // Mostrar un JOptionPane con opciones "Cancelar" y "Ver mapa"
+            int option = JOptionPane.showOptionDialog(null, message, "Distancia y Costo",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                    new Object[]{"Comenzar", "Cancelar"}, "Ver mapa");
+
+            // Si el usuario elige "Cancelar", no abrir el mapa
+            if (option == 0) { // Si selecciona "Ver mapa"
+                String url = String.format("https://www.google.com/maps/dir/%s,%s/%s,%s",
+                        coords1[0], coords1[1], coords2[0], coords2[1]);
+                Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", url});
+            }
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al intentar calcular la distancia.", "Error", JOptionPane.ERROR_MESSAGE);

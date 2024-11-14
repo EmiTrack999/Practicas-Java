@@ -176,11 +176,12 @@ public class Pedir_Pedido extends JFrame {
                 if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-                }
-
-                // Llamar al método calcularDistanciaYMostrar de la clase GoogleM
+                }else {
                 GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
-			}
+                Final_Pedido fp=new Final_Pedido();
+                dispose();
+                fp.setVisible(true);
+                }}
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		btnNewButton.setBounds(329, 407, 109, 14);
@@ -222,43 +223,30 @@ public class Pedir_Pedido extends JFrame {
 	}
 	
 	public void camposVacios() {
-	    // Verificar si el campo "Nombre Quien Recibe" está vacío
 	    if (txtNombre.getText().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el nombre de quien recibe.", "Error", JOptionPane.ERROR_MESSAGE);
 	        return;
 	    }
-	    
-	    // Verificar si el campo "Codigo de Seguridad" está vacío
 	    if (txtCodigo.getText().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el código de seguridad.", "Error", JOptionPane.ERROR_MESSAGE);
 	        return;
 	    }
-	    
-	    // Verificar si el campo "Tipo de Carga" está vacío o no se ha seleccionado
-	    if (cbTipo.getSelectedIndex() == 0) { // El índice 0 es "TIPO", lo que indica que no se ha seleccionado
+	    if (cbTipo.getSelectedIndex() == 0) { 
 	        JOptionPane.showMessageDialog(null, "Por favor, selecciona el tipo de carga.", "Error", JOptionPane.ERROR_MESSAGE);
 	        return;
 	    }
-
-	    // Verificar si el campo "Pedido" está vacío
 	    if (txtPedido.getText().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el detalle de tu pedido.", "Error", JOptionPane.ERROR_MESSAGE);
 	        return;
 	    }
-	    
-	    // Verificar si el campo "Dirección Inicial" está vacío
 	    if (txttra1.getText().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "Por favor, ingresa la dirección inicial.", "Error", JOptionPane.ERROR_MESSAGE);
 	        return;
 	    }
-	    
-	    // Verificar si el campo "Destino" está vacío
 	    if (txttra2.getText().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el destino.", "Error", JOptionPane.ERROR_MESSAGE);
 	        return;
 	    }
-
-	    // Verificar si se ha seleccionado "Casa" o "Empresa"
 	    if (!rdCasa.isSelected() && !rdEmp.isSelected()) {
 	        JOptionPane.showMessageDialog(null, "Por favor, selecciona si es casa o empresa.", "Error", JOptionPane.ERROR_MESSAGE);
 	        return;

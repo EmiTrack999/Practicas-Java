@@ -186,18 +186,38 @@ public class Transporte extends JFrame {
         bgParadasContinuas.add(rdbtnParadasContinuasNo);
     }
     public void guardar_transporte() {
-    	B_Datos bd=new B_Datos();
-    String tipoTransporte = comboBox.getSelectedItem().toString();
-    boolean materialSensible = RADIOSIM.isSelected();
-    boolean materialPesado = rdbtnMaterialPesadoSi.isSelected();
-    boolean transportaPersonal = rdbtnTransportaPersonalSi.isSelected();
-    boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
-    boolean resultado = bd.guardarTransporte(tipoTransporte, materialSensible, materialPesado, transportaPersonal, paradasContinuas);
-    if (resultado) {
-        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
-    } else {
-        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
-    } 
+    	 if (comboBox.getSelectedIndex() == 0) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona un tipo de transporte.");
+    	        return;
+    	    }
+    	    if (!RADIOSIM.isSelected() && !RADIONOM.isSelected()) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona si el material es sensible.");
+    	        return;
+    	    }
+    	    if (!rdbtnMaterialPesadoSi.isSelected() && !rdbtnMaterialPesadoNo.isSelected()) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona si el material es pesado.");
+    	        return;
+    	    }
+    	    if (!rdbtnTransportaPersonalSi.isSelected() && !rdbtnTransportaPersonalNo.isSelected()) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona si se transporta personal.");
+    	        return;
+    	    }
+    	    if (!rdbtnParadasContinuasSi.isSelected() && !rdbtnParadasContinuasNo.isSelected()) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona si el destino tiene paradas continuas.");
+    	        return;
+    	    }
+    	    B_Datos bd = new B_Datos();
+    	    String tipoTransporte = comboBox.getSelectedItem().toString();
+    	    boolean materialSensible = RADIOSIM.isSelected();
+    	    boolean materialPesado = rdbtnMaterialPesadoSi.isSelected();
+    	    boolean transportaPersonal = rdbtnTransportaPersonalSi.isSelected();
+    	    boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
+    	    
+    	    boolean resultado = bd.guardarTransporte(tipoTransporte, materialSensible, materialPesado, transportaPersonal, paradasContinuas);
+    	    if (resultado) {
+    	        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
+    	    } else {
+    	        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
+    	    }
     }
-    
 }

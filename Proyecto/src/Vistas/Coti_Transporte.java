@@ -34,7 +34,6 @@ public class Coti_Transporte extends JFrame {
     private JTextField txttra1;
     private JTextField textField_2;
     private JTextField textField_3;
-    private JTextField textField_5;
     private JTextField txttra2;
 
     /**
@@ -152,11 +151,6 @@ public class Coti_Transporte extends JFrame {
         textField_3.setBounds(424, 254, 295, 19);
         contentPane.add(textField_3);
 
-        textField_5 = new JTextField();
-        textField_5.setColumns(10);
-        textField_5.setBounds(559, 405, 295, 19);
-        contentPane.add(textField_5);
-
         JButton botonc = new JButton("Cotizar Transporte");
         botonc.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -167,11 +161,15 @@ public class Coti_Transporte extends JFrame {
                 if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
-                }
-
+                }else {
+                	
+                
                 // Llamar al método calcularDistanciaYMostrar de la clase GoogleM
                 GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
-        		 
+                Final_Pedido fp=new Final_Pedido();
+                dispose();
+                fp.setVisible(true);
+                } 
         	}
         });
         botonc.setBackground(new Color(255, 0, 0));
@@ -182,12 +180,12 @@ public class Coti_Transporte extends JFrame {
 
         // Crear los botones de radio
         JRadioButton rdbtnNewRadioButton = new JRadioButton("Privado");
-        rdbtnNewRadioButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnNewRadioButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
         rdbtnNewRadioButton.setBounds(424, 330, 103, 21);
         contentPane.add(rdbtnNewRadioButton);
 
         JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Publico");
-        rdbtnNewRadioButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+        rdbtnNewRadioButton_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
         rdbtnNewRadioButton_1.setBounds(559, 330, 103, 21);
         contentPane.add(rdbtnNewRadioButton_1);
 
@@ -206,5 +204,15 @@ public class Coti_Transporte extends JFrame {
         txttra2.setColumns(10);
         txttra2.setBounds(424, 153, 295, 19);
         contentPane.add(txttra2);
+        
+        JRadioButton uno = new JRadioButton("SI");
+        uno.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+        uno.setBounds(545, 397, 48, 23);
+        contentPane.add(uno);
+        
+        JRadioButton dos = new JRadioButton("NO");
+        dos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+        dos.setBounds(614, 397, 48, 23);
+        contentPane.add(dos);
     }
 }
