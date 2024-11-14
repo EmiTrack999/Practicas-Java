@@ -28,6 +28,7 @@ import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
+import java.awt.Toolkit;
 
 public class TerceraVista extends JFrame {
 
@@ -67,6 +68,7 @@ public class TerceraVista extends JFrame {
 	 * Create the frame.
 	 */
 	public TerceraVista() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TerceraVista.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Inicio extends JFrame {
 
@@ -45,6 +46,7 @@ public class Inicio extends JFrame {
 	 * Create the frame.
 	 */
 	public Inicio() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Inicio.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setTitle("Cargo Fleets Solutions");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -18,8 +18,9 @@ public class Transporte extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JComboBox<String> comboBox;
-    private JRadioButton RADIOSIM, RADIONOM, rdbtnMaterialPesadoSi, rdbtnMaterialPesadoNo;
+    private JRadioButton RADIOSIM, RADIONOM;
     private JRadioButton rdbtnTransportaPersonalSi, rdbtnTransportaPersonalNo, rdbtnParadasContinuasSi, rdbtnParadasContinuasNo;
+    private JTextField txtNombre;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -85,46 +86,30 @@ public class Transporte extends JFrame {
         JLabel lblTipoDeTransporte = new JLabel("Tipo de Transporte    :");
         lblTipoDeTransporte.setForeground(Color.WHITE);
         lblTipoDeTransporte.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        lblTipoDeTransporte.setBounds(148, 71, 145, 30);
+        lblTipoDeTransporte.setBounds(135, 134, 145, 30);
         contentPane.add(lblTipoDeTransporte);
 
         comboBox = new JComboBox<>();
         comboBox.setModel(new DefaultComboBoxModel<>(new String[]{"Transporte", "Pesado", "Ligero"}));
         comboBox.setFont(new Font("Tahoma", Font.BOLD, 15));
-        comboBox.setBounds(318, 66, 145, 38);
+        comboBox.setBounds(318, 129, 145, 38);
         contentPane.add(comboBox);
 
         JLabel lblMaterialSensible = new JLabel("¿Material Sensible?    :");
         lblMaterialSensible.setForeground(Color.WHITE);
         lblMaterialSensible.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        lblMaterialSensible.setBounds(135, 145, 158, 30);
+        lblMaterialSensible.setBounds(135, 206, 158, 30);
         contentPane.add(lblMaterialSensible);
 
         RADIOSIM = new JRadioButton("Si");
         RADIOSIM.setFont(new Font("Tahoma", Font.BOLD, 15));
-        RADIOSIM.setBounds(318, 149, 103, 21);
+        RADIOSIM.setBounds(318, 210, 103, 21);
         contentPane.add(RADIOSIM);
 
         RADIONOM = new JRadioButton("No");
         RADIONOM.setFont(new Font("Tahoma", Font.BOLD, 15));
-        RADIONOM.setBounds(442, 149, 103, 21);
+        RADIONOM.setBounds(442, 210, 103, 21);
         contentPane.add(RADIONOM);
-
-        JLabel lblMaterialPesado = new JLabel("¿El Material es pesado?      :");
-        lblMaterialPesado.setForeground(Color.WHITE);
-        lblMaterialPesado.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        lblMaterialPesado.setBounds(101, 211, 196, 30);
-        contentPane.add(lblMaterialPesado);
-
-        rdbtnMaterialPesadoSi = new JRadioButton("Si");
-        rdbtnMaterialPesadoSi.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnMaterialPesadoSi.setBounds(318, 215, 103, 21);
-        contentPane.add(rdbtnMaterialPesadoSi);
-
-        rdbtnMaterialPesadoNo = new JRadioButton("No");
-        rdbtnMaterialPesadoNo.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnMaterialPesadoNo.setBounds(442, 215, 103, 21);
-        contentPane.add(rdbtnMaterialPesadoNo);
 
         JLabel lblTransportaPersonal = new JLabel("¿Se Transporta Personal?       :");
         lblTransportaPersonal.setForeground(Color.WHITE);
@@ -159,8 +144,10 @@ public class Transporte extends JFrame {
         contentPane.add(rdbtnParadasContinuasNo);
 
         JButton btnEnviar = new JButton("Enviar");
+        btnEnviar.setBackground(new Color(255, 0, 0));
+        btnEnviar.setForeground(new Color(255, 255, 255));
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnEnviar.setBounds(607, 399, 112, 21);
+        btnEnviar.setBounds(341, 390, 112, 21);
         contentPane.add(btnEnviar);
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -176,14 +163,22 @@ public class Transporte extends JFrame {
         bgMaterialSensible.add(RADIOSIM);
         bgMaterialSensible.add(RADIONOM);
 
-        bgMaterialPesado.add(rdbtnMaterialPesadoSi);
-        bgMaterialPesado.add(rdbtnMaterialPesadoNo);
-
         bgTransportaPersonal.add(rdbtnTransportaPersonalSi);
         bgTransportaPersonal.add(rdbtnTransportaPersonalNo);
 
         bgParadasContinuas.add(rdbtnParadasContinuasSi);
         bgParadasContinuas.add(rdbtnParadasContinuasNo);
+        
+        JLabel lblNewLabel_1 = new JLabel("Nombre del Solicitante   :");
+        lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+        lblNewLabel_1.setForeground(new Color(255, 255, 255));
+        lblNewLabel_1.setBounds(128, 87, 158, 14);
+        contentPane.add(lblNewLabel_1);
+        
+        txtNombre = new JTextField();
+        txtNombre.setBounds(320, 85, 329, 20);
+        contentPane.add(txtNombre);
+        txtNombre.setColumns(10);
     }
     public void guardar_transporte() {
     	 if (comboBox.getSelectedIndex() == 0) {
@@ -194,10 +189,7 @@ public class Transporte extends JFrame {
     	        JOptionPane.showMessageDialog(null, "Selecciona si el material es sensible.");
     	        return;
     	    }
-    	    if (!rdbtnMaterialPesadoSi.isSelected() && !rdbtnMaterialPesadoNo.isSelected()) {
-    	        JOptionPane.showMessageDialog(null, "Selecciona si el material es pesado.");
-    	        return;
-    	    }
+    	  
     	    if (!rdbtnTransportaPersonalSi.isSelected() && !rdbtnTransportaPersonalNo.isSelected()) {
     	        JOptionPane.showMessageDialog(null, "Selecciona si se transporta personal.");
     	        return;
@@ -207,13 +199,11 @@ public class Transporte extends JFrame {
     	        return;
     	    }
     	    B_Datos bd = new B_Datos();
+    	    String nombre = txtNombre.getText(); 
     	    String tipoTransporte = comboBox.getSelectedItem().toString();
     	    boolean materialSensible = RADIOSIM.isSelected();
-    	    boolean materialPesado = rdbtnMaterialPesadoSi.isSelected();
-    	    boolean transportaPersonal = rdbtnTransportaPersonalSi.isSelected();
     	    boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
-    	    
-    	    boolean resultado = bd.guardarTransporte(tipoTransporte, materialSensible, materialPesado, transportaPersonal, paradasContinuas);
+    	    boolean resultado =bd.guardarTransporte(tipoTransporte, nombre, materialSensible, paradasContinuas);
     	    if (resultado) {
     	        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
     	    } else {

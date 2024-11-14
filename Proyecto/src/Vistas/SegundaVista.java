@@ -66,7 +66,7 @@ public class SegundaVista extends JFrame {
     public SegundaVista() {
         setTitle("Cargo Fleets Solutions");
         setResizable(false);
-        setIconImage(Toolkit.getDefaultToolkit().getImage("E:\\Proyecto\\Imagenes\\goku.jpg"));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(SegundaVista.class.getResource("/Vistas/Logo de la empresa.jpeg")));
         setBounds(100, 100, 730, 441);
 
         JMenuBar menuBar = new JMenuBar();

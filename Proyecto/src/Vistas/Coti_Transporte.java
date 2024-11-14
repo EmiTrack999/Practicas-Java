@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Coti_Transporte extends JFrame {
 
@@ -56,6 +57,7 @@ public class Coti_Transporte extends JFrame {
      * Create the frame.
      */
     public Coti_Transporte() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(Coti_Transporte.class.getResource("/Vistas/Logo de la empresa.jpeg")));
     	setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 878, 587);
@@ -154,17 +156,12 @@ public class Coti_Transporte extends JFrame {
         JButton botonc = new JButton("Cotizar Transporte");
         botonc.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		String ciudad1 = txttra1.getText().trim();  // Ciudad de salida
-                String ciudad2 = txttra2.getText().trim();  // Ciudad de destino
-
-                // Verificar que ambos campos tengan texto
+        		String ciudad1 = txttra1.getText().trim();  
+                String ciudad2 = txttra2.getText().trim();
                 if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Por favor ingresa ubicacaiones", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }else {
-                	
-                
-                // Llamar al método calcularDistanciaYMostrar de la clase GoogleM
                 GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
                 Final_Pedido fp=new Final_Pedido();
                 dispose();
@@ -178,21 +175,21 @@ public class Coti_Transporte extends JFrame {
         botonc.setBounds(328, 449, 199, 19);
         contentPane.add(botonc);
 
-        // Crear los botones de radio
-        JRadioButton rdbtnNewRadioButton = new JRadioButton("Privado");
-        rdbtnNewRadioButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        rdbtnNewRadioButton.setBounds(424, 330, 103, 21);
-        contentPane.add(rdbtnNewRadioButton);
+      
+        JRadioButton rbPriv = new JRadioButton("Privado");
+        rbPriv.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+        rbPriv.setBounds(424, 330, 103, 21);
+        contentPane.add(rbPriv);
 
-        JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Publico");
-        rdbtnNewRadioButton_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        rdbtnNewRadioButton_1.setBounds(559, 330, 103, 21);
-        contentPane.add(rdbtnNewRadioButton_1);
+        JRadioButton rbPubli = new JRadioButton("Publico");
+        rbPubli.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+        rbPubli.setBounds(559, 330, 103, 21);
+        contentPane.add(rbPubli);
 
-        // Agrupar los botones de radio para que solo se pueda elegir uno
+       
         ButtonGroup group = new ButtonGroup();
-        group.add(rdbtnNewRadioButton);
-        group.add(rdbtnNewRadioButton_1);
+        group.add(rbPriv);
+        group.add(rbPubli);
         
         JLabel lblNewLabel_1_1 = new JLabel("Lugar de donde saldra  el Transporte");
         lblNewLabel_1_1.setForeground(Color.WHITE);
@@ -214,5 +211,13 @@ public class Coti_Transporte extends JFrame {
         dos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
         dos.setBounds(614, 397, 48, 23);
         contentPane.add(dos);
+        
+        
+        ButtonGroup privado_public = new ButtonGroup();
+        ButtonGroup aportar = new ButtonGroup();
+        privado_public.add(rbPubli);
+        privado_public.add(rbPriv);
+        aportar.add(uno);
+        aportar.add(dos);
     }
 }

@@ -30,6 +30,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.Toolkit;
 
 public class Pedir_Pedido extends JFrame {
 
@@ -62,6 +63,7 @@ public class Pedir_Pedido extends JFrame {
 	 * Create the frame.
 	 */
 	public Pedir_Pedido() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Pedir_Pedido.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setTitle("Cargo Fleets Solutions");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

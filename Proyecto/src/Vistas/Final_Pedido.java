@@ -9,6 +9,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.Toolkit;
 
 public class Final_Pedido extends JFrame {
 
@@ -35,6 +36,7 @@ public class Final_Pedido extends JFrame {
 	 * Create the frame.
 	 */
 	public Final_Pedido() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Final_Pedido.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 844, 526);
 		contentPane = new JPanel();

@@ -71,7 +71,7 @@ public class VistaPrincipal extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setLocationByPlatform(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Alumno.SC3PC36.000\\Downloads\\WhatsApp Image 2024-10-10 at 3.44.30 PM (1).jpeg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VistaPrincipal.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setBounds(100, 100, 631, 494);
 		
 		JMenuBar menuBar = new JMenuBar();
