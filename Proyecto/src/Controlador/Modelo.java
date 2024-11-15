@@ -38,15 +38,13 @@ public void setContraseña(String contraseña) {
 	this.contraseña = contraseña;
 }
 public boolean validarCorreo(String correo) {
-    String email = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+    String email = "^[a-zA-Z0-9._%+-]+@[gmail]+.com";
     Pattern EMAIL_PATTERN = Pattern.compile(email);
     return correo != null && !correo.isEmpty() && EMAIL_PATTERN.matcher(correo).matches();
 }
 public boolean validarTelefono(String telefono) {
-    // Expresión regular para validar un número de teléfono de 10 dígitos
-    String TELEFONO_PATTERN = "^[0-9]{10}$";  // 10 dígitos numéricos (sin espacios, guiones, etc.)
-    Pattern pattern = Pattern.compile(TELEFONO_PATTERN);
-    
-    return telefono != null && !telefono.isEmpty() && pattern.matcher(telefono).matches();
+    String telefonoRegex = "^[0-9]{10}$"; 
+    Pattern TELEFONO_PATTERN = Pattern.compile(telefonoRegex);
+    return telefono != null && !telefono.isEmpty() && TELEFONO_PATTERN.matcher(telefono).matches();
 }
 }

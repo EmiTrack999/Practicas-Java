@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Window.Type;
+import java.awt.Toolkit;
 
 public class qr extends JFrame {
 
@@ -35,6 +36,7 @@ public class qr extends JFrame {
 	 * Create the frame.
 	 */
 	public qr() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(qr.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setType(Type.UTILITY);
 		setBounds(100, 100, 523, 410);
 		contentPane = new JPanel();

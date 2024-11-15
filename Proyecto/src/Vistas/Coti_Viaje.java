@@ -5,22 +5,35 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Modelo.GoogleM;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import java.awt.Color;
+import java.awt.Desktop;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class Coti_Viaje extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txttra1;
+	private JTextField txttra2;
 
 	/**
 	 * Launch the application.
@@ -42,6 +55,8 @@ public class Coti_Viaje extends JFrame {
 	 * Create the frame.
 	 */
 	public Coti_Viaje() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Coti_Viaje.class.getResource("/Vistas/Logo de la empresa.jpeg")));
+		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 833, 497);
@@ -53,12 +68,49 @@ public class Coti_Viaje extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Info. de Ecofrend");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaalusuario.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Regresar al menu");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Inicio in=new Inicio();
+				in.setVisible(true);
+				dispose();
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ayuda");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaacliente.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 0));
@@ -91,27 +143,44 @@ public class Coti_Viaje extends JFrame {
 		lblNewLabel_3.setBounds(10, 256, 325, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		textField = new JTextField();
-		textField.setBounds(352, 123, 255, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txttra1 = new JTextField();
+		txttra1.setBounds(352, 123, 255, 20);
+		contentPane.add(txttra1);
+		txttra1.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(352, 188, 255, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txttra2 = new JTextField();
+		txttra2.setBounds(352, 188, 255, 20);
+		contentPane.add(txttra2);
+		txttra2.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("SI");
-		rdbtnNewRadioButton.setBounds(352, 252, 48, 23);
-		contentPane.add(rdbtnNewRadioButton);
+		JRadioButton uno = new JRadioButton("SI");
+		uno.setBounds(352, 252, 48, 23);
+		contentPane.add(uno);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("NO");
-		rdbtnNewRadioButton_1.setBounds(421, 252, 48, 23);
-		contentPane.add(rdbtnNewRadioButton_1);
+		JRadioButton dos = new JRadioButton("NO");
+		dos.setBounds(421, 252, 48, 23);
+		contentPane.add(dos);
 		
 		JButton btnNewButton = new JButton("Cotizar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String ciudad1 = txttra1.getText().trim(); 
+                String ciudad2 = txttra2.getText().trim(); 
+                if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }else {
+                GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
+                Final_Pedido fp=new Final_Pedido();
+                dispose();
+                fp.setVisible(true);
+                }}
+		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setBounds(341, 343, 97, 14);
 		contentPane.add(btnNewButton);
+		 ButtonGroup group = new ButtonGroup();
+	        group.add(uno);
+	        group.add(dos);
 	}
 }
