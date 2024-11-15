@@ -222,6 +222,7 @@ public class TerceraVista extends JFrame {
 	}
 	public void registrar() {
 		B_Datos bd=new B_Datos();
+		VistaUno vu=new VistaUno();
 		Inicio in=new Inicio();
 		String telefono = txtTelefono.getText();
 	    String contraseña = txtContra.getText();
@@ -235,7 +236,7 @@ public class TerceraVista extends JFrame {
 	    mo.setContraseña(contraseña);
 	    if (bd.registrarse(mo)) {
 	        JOptionPane.showMessageDialog(null, "Bienvenido");
-	        in.setVisible(true);
+	       vu.setVisible(true);
 	    } else {
 	        JOptionPane.showMessageDialog(null, "Error al registrar.");
 	    }

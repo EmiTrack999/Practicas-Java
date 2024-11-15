@@ -251,14 +251,15 @@ public class VistaPrincipal extends JFrame {
 	}
 	  private void iniciarSesion() {
 			B_Datos bd=new B_Datos();
-			Inicio in=new Inicio();
-			
+			VistaUno vu=new VistaUno();
+			vu.setVisible(true);
+			dispose();
 	        String correo = txtCorreo.getText();
 	        String contraseña =txtContra.getText();
 	        boolean exito = bd.iniciarSesion(correo, contraseña);
 	        if (exito) {
 	            JOptionPane.showMessageDialog(this, "Bienevenido  :  "+correo);
-	           in.setVisible(true);
+	           
 	           dispose();
 	        } else {
 	            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");

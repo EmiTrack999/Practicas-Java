@@ -210,6 +210,7 @@ public class SegundaVista extends JFrame {
     public void registrar() {
         B_Datos bd = new B_Datos();
         Inicio in = new Inicio();
+        VistaUno vu=new VistaUno();
         String correo = txtCorreo.getText();
         String contraseña = txtContra.getText();
         String confirmar = txtConfir.getText();
@@ -222,7 +223,7 @@ public class SegundaVista extends JFrame {
         mo.setContraseña(contraseña);
         if (bd.registrarse(mo)) {
             JOptionPane.showMessageDialog(null, "Bienvenido  " + correo);
-            in.setVisible(true);
+            vu.setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Error al registrar.");

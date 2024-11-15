@@ -171,10 +171,8 @@ public class Pedir_Pedido extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				camposVacios();
 				
-				String ciudad1 = txttra1.getText().trim();  // Ciudad de salida
-                String ciudad2 = txttra2.getText().trim();  // Ciudad de destino
-
-                // Verificar que ambos campos tengan texto
+				String ciudad1 = txttra1.getText().trim(); 
+                String ciudad2 = txttra2.getText().trim();
                 if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
