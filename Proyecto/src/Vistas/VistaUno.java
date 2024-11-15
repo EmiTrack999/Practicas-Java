@@ -46,10 +46,11 @@ public class VistaUno extends JFrame {
 	 * Create the frame.
 	 */
 	public VistaUno() {
+		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VistaUno.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 821, 508);
+		setBounds(100, 100, 821, 564);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -112,20 +113,21 @@ public class VistaUno extends JFrame {
 		JButton btnNewButton = new JButton("Comenzar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VistaPrincipal vp=new VistaPrincipal();
-			dispose();
-			vp.setVisible(true);
+				Inicio in=new Inicio();
+				in.setVisible(true);
+				dispose();
+			
 			}
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-		btnNewButton.setBounds(331, 218, 105, 23);
+		btnNewButton.setBounds(331, 199, 105, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/Logo de la empresa2.png")));
-		lblNewLabel_3.setBounds(296, 260, 189, 176);
+		lblNewLabel_3.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/WhatsApp Image 2024-11-15 at 1.07.08 AM.jpeg")));
+		lblNewLabel_3.setBounds(205, 240, 359, 252);
 		contentPane.add(lblNewLabel_3);
 	}
 }

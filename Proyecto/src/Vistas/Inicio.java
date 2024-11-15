@@ -58,11 +58,11 @@ public class Inicio extends JFrame {
 		JMenu mnNewMenu = new JMenu("Opciones");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Cerrar Sesion");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Regresar al menu.");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VistaPrincipal vp=new VistaPrincipal();
-				vp.setVisible(true);
+				VistaUno vu=new VistaUno();
+				vu.setVisible(true);
 				dispose();
 			}
 		});

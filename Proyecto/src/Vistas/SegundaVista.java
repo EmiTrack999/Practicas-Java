@@ -32,6 +32,8 @@ import java.awt.Color;
 import java.awt.Desktop;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class SegundaVista extends JFrame {
 
@@ -127,6 +129,15 @@ public class SegundaVista extends JFrame {
         desktopPane.add(lblNewLabel);
 
         txtCorreo = new JTextField();
+        txtCorreo.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if(txtCorreo.getText().length()>=70) {
+    				e.consume();
+    				JOptionPane.showMessageDialog(null, "correo muy largo");
+    				}
+        	}
+        });
         txtCorreo.setBounds(242, 120, 241, 20);
         desktopPane.add(txtCorreo);
         txtCorreo.setColumns(10);
@@ -180,10 +191,28 @@ public class SegundaVista extends JFrame {
         desktopPane.add(lblNewLabel_3);
 
         txtContra = new JPasswordField();
+        txtContra.addKeyListener(new KeyAdapter() {
+        	
+        	public void keyTyped(KeyEvent e) {
+        		if(txtContra.getText().length()>=20) {
+					e.consume();
+					JOptionPane.showMessageDialog(null,"menos de 20 digitos en tu contraseña");
+				}
+        	}
+        });
         txtContra.setBounds(242, 184, 241, 20);
         desktopPane.add(txtContra);
 
         txtConfir = new JPasswordField();
+        txtConfir.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {
+        		if(txtConfir.getText().length()>=20) {
+					e.consume();
+					JOptionPane.showMessageDialog(null,"menos de 20 digitos en tu contraseña");
+				}
+        	}
+        });
         txtConfir.setBounds(242, 251, 241, 20);
         desktopPane.add(txtConfir);
         
@@ -209,7 +238,6 @@ public class SegundaVista extends JFrame {
 
     public void registrar() {
         B_Datos bd = new B_Datos();
-        Inicio in = new Inicio();
         VistaUno vu=new VistaUno();
         String correo = txtCorreo.getText();
         String contraseña = txtContra.getText();

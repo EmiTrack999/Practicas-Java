@@ -31,6 +31,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Pedir_Pedido extends JFrame {
 
@@ -83,6 +85,24 @@ public class Pedir_Pedido extends JFrame {
 				dispose();
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ubicaciones Disponibles");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://municipiosdisponibles.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_2);
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Ayuda");
@@ -146,6 +166,15 @@ public class Pedir_Pedido extends JFrame {
 		contentPane.add(txtNombre);
 		
 		txtCodigo = new JTextField();
+		txtCodigo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtCodigo.getText().length()>=10) {
+					e.consume();
+					JOptionPane.showMessageDialog(null,"Por favor un codigo del al menos 10 digitos");
+				}
+			}
+		});
 		txtCodigo.setColumns(10);
 		txtCodigo.setBounds(339, 127, 306, 20);
 		contentPane.add(txtCodigo);

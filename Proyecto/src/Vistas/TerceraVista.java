@@ -29,6 +29,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JCheckBox;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class TerceraVista extends JFrame {
 
@@ -143,6 +145,15 @@ public class TerceraVista extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		txtTelefono = new JTextField();
+		txtTelefono.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtTelefono.getText().length()>=10) {
+				e.consume();
+				JOptionPane.showMessageDialog(null, "no mas de 10 digitos");
+				}
+			}
+		});
 		txtTelefono.setBounds(219, 98, 250, 20);
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
@@ -192,10 +203,28 @@ public class TerceraVista extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		txtContra = new JPasswordField();
+		txtContra.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtContra.getText().length()>=20) {
+					e.consume();
+					JOptionPane.showMessageDialog(null,"menos de 20 digitos en tu contraseña");
+				}
+			}
+		});
 		txtContra.setBounds(219, 184, 250, 20);
 		contentPane.add(txtContra);
 		
 		txtConfir = new JPasswordField();
+		txtConfir.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtConfir.getText().length()>=20) {
+					e.consume();
+					JOptionPane.showMessageDialog(null,"menos de 20 digitos en tu contraseña");
+				}
+			}
+		});
 		txtConfir.setBounds(219, 259, 250, 20);
 		contentPane.add(txtConfir);
 		
@@ -241,4 +270,9 @@ public class TerceraVista extends JFrame {
 	        JOptionPane.showMessageDialog(null, "Error al registrar.");
 	    }
 	}
-}
+	
+
+		
+		
+	}
+	

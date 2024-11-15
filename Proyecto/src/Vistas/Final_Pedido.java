@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.ImageIcon;
 
 public class Final_Pedido extends JFrame {
 
@@ -50,12 +51,12 @@ public class Final_Pedido extends JFrame {
 		setTitle("Cargo Fleets Solutions");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Final_Pedido.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 844, 526);
+		setBounds(100, 100, 844, 553);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("New menu");
+		JMenu mnNewMenu = new JMenu("Opciones");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Cancelar Viaje");
@@ -100,20 +101,22 @@ public class Final_Pedido extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Decesas realizar otra accion   :");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_2.setBounds(117, 221, 218, 14);
+		lblNewLabel_2.setBounds(113, 199, 218, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("SI");
+		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VistaPrincipal vp=new VistaPrincipal();
+				Inicio in=new Inicio();
 				dispose();
-				vp.setVisible(true);	}
+				in.setVisible(true);	}
 		});
-		btnNewButton.setBounds(348, 218, 89, 23);
+		btnNewButton.setBounds(341, 196, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNo = new JButton("NO");
+		btnNo.setBackground(new Color(255, 0, 0));
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				VistaPrincipal vp=new VistaPrincipal();
@@ -121,7 +124,12 @@ public class Final_Pedido extends JFrame {
 				vp.setVisible(true);
 			}
 		});
-		btnNo.setBounds(502, 218, 89, 23);
+		btnNo.setBounds(500, 196, 89, 23);
 		contentPane.add(btnNo);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon(Final_Pedido.class.getResource("/Vistas/WhatsApp Image 2024-11-15 at 1.07.08 AM.jpeg")));
+		lblNewLabel_3.setBounds(221, 230, 359, 251);
+		contentPane.add(lblNewLabel_3);
 	}
 }
