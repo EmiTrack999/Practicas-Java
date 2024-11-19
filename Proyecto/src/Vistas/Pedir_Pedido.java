@@ -206,6 +206,7 @@ public class Pedir_Pedido extends JFrame {
                     JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
                     return;
                 }else {
+                	guardarPedido();
                 GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
                 Final_Pedido fp=new Final_Pedido();
                 dispose();

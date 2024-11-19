@@ -126,7 +126,7 @@ public class VistaUno extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/WhatsApp Image 2024-11-15 at 1.07.08 AM.jpeg")));
+		lblNewLabel_3.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/WhatsApp Image 2024-11-18 at 8.30.38 PM.jpeg")));
 		lblNewLabel_3.setBounds(205, 240, 359, 252);
 		contentPane.add(lblNewLabel_3);
 	}

@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controlador.B_Datos;
+
 import java.awt.Window.Type;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -40,7 +43,8 @@ public class Viaje extends JFrame {
 	private JMenuItem mntmNewMenuItem_1;
 	private JTextField txtFecha;
 	private JTextField txtNumero;
-
+	JComboBox cbPersonas;
+	JRadioButton rbEquipamiento,rbNiños;
 	/**
 	 * Launch the application.
 	 */
@@ -132,7 +136,7 @@ public class Viaje extends JFrame {
 		lblNewLabel_2.setBounds(107, 155, 153, 14);
 		contentPane.add(lblNewLabel_2);
 		
-		JComboBox cbPersonas = new JComboBox();
+		cbPersonas = new JComboBox();
 		cbPersonas.setModel(new DefaultComboBoxModel(new String[] {"Personas", "1", "2", "3", "4", "5", "6", "7", "8", "9", "mas de 9"}));
 		cbPersonas.setBounds(293, 151, 99, 22);
 		contentPane.add(cbPersonas);
@@ -143,7 +147,7 @@ public class Viaje extends JFrame {
 		lblNewLabel_3.setBounds(131, 200, 129, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		JRadioButton rbEquipamiento = new JRadioButton("SI");
+		 rbEquipamiento = new JRadioButton("SI");
 		rbEquipamiento.setBounds(293, 196, 64, 23);
 		contentPane.add(rbEquipamiento);
 		
@@ -157,7 +161,7 @@ public class Viaje extends JFrame {
 		lblNewLabel_3_1.setBounds(90, 248, 170, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
-		JRadioButton rbNiños = new JRadioButton("SI");
+		 rbNiños = new JRadioButton("SI");
 		rbNiños.setBounds(293, 244, 64, 23);
 		contentPane.add(rbNiños);
 		
@@ -203,10 +207,7 @@ public class Viaje extends JFrame {
 				                JOptionPane.WARNING_MESSAGE
 				            );
 				        } else {
-				            // Si todos los campos están llenos, procede a mostrar la siguiente ventana
-				            Coti_Viaje cv = new Coti_Viaje();
-				            dispose();
-				            cv.setVisible(true);
+				        	guardarViaje();
 				        }
 			}
 		});
@@ -224,4 +225,45 @@ public class Viaje extends JFrame {
 	
 	}
 	
+	
+	public void guardarViaje() {
+	    B_Datos bd = new B_Datos();
+	    
+	    String nombre = txtNombre.getText().trim();
+	    String personas = cbPersonas.getSelectedItem().toString();
+	    boolean equip = rbEquipamiento.isSelected();
+	    boolean niños = rbNiños.isSelected();
+	    String fecha = txtFecha.getText().trim();
+	    String numero = txtNumero.getText().trim();
+
+	    // Validar si los campos no están vacíos
+	    if (nombre.isEmpty()) {
+	        JOptionPane.showMessageDialog(null, "El nombre es obligatorio.");
+	        return;
+	    }
+	    if (fecha.isEmpty()) {
+	        JOptionPane.showMessageDialog(null, "La fecha es obligatoria.");
+	        return;
+	    }
+	    if (numero.isEmpty()) {
+	        JOptionPane.showMessageDialog(null, "El número es obligatorio.");
+	        return;
+	    }
+	    if (personas == null || personas.isEmpty()) {
+	        JOptionPane.showMessageDialog(null, "Selecciona el número de personas.");
+	        return;
+	    }
+
+	    boolean resultado = bd.viaje(nombre, personas, equip, niños, fecha, numero);
+
+	    if (resultado) {
+	        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
+	        Coti_Viaje cv = new Coti_Viaje();
+	        cv.setVisible(true);
+	        dispose();
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
+	    }
+	}
+
 } 

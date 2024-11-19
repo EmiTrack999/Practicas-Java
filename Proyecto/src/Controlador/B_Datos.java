@@ -5,16 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JOptionPane;
 
 public class B_Datos {
     PreparedStatement ps;
     Connection cn;
-    // Método para establecer conexión con la base de datos
+   
     public Connection conexion() {
         try {
-            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/correos", "root", "");
+            cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cargofleets", "root", "");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la base de datos: " + e);
         }
@@ -79,16 +81,18 @@ public class B_Datos {
     }
     
     //transporte
-    public boolean guardarTransporte(String tipoTransporte, String nombre, boolean transportaPersonal, boolean paradasContinuas) {
+    public boolean guardarTransporte(String tipoTransporte, String nombre, boolean transportaPersonal, boolean paradasContinuas, boolean material_senci) {
         boolean guardado = false;
-        String sql = "INSERT INTO transporte VALUES (0,?, ?, ?,?)";
+        String sql = "INSERT INTO transport VALUES (0,?,?,?,?,?)";
 
         try (Connection conn = conexion(); 
              PreparedStatement pst = conn.prepareStatement(sql)) {
         	pst.setString(1, nombre);
             pst.setString(2, tipoTransporte);
-            pst.setBoolean(3, transportaPersonal);
-            pst.setBoolean(4, paradasContinuas);
+            pst.setBoolean(3, material_senci);
+            pst.setBoolean(4, transportaPersonal);
+            pst.setBoolean(5, paradasContinuas);
+            
             int filasAfectadas = pst.executeUpdate();
             if (filasAfectadas > 0) {
                 guardado = true;
@@ -98,8 +102,8 @@ public class B_Datos {
         }
         return guardado;
     }
-    
-    //Viaje
+    //pedido
+   
     public boolean guardarPedido(String nombre, int codigo, String tCarga,String pedido, boolean ca_emp) {
 		boolean guardado=false;
 		 String sql = "INSERT INTO pedido VALUES (?, ?, ?, ?, ?)";
@@ -122,45 +126,48 @@ public class B_Datos {
 		return guardado;
     	
     }
+     //Viaje
     
-    //pedido
-    public boolean viaje(String nombre, int codigo, String tCarga,String pedido, boolean ca_emp) {
-  		boolean guardado=false;
-  		 String sql = "INSERT INTO pedido VALUES (?, ?, ?, ?, ?)";
-  		try {
-  			ps=cn.prepareStatement(sql);
-  			ps.setString(1, nombre);
-  			ps.setInt(2, codigo);
-  			ps.setString(3,tCarga);
-  			ps.setString(4, pedido);
-  			ps.setBoolean(5, ca_emp);
-  			int filas=ps.executeUpdate();
-  			if(filas>0) {
-  				guardado=true;
-  			}
-  		} catch (SQLException e) {
-  			// TODO Auto-generated catch block
-  			//e.printStackTrace();
-              JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
-  		}
-  		return guardado;
-      	
-      }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public boolean viaje(String nombre, String personas, Boolean equipamiento, boolean ninos, String fecha, String numero) {
+        boolean guardado = false;
+        String sql = "INSERT INTO viaje VALUES (?, ?, ?, ?, ?, ?)"; 
+        try (Connection cn = conexion(); PreparedStatement ps = cn.prepareStatement(sql)) {
+            if (cn == null) {
+                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+                return false;
+            }
+            java.sql.Date sqlDate = null;
+            try {
+                if (fecha != null && !fecha.isEmpty()) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    java.util.Date utilDate = sdf.parse(fecha); // Convierte de String a Date
+                    sqlDate = new java.sql.Date(utilDate.getTime()); // Convierte a java.sql.Date
+                }
+            } catch (ParseException e) {
+                JOptionPane.showMessageDialog(null, "Error al formatear la fecha: " + e.getMessage());
+                e.printStackTrace();
+                return false;
+            }
+            // Asignar los valores al PreparedStatement
+            ps.setString(1, nombre);  // Nombre del solicitante
+            ps.setString(2, personas); // Personas
+            ps.setBoolean(3, equipamiento); // Equipamiento
+            ps.setBoolean(4, ninos);  // Niños
+            ps.setDate(5, sqlDate);  // Fecha convertida a java.sql.Date
+            ps.setString(6, numero);  // Número
+            // Ejecutar la inserción
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                guardado = true;
+            }
+        } catch (SQLException e) {
+            // Mostrar el mensaje de error con detalles específicos
+            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla viaje: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return guardado;
+    }
+
     
 }
 

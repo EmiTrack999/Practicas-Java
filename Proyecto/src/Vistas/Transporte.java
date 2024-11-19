@@ -181,33 +181,49 @@ public class Transporte extends JFrame {
         txtNombre.setColumns(10);
     }
     public void guardar_transporte() {
-    	 if (comboBox.getSelectedIndex() == 0) {
-    	        JOptionPane.showMessageDialog(null, "Selecciona un tipo de transporte.");
-    	        return;
-    	    }
-    	    if (!RADIOSIM.isSelected() && !RADIONOM.isSelected()) {
-    	        JOptionPane.showMessageDialog(null, "Selecciona si el material es sensible.");
-    	        return;
-    	    }
-    	  
-    	    if (!rdbtnTransportaPersonalSi.isSelected() && !rdbtnTransportaPersonalNo.isSelected()) {
-    	        JOptionPane.showMessageDialog(null, "Selecciona si se transporta personal.");
-    	        return;
-    	    }
-    	    if (!rdbtnParadasContinuasSi.isSelected() && !rdbtnParadasContinuasNo.isSelected()) {
-    	        JOptionPane.showMessageDialog(null, "Selecciona si el destino tiene paradas continuas.");
-    	        return;
-    	    }
-    	    B_Datos bd = new B_Datos();
-    	    String nombre = txtNombre.getText(); 
-    	    String tipoTransporte = comboBox.getSelectedItem().toString();
-    	    boolean materialSensible = RADIOSIM.isSelected();
-    	    boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
-    	    boolean resultado =bd.guardarTransporte(tipoTransporte, nombre, materialSensible, paradasContinuas);
-    	    if (resultado) {
-    	        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
-    	    } else {
-    	        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
-    	    }
+        try {
+            if (comboBox.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(null, "Selecciona un tipo de transporte.");
+                return;
+            }
+
+            if (!RADIOSIM.isSelected() && !RADIONOM.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Selecciona si el material es sensible.");
+                return;
+            }
+
+            if (!rdbtnTransportaPersonalSi.isSelected() && !rdbtnTransportaPersonalNo.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Selecciona si se transporta personal.");
+                return;
+            }
+
+            if (!rdbtnParadasContinuasSi.isSelected() && !rdbtnParadasContinuasNo.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Selecciona si el destino tiene paradas continuas.");
+                return;
+            }
+
+            B_Datos bd = new B_Datos();
+            String nombre = txtNombre.getText(); 
+            String tipoTransporte = comboBox.getSelectedItem().toString();
+            boolean materialSensible = RADIOSIM.isSelected();
+            boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
+            boolean personal = rdbtnTransportaPersonalSi.isSelected();
+
+            boolean resultado = bd.guardarTransporte(tipoTransporte, nombre, personal, paradasContinuas, materialSensible);
+
+            if (resultado) {
+                JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
+                Coti_Transporte ct = new Coti_Transporte();
+                ct.setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Se produjo un error inesperado.");
+        }
     }
+
 }

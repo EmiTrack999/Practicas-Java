@@ -115,20 +115,20 @@ public class Final_Pedido extends JFrame {
 		btnNewButton.setBounds(341, 196, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNo = new JButton("NO");
+		JButton btnNo = new JButton("     ");
 		btnNo.setBackground(new Color(255, 0, 0));
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VistaPrincipal vp=new VistaPrincipal();
+				VistaUno vu=new VistaUno();
 				dispose();
-				vp.setVisible(true);
+				vu.setVisible(true);
 			}
 		});
 		btnNo.setBounds(500, 196, 89, 23);
 		contentPane.add(btnNo);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon(Final_Pedido.class.getResource("/Vistas/WhatsApp Image 2024-11-15 at 1.07.08 AM.jpeg")));
+		lblNewLabel_3.setIcon(new ImageIcon(Final_Pedido.class.getResource("/Vistas/WhatsApp Image 2024-11-18 at 8.30.38 PM.jpeg")));
 		lblNewLabel_3.setBounds(221, 230, 359, 251);
 		contentPane.add(lblNewLabel_3);
 	}

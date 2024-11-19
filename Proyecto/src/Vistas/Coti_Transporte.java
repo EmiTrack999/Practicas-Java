@@ -33,8 +33,6 @@ public class Coti_Transporte extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField txttra1;
-    private JTextField textField_2;
-    private JTextField textField_3;
     private JTextField txttra2;
 
     /**
@@ -133,12 +131,6 @@ public class Coti_Transporte extends JFrame {
         lblNewLabel_1.setBounds(57, 103, 301, 31);
         contentPane.add(lblNewLabel_1);
 
-        JLabel lblNewLabel_1_1_1 = new JLabel("¿Numero De Cargamento?");
-        lblNewLabel_1_1_1.setForeground(Color.WHITE);
-        lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_1_1_1.setBounds(57, 204, 224, 31);
-        contentPane.add(lblNewLabel_1_1_1);
-
         JLabel lblNewLabel_1_1_2 = new JLabel("¿Deseas Aportar Para el Programa EcoFrend del 10% de Tu costo?");
         lblNewLabel_1_1_2.setForeground(Color.WHITE);
         lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -148,29 +140,13 @@ public class Coti_Transporte extends JFrame {
         JLabel lblNewLabel_1_1_3 = new JLabel("EL viaje Sera Privado o Publico");
         lblNewLabel_1_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_1_3.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_1_1_3.setBounds(57, 323, 269, 31);
+        lblNewLabel_1_1_3.setBounds(57, 317, 269, 31);
         contentPane.add(lblNewLabel_1_1_3);
-
-        JLabel lblNewLabel_1_1_4 = new JLabel("¿Presupuesto Que Tiene A su Poder?");
-        lblNewLabel_1_1_4.setForeground(Color.WHITE);
-        lblNewLabel_1_1_4.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_1_1_4.setBounds(57, 246, 295, 31);
-        contentPane.add(lblNewLabel_1_1_4);
 
         txttra1 = new JTextField();
         txttra1.setBounds(424, 111, 295, 19);
         contentPane.add(txttra1);
         txttra1.setColumns(10);
-
-        textField_2 = new JTextField();
-        textField_2.setColumns(10);
-        textField_2.setBounds(424, 211, 295, 19);
-        contentPane.add(textField_2);
-
-        textField_3 = new JTextField();
-        textField_3.setColumns(10);
-        textField_3.setBounds(424, 254, 295, 19);
-        contentPane.add(textField_3);
 
         JButton botonc = new JButton("Cotizar Transporte");
         botonc.addActionListener(new ActionListener() {
@@ -197,12 +173,12 @@ public class Coti_Transporte extends JFrame {
       
         JRadioButton rbPriv = new JRadioButton("Privado");
         rbPriv.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        rbPriv.setBounds(424, 330, 103, 21);
+        rbPriv.setBounds(424, 323, 103, 21);
         contentPane.add(rbPriv);
 
         JRadioButton rbPubli = new JRadioButton("Publico");
         rbPubli.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        rbPubli.setBounds(559, 330, 103, 21);
+        rbPubli.setBounds(559, 323, 103, 21);
         contentPane.add(rbPubli);
 
        
@@ -213,12 +189,12 @@ public class Coti_Transporte extends JFrame {
         JLabel lblNewLabel_1_1 = new JLabel("Lugar de donde saldra  el Transporte");
         lblNewLabel_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_1_1.setBounds(57, 145, 301, 31);
+        lblNewLabel_1_1.setBounds(57, 199, 301, 31);
         contentPane.add(lblNewLabel_1_1);
         
         txttra2 = new JTextField();
         txttra2.setColumns(10);
-        txttra2.setBounds(424, 153, 295, 19);
+        txttra2.setBounds(424, 206, 295, 19);
         contentPane.add(txttra2);
         
         JRadioButton uno = new JRadioButton("SI");
