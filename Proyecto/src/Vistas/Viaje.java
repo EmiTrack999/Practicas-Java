@@ -31,6 +31,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class Viaje extends JFrame {
 
@@ -192,6 +193,7 @@ public class Viaje extends JFrame {
 		txtNumero.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Iniciar");
+		btnNewButton.setIcon(new ImageIcon(Viaje.class.getResource("/Vistas/img/mapa-vial.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -212,7 +214,7 @@ public class Viaje extends JFrame {
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
-		btnNewButton.setBounds(340, 385, 106, 14);
+		btnNewButton.setBounds(340, 385, 120, 33);
 		contentPane.add(btnNewButton);
 		
 		ButtonGroup group = new ButtonGroup();

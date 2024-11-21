@@ -144,10 +144,11 @@ public class Transporte extends JFrame {
         contentPane.add(rdbtnParadasContinuasNo);
 
         JButton btnEnviar = new JButton("Enviar");
+        btnEnviar.setIcon(new ImageIcon(Transporte.class.getResource("/Vistas/img/envio.png")));
         btnEnviar.setBackground(new Color(255, 0, 0));
         btnEnviar.setForeground(new Color(255, 255, 255));
         btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnEnviar.setBounds(341, 390, 112, 21);
+        btnEnviar.setBounds(341, 390, 112, 30);
         contentPane.add(btnEnviar);
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

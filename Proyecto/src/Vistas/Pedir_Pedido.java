@@ -194,7 +194,8 @@ public class Pedir_Pedido extends JFrame {
 		rdEmp.setBounds(489, 268, 109, 23);
 		contentPane.add(rdEmp);
 		
-		JButton btnNewButton = new JButton("Iniciar");
+		JButton btnNewButton =  new JButton("Iniciar");
+		btnNewButton.setIcon(new ImageIcon(Pedir_Pedido.class.getResource("/Vistas/img/realizar-pedidos.png")));
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -214,7 +215,7 @@ public class Pedir_Pedido extends JFrame {
                 }}
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-		btnNewButton.setBounds(329, 407, 109, 14);
+		btnNewButton.setBounds(352, 407, 109, 32);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("Bienvenido Iniciemos tu Pedido");
@@ -290,7 +291,9 @@ public class Pedir_Pedido extends JFrame {
 		    String pedido=txtPedido.getText();
 		    boolean casa=rdCasa.isSelected();
 		    boolean empre=rdEmp.isSelected();
-		    boolean resultado =bd.guardarPedido(nombre, codigo, tipo, pedido, empre);
+		    String direccion=txttra1.getText();
+		    String destino=txttra2.getText();
+		    boolean resultado =bd.guardarPedido(nombre, codigo, tipo, pedido, empre, direccion, destino);
 		    if (resultado) {
 		        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
 		    } else {

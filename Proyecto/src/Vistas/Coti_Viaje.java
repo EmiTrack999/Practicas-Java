@@ -27,6 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class Coti_Viaje extends JFrame {
 
@@ -180,6 +181,7 @@ public class Coti_Viaje extends JFrame {
 		contentPane.add(dos);
 		
 		JButton btnNewButton = new JButton("Cotizar");
+		btnNewButton.setIcon(new ImageIcon(Coti_Viaje.class.getResource("/Vistas/img/grafico-de-cotizaciones.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String ciudad1 = txttra1.getText().trim(); 
@@ -195,7 +197,7 @@ public class Coti_Viaje extends JFrame {
                 }}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
-		btnNewButton.setBounds(341, 343, 97, 14);
+		btnNewButton.setBounds(330, 341, 139, 36);
 		contentPane.add(btnNewButton);
 		 ButtonGroup group = new ButtonGroup();
 	        group.add(uno);

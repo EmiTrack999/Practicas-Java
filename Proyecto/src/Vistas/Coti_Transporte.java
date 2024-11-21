@@ -27,6 +27,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class Coti_Transporte extends JFrame {
 
@@ -149,6 +150,7 @@ public class Coti_Transporte extends JFrame {
         txttra1.setColumns(10);
 
         JButton botonc = new JButton("Cotizar Transporte");
+        botonc.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/bolsa-de-valores.png")));
         botonc.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		String ciudad1 = txttra1.getText().trim();  
@@ -167,7 +169,7 @@ public class Coti_Transporte extends JFrame {
         botonc.setBackground(new Color(255, 0, 0));
         botonc.setForeground(new Color(255, 255, 255));
         botonc.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        botonc.setBounds(328, 449, 199, 19);
+        botonc.setBounds(340, 448, 153, 38);
         contentPane.add(botonc);
 
       

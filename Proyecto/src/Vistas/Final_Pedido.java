@@ -60,6 +60,11 @@ public class Final_Pedido extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Cancelar Viaje");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Ayuda");
@@ -105,6 +110,7 @@ public class Final_Pedido extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("SI");
+		btnNewButton.setIcon(new ImageIcon(Final_Pedido.class.getResource("/Vistas/img/boton-de-inicio.png")));
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,10 +118,11 @@ public class Final_Pedido extends JFrame {
 				dispose();
 				in.setVisible(true);	}
 		});
-		btnNewButton.setBounds(341, 196, 89, 23);
+		btnNewButton.setBounds(341, 187, 111, 32);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNo = new JButton("     ");
+		JButton btnNo = new JButton("NO");
+		btnNo.setIcon(new ImageIcon(Final_Pedido.class.getResource("/Vistas/img/menu.png")));
 		btnNo.setBackground(new Color(255, 0, 0));
 		btnNo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -124,7 +131,7 @@ public class Final_Pedido extends JFrame {
 				vu.setVisible(true);
 			}
 		});
-		btnNo.setBounds(500, 196, 89, 23);
+		btnNo.setBounds(500, 187, 111, 32);
 		contentPane.add(btnNo);
 		
 		JLabel lblNewLabel_3 = new JLabel("");

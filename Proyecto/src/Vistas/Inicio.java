@@ -20,6 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 public class Inicio extends JFrame {
 
@@ -50,7 +51,7 @@ public class Inicio extends JFrame {
 		setTitle("Cargo Fleets Solutions");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 765, 495);
+		setBounds(100, 100, 793, 495);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -113,10 +114,11 @@ public class Inicio extends JFrame {
 		JLabel lblNewLabel = new JLabel("Iniciemos tu Viaje");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
-		lblNewLabel.setBounds(255, 0, 239, 50);
+		lblNewLabel.setBounds(283, 0, 239, 50);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Iniciar Pedido");
+		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/entrega-de-pedidos.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pedir_Pedido pp=new Pedir_Pedido();
@@ -125,11 +127,12 @@ public class Inicio extends JFrame {
 			}
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(255, 0, 0));
-		btnNewButton.setBounds(301, 122, 123, 23);
+		btnNewButton.setBackground(new Color(61, 175, 188));
+		btnNewButton.setBounds(276, 120, 218, 41);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Transporte");
+		btnNewButton_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/transporte.png")));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Transporte tra=new Transporte();
@@ -139,11 +142,12 @@ public class Inicio extends JFrame {
 			}
 		});
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
-		btnNewButton_1.setBackground(new Color(255, 0, 0));
-		btnNewButton_1.setBounds(301, 212, 123, 23);
+		btnNewButton_1.setBackground(new Color(61, 175, 188));
+		btnNewButton_1.setBounds(276, 210, 218, 41);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Iniciar Viaje");
+		btnNewButton_2.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/viaje-de-negocios.png")));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Viaje vi=new Viaje();
@@ -152,8 +156,13 @@ public class Inicio extends JFrame {
 			}
 		});
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
-		btnNewButton_2.setBackground(new Color(255, 0, 0));
-		btnNewButton_2.setBounds(301, 298, 123, 23);
+		btnNewButton_2.setBackground(new Color(61, 175, 188));
+		btnNewButton_2.setBounds(278, 294, 216, 41);
 		contentPane.add(btnNewButton_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/cargofleets2.png")));
+		lblNewLabel_1.setBounds(10, 32, 250, 158);
+		contentPane.add(lblNewLabel_1);
 	}
 }

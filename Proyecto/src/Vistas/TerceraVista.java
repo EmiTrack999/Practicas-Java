@@ -31,6 +31,7 @@ import javax.swing.JCheckBox;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class TerceraVista extends JFrame {
 
@@ -170,6 +171,7 @@ public class TerceraVista extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		btnNewButton = new JButton("Registrarme");
+		btnNewButton.setIcon(new ImageIcon(TerceraVista.class.getResource("/Vistas/img/registro-en-linea.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Modelo db = new Modelo();
@@ -199,7 +201,7 @@ public class TerceraVista extends JFrame {
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(255, 0, 0));
-		btnNewButton.setBounds(299, 333, 111, 14);
+		btnNewButton.setBounds(272, 315, 138, 32);
 		contentPane.add(btnNewButton);
 		
 		txtContra = new JPasswordField();
@@ -228,7 +230,8 @@ public class TerceraVista extends JFrame {
 		txtConfir.setBounds(219, 259, 250, 20);
 		contentPane.add(txtConfir);
 		
-		MostrarContraseña = new JCheckBox("Mostar Contra...");
+		MostrarContraseña = new JCheckBox("Mostar Contraseña");
+		MostrarContraseña.setIcon(new ImageIcon(TerceraVista.class.getResource("/Vistas/img/candado.png")));
 		MostrarContraseña.setForeground(new Color(255, 255, 255));
 		MostrarContraseña.setBackground(new Color(0, 0, 0));
 		MostrarContraseña.addActionListener(new ActionListener() {
@@ -246,7 +249,7 @@ public class TerceraVista extends JFrame {
 	                }
 			}
 		});
-		MostrarContraseña.setBounds(299, 286, 111, 14);
+		MostrarContraseña.setBounds(272, 286, 158, 14);
 		contentPane.add(MostrarContraseña);
 	}
 	public void registrar() {

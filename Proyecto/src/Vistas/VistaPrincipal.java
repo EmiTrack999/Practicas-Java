@@ -72,8 +72,8 @@ public class VistaPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         setLocationByPlatform(true);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(VistaPrincipal.class.getResource("/Vistas/Logo de la empresa.jpeg")));
-        setBounds(100, 100, 631, 494);
+        setIconImage(Toolkit.getDefaultToolkit().getImage(VistaPrincipal.class.getResource("/Vistas/WhatsApp Image 2024-11-15 at 1.07.08 AM.jpeg")));
+        setBounds(100, 100, 832, 486);
         
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -135,13 +135,14 @@ public class VistaPrincipal extends JFrame {
         
         dkpane = new JDesktopPane();
         dkpane.setBackground(new Color(0, 0, 0));
-        dkpane.setBounds(0, 0, 624, 433);
+        dkpane.setBounds(0, 0, 879, 433);
         contentPane.add(dkpane);
         
         JButton btRegis = new JButton("Registrar");
+        btRegis.setIcon(new ImageIcon(VistaPrincipal.class.getResource("/Vistas/img/registro-en-linea.png")));
         btRegis.setForeground(new Color(255, 255, 255));
         btRegis.setBackground(new Color(255, 0, 0));
-        btRegis.setBounds(265, 370, 89, 14);
+        btRegis.setBounds(340, 357, 139, 31);
         btRegis.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 VistaPrincipal vist = new VistaPrincipal();
@@ -163,30 +164,31 @@ public class VistaPrincipal extends JFrame {
     				}
         	}
         });
-        txtCorreo.setBounds(208, 96, 203, 31);
+        txtCorreo.setBounds(306, 99, 203, 31);
         dkpane.add(txtCorreo);
         txtCorreo.setColumns(10);
         
         JLabel lblNewLabel = new JLabel("CORREO/TELEFONO");
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setBackground(new Color(255, 255, 255));
-        lblNewLabel.setBounds(168, 57, 321, 31);
+        lblNewLabel.setBounds(270, 57, 321, 31);
         lblNewLabel.setFont(new Font("Wide Latin", Font.PLAIN, 14));
         dkpane.add(lblNewLabel);
         
         lbContraseña = new JLabel("CONTRASEÑA");
         lbContraseña.setForeground(new Color(255, 255, 255));
-        lbContraseña.setBounds(208, 126, 224, 26);
+        lbContraseña.setBounds(306, 141, 224, 26);
         lbContraseña.setFont(new Font("Wide Latin", Font.PLAIN, 14));
         dkpane.add(lbContraseña);
         
         JLabel lblNewLabel_1 = new JLabel("Confirmar contraseña");
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
-        lblNewLabel_1.setBounds(256, 204, 98, 20);
+        lblNewLabel_1.setBounds(351, 204, 98, 20);
         lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 11));
         dkpane.add(lblNewLabel_1);
         
         JButton btIniciar = new JButton("INICIAR");
+        btIniciar.setIcon(new ImageIcon(VistaPrincipal.class.getResource("/Vistas/img/pagina-de-inicio.png")));
         btIniciar.setForeground(new Color(255, 255, 255));
         btIniciar.setBackground(new Color(255, 0, 0));
         btIniciar.addActionListener(new ActionListener() {
@@ -211,7 +213,7 @@ public class VistaPrincipal extends JFrame {
                 }
             }
         });
-        btIniciar.setBounds(265, 322, 89, 14);
+        btIniciar.setBounds(340, 307, 139, 31);
         dkpane.add(btIniciar);
         
         txtContra = new JPasswordField(30);
@@ -224,7 +226,7 @@ public class VistaPrincipal extends JFrame {
 				}
         	}
         });
-        txtContra.setBounds(208, 163, 203, 20);
+        txtContra.setBounds(306, 173, 203, 20);
         dkpane.add(txtContra);
         
         txtConfir = new JPasswordField(30);
@@ -237,10 +239,11 @@ public class VistaPrincipal extends JFrame {
 				}
         	}
         });
-        txtConfir.setBounds(208, 235, 203, 20);
+        txtConfir.setBounds(306, 235, 203, 20);
         dkpane.add(txtConfir);
         
-        JCheckBox mostrarcontra = new JCheckBox("Mostrar Contra...");
+        JCheckBox mostrarcontra = new JCheckBox("Mostrar Contraseña");
+        mostrarcontra.setIcon(new ImageIcon(VistaPrincipal.class.getResource("/Vistas/img/candado.png")));
         mostrarcontra.setForeground(new Color(255, 255, 255));
         mostrarcontra.setBackground(new Color(0, 0, 0));
         mostrarcontra.addActionListener(new ActionListener() {
@@ -256,8 +259,13 @@ public class VistaPrincipal extends JFrame {
                 }
             }
         });
-        mostrarcontra.setBounds(251, 262, 111, 23);
+        mostrarcontra.setBounds(351, 262, 170, 23);
         dkpane.add(mostrarcontra);
+        
+        JLabel lblNewLabel_2 = new JLabel("");
+        lblNewLabel_2.setIcon(new ImageIcon(VistaPrincipal.class.getResource("/Vistas/img/WhatsApp Image 2024-11-18 at 8.30.38 PM.jpeg")));
+        lblNewLabel_2.setBounds(0, 0, 321, 240);
+        dkpane.add(lblNewLabel_2);
       
   
     

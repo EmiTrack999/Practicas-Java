@@ -111,6 +111,7 @@ public class VistaUno extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Comenzar");
+		btnNewButton.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/img/cohete.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Inicio in=new Inicio();
@@ -122,12 +123,12 @@ public class VistaUno extends JFrame {
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-		btnNewButton.setBounds(331, 199, 105, 23);
+		btnNewButton.setBounds(310, 194, 138, 33);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/WhatsApp Image 2024-11-18 at 8.30.38 PM.jpeg")));
-		lblNewLabel_3.setBounds(205, 240, 359, 252);
+		lblNewLabel_3.setBounds(215, 240, 359, 252);
 		contentPane.add(lblNewLabel_3);
 	}
 }

@@ -155,6 +155,7 @@ public class SegundaVista extends JFrame {
         desktopPane.add(lblNewLabel_2);
 
         JButton btnNewButton = new JButton("Registrarme");
+        btnNewButton.setIcon(new ImageIcon(SegundaVista.class.getResource("/Vistas/img/registro-en-linea.png")));
         btnNewButton.setForeground(new Color(255, 255, 255));
         btnNewButton.setBackground(new Color(255, 0, 0));
         btnNewButton.setSelectedIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\goku.jpg"));
@@ -181,7 +182,7 @@ public class SegundaVista extends JFrame {
                 }
             }
         });
-        btnNewButton.setBounds(308, 332, 108, 14);
+        btnNewButton.setBounds(285, 307, 137, 31);
         desktopPane.add(btnNewButton);
 
         JLabel lblNewLabel_3 = new JLabel("Registro");
@@ -216,7 +217,8 @@ public class SegundaVista extends JFrame {
         txtConfir.setBounds(242, 251, 241, 20);
         desktopPane.add(txtConfir);
         
-        JCheckBox mostrarcontra = new JCheckBox("Mostrar Contra...");
+        JCheckBox mostrarcontra = new JCheckBox("Mostrar Contraseña");
+        mostrarcontra.setIcon(new ImageIcon(SegundaVista.class.getResource("/Vistas/img/candado.png")));
         mostrarcontra.setForeground(new Color(255, 255, 255));
         mostrarcontra.setBackground(new Color(0, 0, 0));
         mostrarcontra.addActionListener(new ActionListener() {
@@ -232,7 +234,7 @@ public class SegundaVista extends JFrame {
                   }
         	}
         });
-        mostrarcontra.setBounds(308, 278, 101, 14);
+        mostrarcontra.setBounds(278, 278, 186, 14);
         desktopPane.add(mostrarcontra);
     }
 

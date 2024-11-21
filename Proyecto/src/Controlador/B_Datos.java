@@ -104,30 +104,32 @@ public class B_Datos {
     }
     //pedido
    
-    public boolean guardarPedido(String nombre, int codigo, String tCarga,String pedido, boolean ca_emp) {
-		boolean guardado=false;
-		 String sql = "INSERT INTO pedido VALUES (?, ?, ?, ?, ?)";
-		try {
-			ps=cn.prepareStatement(sql);
-			ps.setString(1, nombre);
-			ps.setInt(2, codigo);
-			ps.setString(3,tCarga);
-			ps.setString(4, pedido);
-			ps.setBoolean(5, ca_emp);
-			int filas=ps.executeUpdate();
-			if(filas>0) {
-				guardado=true;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
-		}
-		return guardado;
-    	
+    public boolean guardarPedido(String nombre, int codigo, String tCarga, String pedido, boolean ca_emp,String direccion, String destino) {
+        boolean guardado = false;
+        String sql = "INSERT INTO pedi VALUES (?, ?, ?, ?, ?,?,?)";
+        
+        try (Connection cn = conexion(); PreparedStatement ps = cn.prepareStatement(sql)) {
+            if (cn == null) {
+                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+                return false;
+            }
+            ps.setString(1, nombre);
+            ps.setInt(2, codigo);
+            ps.setString(3, tCarga);
+            ps.setString(4, pedido);
+            ps.setBoolean(5, ca_emp);
+            ps.setString(6, direccion);
+            ps.setString(7, destino);
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                guardado = true;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla pedido: " + e.getMessage());
+        }
+        return guardado;
     }
      //Viaje
-    
     public boolean viaje(String nombre, String personas, Boolean equipamiento, boolean ninos, String fecha, String numero) {
         boolean guardado = false;
         String sql = "INSERT INTO viaje VALUES (?, ?, ?, ?, ?, ?)"; 
