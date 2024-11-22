@@ -184,17 +184,23 @@ public class Coti_Viaje extends JFrame {
 		btnNewButton.setIcon(new ImageIcon(Coti_Viaje.class.getResource("/Vistas/img/grafico-de-cotizaciones.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String ciudad1 = txttra1.getText().trim(); 
-                String ciudad2 = txttra2.getText().trim(); 
-                if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }else {
-                GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
-                Final_Pedido fp=new Final_Pedido();
-                dispose();
-                fp.setVisible(true);
-                }}
+				String ciudad1 = txttra1.getText().trim();
+        		String ciudad2 = txttra2.getText().trim();
+        		boolean aplicarIncremento = uno.isSelected();
+
+        		if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
+        		    JOptionPane.showMessageDialog(null, "Por favor ingresa ubicaciones", "Error", JOptionPane.ERROR_MESSAGE);
+        		    return;
+        		} else {
+        		    // Llamar al método para calcular distancia y mostrar información
+        		    GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2, aplicarIncremento);
+
+        		    // Mostrar la siguiente ventana
+        		    Final_Pedido fp = new Final_Pedido();
+        		    dispose();
+        		    fp.setVisible(true);
+        		}
+        	}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setBounds(330, 341, 139, 36);

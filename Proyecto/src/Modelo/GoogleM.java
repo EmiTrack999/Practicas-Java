@@ -95,7 +95,7 @@ public class GoogleM {
         // ... (los datos permanecen igual)
     }
 
-    public static void calcularDistanciaYMostrar(String ciudad1, String ciudad2) {
+    public static void calcularDistanciaYMostrar(String ciudad1, String ciudad2, boolean aplicarIncremento) {
         try {
             double[] coords1 = ubicaciones.get(ciudad1.trim());
             double[] coords2 = ubicaciones.get(ciudad2.trim());
@@ -112,6 +112,12 @@ public class GoogleM {
 
             double distance = haversine(coords1[0], coords1[1], coords2[0], coords2[1]);
             double costMXN = distance * 5;
+
+            // Verificar si se debe aplicar un incremento del 10%
+            if (aplicarIncremento) {
+                costMXN *= 1.10; // Aumentar el 10%
+            }
+
             double conversionRate = 18.0;
             double costUSD = costMXN / conversionRate;
 
@@ -135,6 +141,7 @@ public class GoogleM {
             ex.printStackTrace();
         }
     }
+
 
     private static double haversine(double lat1, double lon1, double lat2, double lon2) {
         final int R = 6371; // Radio de la Tierra en km

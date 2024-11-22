@@ -26,6 +26,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -41,10 +42,12 @@ public class Pedir_Pedido extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtCodigo;
 	private JTextField txtPedido;
-	JComboBox cbTipo;
+	private JComboBox cbTipo;
 	JRadioButton rdCasa, rdEmp ;
 	private JTextField txttra1;
 	private JTextField txttra2;
+	private JRadioButton dos;
+	private JRadioButton uno;
 	/**
 	 * Launch the application.
 	 */
@@ -151,13 +154,13 @@ public class Pedir_Pedido extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Cual sera tu pedido   :");
 		lblNewLabel_4.setForeground(Color.WHITE);
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_4.setBounds(107, 213, 158, 32);
+		lblNewLabel_4.setBounds(113, 200, 158, 32);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Es casa o Empresa  :");
 		lblNewLabel_5.setForeground(Color.WHITE);
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_5.setBounds(113, 268, 152, 23);
+		lblNewLabel_5.setBounds(119, 242, 152, 23);
 		contentPane.add(lblNewLabel_5);
 		
 		txtNombre = new JTextField();
@@ -186,12 +189,12 @@ public class Pedir_Pedido extends JFrame {
 		
 		rdCasa = new JRadioButton("Casa");
 		rdCasa.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		rdCasa.setBounds(339, 268, 109, 23);
+		rdCasa.setBounds(339, 246, 109, 23);
 		contentPane.add(rdCasa);
 		
 		 rdEmp = new JRadioButton("Empresa");
 		rdEmp.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		rdEmp.setBounds(489, 268, 109, 23);
+		rdEmp.setBounds(484, 246, 109, 23);
 		contentPane.add(rdEmp);
 		
 		JButton btnNewButton =  new JButton("Iniciar");
@@ -201,18 +204,23 @@ public class Pedir_Pedido extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				camposVacios();
 				
-				String ciudad1 = txttra1.getText().trim(); 
-                String ciudad2 = txttra2.getText().trim();
-                if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Por favor ingresa ambas ciudades.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }else {
-                	guardarPedido();
-                GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
-                Final_Pedido fp=new Final_Pedido();
-                dispose();
-                fp.setVisible(true);
-                }}
+				String ciudad1 = txttra1.getText().trim();
+        		String ciudad2 = txttra2.getText().trim();
+        		boolean aplicarIncremento = uno.isSelected();
+
+        		if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
+        		    JOptionPane.showMessageDialog(null, "Por favor ingresa ubicaciones", "Error", JOptionPane.ERROR_MESSAGE);
+        		    return;
+        		} else {
+        		    // Llamar al método para calcular distancia y mostrar información
+        		    GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2, aplicarIncremento);
+
+        		    // Mostrar la siguiente ventana
+        		    Final_Pedido fp = new Final_Pedido();
+        		    dispose();
+        		    fp.setVisible(true);
+        		}
+        	}
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		btnNewButton.setBounds(352, 407, 109, 32);
@@ -233,24 +241,41 @@ public class Pedir_Pedido extends JFrame {
 		JLabel lblNewLabel_1_1 = new JLabel("Direccion Inicial   :");
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_1.setBounds(113, 314, 160, 14);
+		lblNewLabel_1_1.setBounds(113, 275, 160, 14);
 		contentPane.add(lblNewLabel_1_1);
 		
 		txttra1 = new JTextField();
 		txttra1.setColumns(10);
-		txttra1.setBounds(343, 311, 302, 20);
+		txttra1.setBounds(343, 275, 302, 20);
 		contentPane.add(txttra1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Destino   :");
 		lblNewLabel_2_1.setForeground(Color.WHITE);
 		lblNewLabel_2_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_2_1.setBounds(162, 355, 109, 14);
+		lblNewLabel_2_1.setBounds(150, 314, 109, 14);
 		contentPane.add(lblNewLabel_2_1);
 		
 		txttra2 = new JTextField();
 		txttra2.setColumns(10);
-		txttra2.setBounds(343, 353, 302, 20);
+		txttra2.setBounds(343, 313, 302, 20);
 		contentPane.add(txttra2);
+		
+		JLabel lblNewLabel_3_1 = new JLabel("Deseas aportar  para el programa ecofrend del 10% de tu costo    :");
+		lblNewLabel_3_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+		lblNewLabel_3_1.setBounds(10, 356, 477, 14);
+		contentPane.add(lblNewLabel_3_1);
+		
+		uno = new JRadioButton("SI");
+		uno.setBounds(515, 353, 48, 23);
+		contentPane.add(uno);
+		
+		dos = new JRadioButton("NO");
+		dos.setBounds(585, 353, 48, 23);
+		contentPane.add(dos);
+		ButtonGroup group = new ButtonGroup();
+        group.add(uno);
+        group.add(dos);
 	}
 	
 	public void camposVacios() {

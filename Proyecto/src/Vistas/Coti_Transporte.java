@@ -35,6 +35,9 @@ public class Coti_Transporte extends JFrame {
     private JPanel contentPane;
     private JTextField txttra1;
     private JTextField txttra2;
+    private ButtonGroup aportar;
+    private JRadioButton dos ;
+    private JRadioButton uno ;
 
     /**
      * Launch the application.
@@ -153,17 +156,22 @@ public class Coti_Transporte extends JFrame {
         botonc.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/bolsa-de-valores.png")));
         botonc.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		String ciudad1 = txttra1.getText().trim();  
-                String ciudad2 = txttra2.getText().trim();
-                if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Por favor ingresa ubicacaiones", "Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }else {
-                GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2); 
-                Final_Pedido fp=new Final_Pedido();
-                dispose();
-                fp.setVisible(true);
-                } 
+        		String ciudad1 = txttra1.getText().trim();
+        		String ciudad2 = txttra2.getText().trim();
+        		boolean aplicarIncremento = uno.isSelected();
+
+        		if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
+        		    JOptionPane.showMessageDialog(null, "Por favor ingresa ubicaciones", "Error", JOptionPane.ERROR_MESSAGE);
+        		    return;
+        		} else {
+        		    // Llamar al método para calcular distancia y mostrar información
+        		    GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2, aplicarIncremento);
+
+        		    // Mostrar la siguiente ventana
+        		    Final_Pedido fp = new Final_Pedido();
+        		    dispose();
+        		    fp.setVisible(true);
+        		}
         	}
         });
         botonc.setBackground(new Color(255, 0, 0));
@@ -199,22 +207,23 @@ public class Coti_Transporte extends JFrame {
         txttra2.setBounds(424, 206, 295, 19);
         contentPane.add(txttra2);
         
-        JRadioButton uno = new JRadioButton("SI");
+        uno = new JRadioButton("SI");
         uno.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
         uno.setBounds(545, 397, 48, 23);
         contentPane.add(uno);
         
-        JRadioButton dos = new JRadioButton("NO");
+        dos = new JRadioButton("NO");
         dos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
         dos.setBounds(614, 397, 48, 23);
         contentPane.add(dos);
         
         
         ButtonGroup privado_public = new ButtonGroup();
-        ButtonGroup aportar = new ButtonGroup();
+        aportar = new ButtonGroup();
         privado_public.add(rbPubli);
         privado_public.add(rbPriv);
         aportar.add(uno);
         aportar.add(dos);
     }
+    
 }
