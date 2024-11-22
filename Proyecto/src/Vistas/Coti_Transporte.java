@@ -169,7 +169,7 @@ public class Coti_Transporte extends JFrame {
         botonc.setBackground(new Color(255, 0, 0));
         botonc.setForeground(new Color(255, 255, 255));
         botonc.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        botonc.setBounds(340, 448, 153, 38);
+        botonc.setBounds(320, 448, 189, 38);
         contentPane.add(botonc);
 
       

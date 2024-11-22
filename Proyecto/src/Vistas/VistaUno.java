@@ -111,7 +111,7 @@ public class VistaUno extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		JButton btnNewButton = new JButton("Comenzar");
-		btnNewButton.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/img/cohete.png")));
+		btnNewButton.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/img/rapido.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Inicio in=new Inicio();
@@ -121,7 +121,7 @@ public class VistaUno extends JFrame {
 			}
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(new Color(255, 0, 0));
+		btnNewButton.setBackground(new Color(60, 183, 180));
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		btnNewButton.setBounds(310, 194, 138, 33);
 		contentPane.add(btnNewButton);
