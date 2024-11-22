@@ -132,7 +132,7 @@ public class B_Datos {
      //Viaje
     public boolean viaje(String nombre, String personas, Boolean equipamiento, boolean ninos, String fecha, String numero) {
         boolean guardado = false;
-        String sql = "INSERT INTO viaje VALUES (?, ?, ?, ?, ?, ?)"; 
+        String sql = "INSERT INTO via VALUES (?, ?, ?, ?, ?, ?)"; 
         try (Connection cn = conexion(); PreparedStatement ps = cn.prepareStatement(sql)) {
             if (cn == null) {
                 JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");

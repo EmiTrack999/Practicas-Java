@@ -29,9 +29,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import com.toedter.calendar.JDateChooser;
 
 public class Viaje extends JFrame {
 
@@ -42,10 +44,10 @@ public class Viaje extends JFrame {
 	private JMenu mnNewMenu;
 	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
-	private JTextField txtFecha;
 	private JTextField txtNumero;
 	JComboBox cbPersonas;
 	JRadioButton rbEquipamiento,rbNiños;
+	JDateChooser dateFecha;
 	/**
 	 * Launch the application.
 	 */
@@ -176,11 +178,6 @@ public class Viaje extends JFrame {
 		lblNewLabel_4.setBounds(118, 289, 142, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		txtFecha = new JTextField();
-		txtFecha.setBounds(293, 286, 290, 20);
-		contentPane.add(txtFecha);
-		txtFecha.setColumns(10);
-		
 		JLabel lblNewLabel_5 = new JLabel("Numero al cual Comunicarse     :");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel_5.setForeground(new Color(255, 255, 255));
@@ -199,7 +196,7 @@ public class Viaje extends JFrame {
 				
 				 if (txtNombre.getText().trim().isEmpty() || 
 				            cbPersonas.getSelectedIndex() == 0 ||
-				            txtFecha.getText().trim().isEmpty() || 
+				            dateFecha.before(new Date())|| 
 				            txtNumero.getText().trim().isEmpty()) {
 				            
 				            JOptionPane.showMessageDialog(
@@ -224,6 +221,10 @@ public class Viaje extends JFrame {
 		ButtonGroup grupodos = new ButtonGroup();
 		grupodos.add(rbNiños);
 		grupodos.add(rbNoNiños);
+		
+		dateFecha = new JDateChooser();
+		dateFecha.setBounds(287, 283, 164, 20);
+		contentPane.add(dateFecha);
 	
 	}
 	
@@ -235,7 +236,7 @@ public class Viaje extends JFrame {
 	    String personas = cbPersonas.getSelectedItem().toString();
 	    boolean equip = rbEquipamiento.isSelected();
 	    boolean niños = rbNiños.isSelected();
-	    String fecha = txtFecha.getText().trim();
+	    Date fecha=dateFecha.getDate();
 	    String numero = txtNumero.getText().trim();
 
 	    // Validar si los campos no están vacíos
@@ -243,8 +244,8 @@ public class Viaje extends JFrame {
 	        JOptionPane.showMessageDialog(null, "El nombre es obligatorio.");
 	        return;
 	    }
-	    if (fecha.isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "La fecha es obligatoria.");
+	    if (fecha.before(new Date())) {
+	        JOptionPane.showMessageDialog(null, "La fecha ya paso");
 	        return;
 	    }
 	    if (numero.isEmpty()) {
@@ -267,5 +268,4 @@ public class Viaje extends JFrame {
 	        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
 	    }
 	}
-
 } 
