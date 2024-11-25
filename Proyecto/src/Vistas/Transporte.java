@@ -34,6 +34,7 @@ public class Transporte extends JFrame {
     }
 
     public Transporte() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(Transporte.class.getResource("/Vistas/img/cargofleets2.png")));
     	setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 834, 500);

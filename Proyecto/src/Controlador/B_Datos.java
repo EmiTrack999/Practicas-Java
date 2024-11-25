@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -130,46 +131,35 @@ public class B_Datos {
         return guardado;
     }
      //Viaje
-    public boolean viaje(String nombre, String personas, Boolean equipamiento, boolean ninos, String fecha, String numero) {
+    public boolean viaje(String nombre, String personas, Boolean equipamiento, boolean ninos, Date fecha, String numero) {
         boolean guardado = false;
         String sql = "INSERT INTO via VALUES (?, ?, ?, ?, ?, ?)"; 
+
         try (Connection cn = conexion(); PreparedStatement ps = cn.prepareStatement(sql)) {
             if (cn == null) {
                 JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
                 return false;
             }
-            java.sql.Date sqlDate = null;
-            try {
-                if (fecha != null && !fecha.isEmpty()) {
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    java.util.Date utilDate = sdf.parse(fecha); // Convierte de String a Date
-                    sqlDate = new java.sql.Date(utilDate.getTime()); // Convierte a java.sql.Date
-                }
-            } catch (ParseException e) {
-                JOptionPane.showMessageDialog(null, "Error al formatear la fecha: " + e.getMessage());
-                e.printStackTrace();
+            if (fecha == null) {
+                JOptionPane.showMessageDialog(null, "La fecha es obligatoria.");
                 return false;
             }
-            // Asignar los valores al PreparedStatement
-            ps.setString(1, nombre);  // Nombre del solicitante
-            ps.setString(2, personas); // Personas
-            ps.setBoolean(3, equipamiento); // Equipamiento
-            ps.setBoolean(4, ninos);  // Niños
-            ps.setDate(5, sqlDate);  // Fecha convertida a java.sql.Date
-            ps.setString(6, numero);  // Número
-            // Ejecutar la inserción
+            java.sql.Date sqlDate = new java.sql.Date(fecha.getTime()); 
+            ps.setString(1, nombre);  
+            ps.setString(2, personas); 
+            ps.setBoolean(3, equipamiento); 
+            ps.setBoolean(4, ninos); 
+            ps.setDate(5, sqlDate); 
+            ps.setString(6, numero);  
             int filas = ps.executeUpdate();
             if (filas > 0) {
                 guardado = true;
             }
         } catch (SQLException e) {
-            // Mostrar el mensaje de error con detalles específicos
             JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla viaje: " + e.getMessage());
             e.printStackTrace();
         }
         return guardado;
-    }
-
-    
+    }  
 }
 

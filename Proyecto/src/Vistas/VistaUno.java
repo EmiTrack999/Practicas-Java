@@ -25,6 +25,7 @@ public class VistaUno extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	JLabel lblUsuario;
 
 	/**
 	 * Launch the application.
@@ -130,5 +131,10 @@ public class VistaUno extends JFrame {
 		lblNewLabel_3.setIcon(new ImageIcon(VistaUno.class.getResource("/Vistas/WhatsApp Image 2024-11-18 at 8.30.38 PM.jpeg")));
 		lblNewLabel_3.setBounds(215, 240, 359, 252);
 		contentPane.add(lblNewLabel_3);
+		
+		lblUsuario = new JLabel("");
+		lblUsuario.setForeground(new Color(255, 255, 255));
+		lblUsuario.setBounds(658, 21, 137, 14);
+		contentPane.add(lblUsuario);
 	}
 }

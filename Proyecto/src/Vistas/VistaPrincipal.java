@@ -279,6 +279,7 @@ public class VistaPrincipal extends JFrame {
         boolean exito = bd.iniciarSesion(correo, contraseña);
         if (exito) {
             JOptionPane.showMessageDialog(this, "Bienevenido  :  " + correo);
+            vu.lblUsuario.setText(correo);
             vu.setVisible(true);
             dispose();
         } else {

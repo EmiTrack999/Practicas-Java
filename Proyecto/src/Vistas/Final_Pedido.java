@@ -59,14 +59,6 @@ public class Final_Pedido extends JFrame {
 		JMenu mnNewMenu = new JMenu("Opciones");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Cancelar Viaje");
-		mntmNewMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		mnNewMenu.add(mntmNewMenuItem);
-		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Ayuda");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
