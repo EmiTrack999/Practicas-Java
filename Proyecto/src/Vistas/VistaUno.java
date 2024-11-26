@@ -51,7 +51,7 @@ public class VistaUno extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VistaUno.class.getResource("/Vistas/Logo de la empresa.jpeg")));
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 821, 564);
+		setBounds(100, 100, 814, 564);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -133,8 +133,9 @@ public class VistaUno extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		lblUsuario = new JLabel("");
+		lblUsuario.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		lblUsuario.setForeground(new Color(255, 255, 255));
-		lblUsuario.setBounds(658, 21, 137, 14);
+		lblUsuario.setBounds(10, 76, 780, 14);
 		contentPane.add(lblUsuario);
 	}
 }

@@ -43,6 +43,7 @@ public class Viaje extends JFrame {
 	JComboBox cbPersonas;
 	JRadioButton rbEquipamiento, rbNiños,rbEquipamiento2, rbNoNiños ;
 	JDateChooser dateFecha;
+	private JLabel lblNewLabel_6;
 
 	/**
 	 * Launch the application.
@@ -216,6 +217,11 @@ public class Viaje extends JFrame {
 		dateFecha = new JDateChooser();
 		dateFecha.setBounds(287, 283, 164, 20);
 		contentPane.add(dateFecha);
+		
+		lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setForeground(Color.WHITE);
+		lblNewLabel_6.setBounds(10, 0, 269, 29);
+		contentPane.add(lblNewLabel_6);
 	}
 
 	public void guardarViaje() {

@@ -135,7 +135,7 @@ public class VistaPrincipal extends JFrame {
         
         dkpane = new JDesktopPane();
         dkpane.setBackground(new Color(0, 0, 0));
-        dkpane.setBounds(0, 0, 879, 433);
+        dkpane.setBounds(0, 0, 818, 433);
         contentPane.add(dkpane);
         
         JButton btRegis = new JButton("Registrar");

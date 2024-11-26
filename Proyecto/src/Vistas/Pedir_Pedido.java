@@ -44,8 +44,6 @@ public class Pedir_Pedido extends JFrame {
 	private JTextField txtPedido;
 	private JComboBox cbTipo;
 	JRadioButton rdCasa, rdEmp ;
-	private JTextField txttra1;
-	private JTextField txttra2;
 	private JRadioButton dos;
 	private JRadioButton uno;
 	/**
@@ -237,28 +235,6 @@ public class Pedir_Pedido extends JFrame {
 		cbTipo.setModel(new DefaultComboBoxModel(new String[] {"TIPO", "Pesada", "Ligera"}));
 		cbTipo.setBounds(339, 168, 134, 22);
 		contentPane.add(cbTipo);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("Direccion Inicial   :");
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_1.setBounds(113, 275, 160, 14);
-		contentPane.add(lblNewLabel_1_1);
-		
-		txttra1 = new JTextField();
-		txttra1.setColumns(10);
-		txttra1.setBounds(343, 275, 302, 20);
-		contentPane.add(txttra1);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Destino   :");
-		lblNewLabel_2_1.setForeground(Color.WHITE);
-		lblNewLabel_2_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_2_1.setBounds(150, 314, 109, 14);
-		contentPane.add(lblNewLabel_2_1);
-		
-		txttra2 = new JTextField();
-		txttra2.setColumns(10);
-		txttra2.setBounds(343, 313, 302, 20);
-		contentPane.add(txttra2);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Deseas aportar  para el programa ecofrend del 10% de tu costo    :");
 		lblNewLabel_3_1.setForeground(Color.WHITE);

@@ -164,5 +164,10 @@ public class Inicio extends JFrame {
 		lblNewLabel_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/cargofleets2.png")));
 		lblNewLabel_1.setBounds(10, 32, 250, 158);
 		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setBounds(510, 0, 269, 29);
+		contentPane.add(lblNewLabel_2);
 	}
 }

@@ -38,6 +38,10 @@ public class Coti_Transporte extends JFrame {
     private ButtonGroup aportar;
     private JRadioButton dos ;
     private JRadioButton uno ;
+    private JTextField textField;
+    private JTextField textField_1;
+    private JTextField textField_2;
+    private JTextField textField_3;
 
     /**
      * Launch the application.
@@ -63,7 +67,7 @@ public class Coti_Transporte extends JFrame {
     	setIconImage(Toolkit.getDefaultToolkit().getImage(Coti_Transporte.class.getResource("/Vistas/Logo de la empresa.jpeg")));
     	setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 878, 587);
+        setBounds(100, 100, 839, 779);
         
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -129,7 +133,7 @@ public class Coti_Transporte extends JFrame {
         lblNewLabel.setBounds(277, 10, 322, 53);
         contentPane.add(lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("Lugar A donde LLegara el Transporte");
+        JLabel lblNewLabel_1 = new JLabel("Nombre de La Calle");
         lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
         lblNewLabel_1.setForeground(Color.WHITE);
         lblNewLabel_1.setBounds(57, 103, 301, 31);
@@ -138,17 +142,17 @@ public class Coti_Transporte extends JFrame {
         JLabel lblNewLabel_1_1_2 = new JLabel("¿Deseas Aportar Para el Programa EcoFrend del 10% de Tu costo?");
         lblNewLabel_1_1_2.setForeground(Color.WHITE);
         lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_1_1_2.setBounds(10, 397, 499, 31);
+        lblNewLabel_1_1_2.setBounds(10, 518, 562, 31);
         contentPane.add(lblNewLabel_1_1_2);
 
         JLabel lblNewLabel_1_1_3 = new JLabel("EL viaje Sera Privado o Publico");
         lblNewLabel_1_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_1_3.setFont(new Font("Tahoma", Font.BOLD, 15));
-        lblNewLabel_1_1_3.setBounds(57, 317, 269, 31);
+        lblNewLabel_1_1_3.setBounds(44, 446, 269, 31);
         contentPane.add(lblNewLabel_1_1_3);
 
         txttra1 = new JTextField();
-        txttra1.setBounds(424, 111, 295, 19);
+        txttra1.setBounds(403, 111, 295, 19);
         contentPane.add(txttra1);
         txttra1.setColumns(10);
 
@@ -177,18 +181,18 @@ public class Coti_Transporte extends JFrame {
         botonc.setBackground(new Color(255, 0, 0));
         botonc.setForeground(new Color(255, 255, 255));
         botonc.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        botonc.setBounds(320, 448, 189, 38);
+        botonc.setBounds(296, 604, 189, 38);
         contentPane.add(botonc);
 
       
         JRadioButton rbPriv = new JRadioButton("Privado");
         rbPriv.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        rbPriv.setBounds(424, 323, 103, 21);
+        rbPriv.setBounds(403, 452, 103, 21);
         contentPane.add(rbPriv);
 
         JRadioButton rbPubli = new JRadioButton("Publico");
         rbPubli.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        rbPubli.setBounds(559, 323, 103, 21);
+        rbPubli.setBounds(595, 452, 103, 21);
         contentPane.add(rbPubli);
 
        
@@ -196,7 +200,7 @@ public class Coti_Transporte extends JFrame {
         group.add(rbPriv);
         group.add(rbPubli);
         
-        JLabel lblNewLabel_1_1 = new JLabel("Lugar de donde saldra  el Transporte");
+        JLabel lblNewLabel_1_1 = new JLabel("NO.Exterior");
         lblNewLabel_1_1.setForeground(Color.WHITE);
         lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
         lblNewLabel_1_1.setBounds(57, 199, 301, 31);
@@ -204,17 +208,17 @@ public class Coti_Transporte extends JFrame {
         
         txttra2 = new JTextField();
         txttra2.setColumns(10);
-        txttra2.setBounds(424, 206, 295, 19);
+        txttra2.setBounds(403, 158, 295, 19);
         contentPane.add(txttra2);
         
         uno = new JRadioButton("SI");
         uno.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        uno.setBounds(545, 397, 48, 23);
+        uno.setBounds(578, 523, 48, 23);
         contentPane.add(uno);
         
         dos = new JRadioButton("NO");
         dos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        dos.setBounds(614, 397, 48, 23);
+        dos.setBounds(650, 523, 48, 23);
         contentPane.add(dos);
         
         
@@ -224,6 +228,54 @@ public class Coti_Transporte extends JFrame {
         privado_public.add(rbPriv);
         aportar.add(uno);
         aportar.add(dos);
+        
+        JLabel lblNewLabel_1_1_1 = new JLabel("Nombre del Barrio,Sector o Cuidad");
+        lblNewLabel_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_1_1_1.setBounds(57, 252, 301, 31);
+        contentPane.add(lblNewLabel_1_1_1);
+        
+        JLabel lblNewLabel_1_2 = new JLabel("NO.Interior ");
+        lblNewLabel_1_2.setForeground(Color.WHITE);
+        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_1_2.setBounds(57, 158, 301, 31);
+        contentPane.add(lblNewLabel_1_2);
+        
+        textField = new JTextField();
+        textField.setColumns(10);
+        textField.setBounds(403, 207, 295, 19);
+        contentPane.add(textField);
+        
+        textField_1 = new JTextField();
+        textField_1.setColumns(10);
+        textField_1.setBounds(403, 260, 295, 19);
+        contentPane.add(textField_1);
+        
+        JLabel lblNewLabel_1_1_1_1 = new JLabel("Codigo Postal");
+        lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_1_1_1_1.setBounds(57, 306, 301, 31);
+        contentPane.add(lblNewLabel_1_1_1_1);
+        
+        textField_2 = new JTextField();
+        textField_2.setColumns(10);
+        textField_2.setBounds(403, 314, 295, 19);
+        contentPane.add(textField_2);
+        
+        JLabel lblNewLabel_2 = new JLabel("");
+        lblNewLabel_2.setForeground(new Color(255, 255, 255));
+        lblNewLabel_2.setBounds(10, 0, 269, 29);
+        contentPane.add(lblNewLabel_2);
+        
+        JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
+        lblNewLabel_1_1_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+        lblNewLabel_1_1_1_1_1.setBounds(57, 373, 301, 31);
+        contentPane.add(lblNewLabel_1_1_1_1_1);
+        
+        textField_3 = new JTextField();
+        textField_3.setColumns(10);
+        textField_3.setBounds(403, 385, 295, 19);
+        contentPane.add(textField_3);
     }
-    
 }

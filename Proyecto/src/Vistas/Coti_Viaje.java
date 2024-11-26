@@ -33,8 +33,18 @@ public class Coti_Viaje extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField txttra1;
-	private JTextField txttra2;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField textField_10;
+	private JTextField textField_11;
 
 	/**
 	 * Launch the application.
@@ -60,7 +70,7 @@ public class Coti_Viaje extends JFrame {
 		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 833, 497);
+		setBounds(100, 100, 1389, 781);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -141,72 +151,183 @@ public class Coti_Viaje extends JFrame {
 		JLabel lblNewLabel = new JLabel("Coticemos tu Viaje");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
-		lblNewLabel.setBounds(291, 34, 248, 54);
+		lblNewLabel.setBounds(577, 10, 248, 54);
 		contentPane.add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Direccion Inicial   :");
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
-		lblNewLabel_1.setBounds(223, 126, 97, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("Destino   :");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
-		lblNewLabel_2.setBounds(253, 191, 59, 14);
-		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Deseas aportar  para el programa ecofrend del 10% de tu costo    :");
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
-		lblNewLabel_3.setBounds(10, 256, 325, 14);
+		lblNewLabel_3.setBounds(280, 484, 325, 14);
 		contentPane.add(lblNewLabel_3);
 		
-		txttra1 = new JTextField();
-		txttra1.setBounds(352, 123, 255, 20);
-		contentPane.add(txttra1);
-		txttra1.setColumns(10);
-		
-		txttra2 = new JTextField();
-		txttra2.setBounds(352, 188, 255, 20);
-		contentPane.add(txttra2);
-		txttra2.setColumns(10);
-		
 		JRadioButton uno = new JRadioButton("SI");
-		uno.setBounds(352, 252, 48, 23);
+		uno.setBounds(723, 480, 48, 23);
 		contentPane.add(uno);
 		
 		JRadioButton dos = new JRadioButton("NO");
-		dos.setBounds(421, 252, 48, 23);
+		dos.setBounds(874, 480, 48, 23);
 		contentPane.add(dos);
 		
 		JButton btnNewButton = new JButton("Cotizar");
 		btnNewButton.setIcon(new ImageIcon(Coti_Viaje.class.getResource("/Vistas/img/grafico-de-cotizaciones.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String ciudad1 = txttra1.getText().trim();
-        		String ciudad2 = txttra2.getText().trim();
-        		boolean aplicarIncremento = uno.isSelected();
-
-        		if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
-        		    JOptionPane.showMessageDialog(null, "Por favor ingresa ubicaciones", "Error", JOptionPane.ERROR_MESSAGE);
-        		    return;
-        		} else {
-        		    // Llamar al método para calcular distancia y mostrar información
-        		    GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2, aplicarIncremento);
-
-        		    // Mostrar la siguiente ventana
-        		    Final_Pedido fp = new Final_Pedido();
-        		    dispose();
-        		    fp.setVisible(true);
-        		}
         	}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
-		btnNewButton.setBounds(330, 341, 139, 36);
+		btnNewButton.setBounds(604, 609, 139, 36);
 		contentPane.add(btnNewButton);
 		 ButtonGroup group = new ButtonGroup();
 	        group.add(uno);
 	        group.add(dos);
+	        
+	        JLabel lblNewLabel_1 = new JLabel("Nombre de La Calle");
+	        lblNewLabel_1.setForeground(Color.WHITE);
+	        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1.setBounds(52, 152, 301, 31);
+	        contentPane.add(lblNewLabel_1);
+	        
+	        textField = new JTextField();
+	        textField.setColumns(10);
+	        textField.setBounds(398, 160, 295, 19);
+	        contentPane.add(textField);
+	        
+	        JLabel lblNewLabel_1_1 = new JLabel("NO.Exterior");
+	        lblNewLabel_1_1.setForeground(Color.WHITE);
+	        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1.setBounds(52, 248, 301, 31);
+	        contentPane.add(lblNewLabel_1_1);
+	        
+	        textField_1 = new JTextField();
+	        textField_1.setColumns(10);
+	        textField_1.setBounds(398, 207, 295, 19);
+	        contentPane.add(textField_1);
+	        
+	        JLabel lblNewLabel_1_1_1 = new JLabel("Nombre del Barrio,Sector o Cuidad");
+	        lblNewLabel_1_1_1.setForeground(Color.WHITE);
+	        lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1.setBounds(52, 301, 301, 31);
+	        contentPane.add(lblNewLabel_1_1_1);
+	        
+	        JLabel lblNewLabel_1_2 = new JLabel("NO.Interior ");
+	        lblNewLabel_1_2.setForeground(Color.WHITE);
+	        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_2.setBounds(52, 207, 301, 31);
+	        contentPane.add(lblNewLabel_1_2);
+	        
+	        textField_2 = new JTextField();
+	        textField_2.setColumns(10);
+	        textField_2.setBounds(398, 256, 295, 19);
+	        contentPane.add(textField_2);
+	        
+	        textField_3 = new JTextField();
+	        textField_3.setColumns(10);
+	        textField_3.setBounds(398, 309, 295, 19);
+	        contentPane.add(textField_3);
+	        
+	        JLabel lblNewLabel_1_1_1_1 = new JLabel("Codigo Postal");
+	        lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
+	        lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1.setBounds(52, 355, 301, 31);
+	        contentPane.add(lblNewLabel_1_1_1_1);
+	        
+	        textField_4 = new JTextField();
+	        textField_4.setColumns(10);
+	        textField_4.setBounds(398, 363, 295, 19);
+	        contentPane.add(textField_4);
+	        
+	        JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
+	        lblNewLabel_1_1_1_1_1.setForeground(Color.WHITE);
+	        lblNewLabel_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1_1.setBounds(52, 401, 301, 31);
+	        contentPane.add(lblNewLabel_1_1_1_1_1);
+	        
+	        textField_5 = new JTextField();
+	        textField_5.setColumns(10);
+	        textField_5.setBounds(398, 409, 295, 19);
+	        contentPane.add(textField_5);
+	        
+	        JLabel lblNewLabel_1_3 = new JLabel("Nombre de La Calle");
+	        lblNewLabel_1_3.setForeground(Color.WHITE);
+	        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_3.setBounds(703, 152, 301, 31);
+	        contentPane.add(lblNewLabel_1_3);
+	        
+	        textField_6 = new JTextField();
+	        textField_6.setColumns(10);
+	        textField_6.setBounds(1049, 160, 295, 19);
+	        contentPane.add(textField_6);
+	        
+	        JLabel lblNewLabel_1_1_2 = new JLabel("NO.Exterior");
+	        lblNewLabel_1_1_2.setForeground(Color.WHITE);
+	        lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_2.setBounds(703, 248, 301, 31);
+	        contentPane.add(lblNewLabel_1_1_2);
+	        
+	        textField_7 = new JTextField();
+	        textField_7.setColumns(10);
+	        textField_7.setBounds(1049, 207, 295, 19);
+	        contentPane.add(textField_7);
+	        
+	        JLabel lblNewLabel_1_1_1_2 = new JLabel("Nombre del Barrio,Sector o Cuidad");
+	        lblNewLabel_1_1_1_2.setForeground(Color.WHITE);
+	        lblNewLabel_1_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_2.setBounds(703, 301, 301, 31);
+	        contentPane.add(lblNewLabel_1_1_1_2);
+	        
+	        JLabel lblNewLabel_1_2_1 = new JLabel("NO.Interior ");
+	        lblNewLabel_1_2_1.setForeground(Color.WHITE);
+	        lblNewLabel_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_2_1.setBounds(703, 207, 301, 31);
+	        contentPane.add(lblNewLabel_1_2_1);
+	        
+	        textField_8 = new JTextField();
+	        textField_8.setColumns(10);
+	        textField_8.setBounds(1049, 256, 295, 19);
+	        contentPane.add(textField_8);
+	        
+	        textField_9 = new JTextField();
+	        textField_9.setColumns(10);
+	        textField_9.setBounds(1049, 309, 295, 19);
+	        contentPane.add(textField_9);
+	        
+	        JLabel lblNewLabel_1_1_1_1_2 = new JLabel("Codigo Postal");
+	        lblNewLabel_1_1_1_1_2.setForeground(Color.WHITE);
+	        lblNewLabel_1_1_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1_2.setBounds(703, 355, 301, 31);
+	        contentPane.add(lblNewLabel_1_1_1_1_2);
+	        
+	        textField_10 = new JTextField();
+	        textField_10.setColumns(10);
+	        textField_10.setBounds(1049, 363, 295, 19);
+	        contentPane.add(textField_10);
+	        
+	        JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
+	        lblNewLabel_1_1_1_1_1_1.setForeground(Color.WHITE);
+	        lblNewLabel_1_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1_1_1.setBounds(703, 401, 301, 31);
+	        contentPane.add(lblNewLabel_1_1_1_1_1_1);
+	        
+	        textField_11 = new JTextField();
+	        textField_11.setColumns(10);
+	        textField_11.setBounds(1049, 409, 295, 19);
+	        contentPane.add(textField_11);
+	        
+	        JLabel lblNewLabel_1_4 = new JLabel("LUGAR INICIAL DEL VIAJE");
+	        lblNewLabel_1_4.setForeground(Color.WHITE);
+	        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_4.setBounds(52, 88, 301, 31);
+	        contentPane.add(lblNewLabel_1_4);
+	        
+	        JLabel lblNewLabel_1_4_1 = new JLabel("DESTINO");
+	        lblNewLabel_1_4_1.setForeground(Color.WHITE);
+	        lblNewLabel_1_4_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_4_1.setBounds(964, 88, 93, 31);
+	        contentPane.add(lblNewLabel_1_4_1);
+	        
+	        JLabel lblNewLabel_2 = new JLabel("");
+	        lblNewLabel_2.setForeground(Color.WHITE);
+	        lblNewLabel_2.setBounds(10, 0, 457, 29);
+	        contentPane.add(lblNewLabel_2);
 	}
 }
