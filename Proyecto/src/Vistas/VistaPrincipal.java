@@ -102,17 +102,6 @@ public class VistaPrincipal extends JFrame {
         JMenu mnNewMenu_1 = new JMenu("Pagina Web");
         menuBar.add(mnNewMenu_1);
         
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("QR");
-        mntmNewMenuItem_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                VistaPrincipal vist = new VistaPrincipal();
-                qr qr = new qr();
-                qr.setVisible(true);
-            }
-        });
-        mntmNewMenuItem_2.setIcon(new ImageIcon("E:\\Proyecto\\Imagenes\\QR3.png"));
-        mnNewMenu_1.add(mntmNewMenuItem_2);
-        
         JMenuItem mntmNewMenuItem_3 = new JMenuItem("Enlace");
         mntmNewMenuItem_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -155,6 +144,7 @@ public class VistaPrincipal extends JFrame {
         dkpane.add(btRegis);
         
         txtCorreo = new JTextField(30);
+        txtCorreo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
         txtCorreo.addKeyListener(new KeyAdapter() {
         	@Override
         	public void keyTyped(KeyEvent e) {
@@ -217,6 +207,7 @@ public class VistaPrincipal extends JFrame {
         dkpane.add(btIniciar);
         
         txtContra = new JPasswordField(30);
+        txtContra.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
         txtContra.addKeyListener(new KeyAdapter() {
         	@Override
         	public void keyTyped(KeyEvent e) {
@@ -230,6 +221,7 @@ public class VistaPrincipal extends JFrame {
         dkpane.add(txtContra);
         
         txtConfir = new JPasswordField(30);
+        txtConfir.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
         txtConfir.addKeyListener(new KeyAdapter() {
         	@Override
         	public void keyTyped(KeyEvent e) {

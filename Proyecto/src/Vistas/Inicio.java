@@ -118,6 +118,7 @@ public class Inicio extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Iniciar Pedido");
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/entrega-de-pedidos.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -132,6 +133,7 @@ public class Inicio extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Transporte");
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		btnNewButton_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/transporte.png")));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,6 +149,7 @@ public class Inicio extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Iniciar Viaje");
+		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		btnNewButton_2.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/viaje-de-negocios.png")));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Frame;
+
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
@@ -34,18 +36,20 @@ import javax.swing.JMenuItem;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JPasswordField;
+import javax.swing.JCheckBox;
 
 public class Pedir_Pedido extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
-	private JTextField txtCodigo;
 	private JTextField txtPedido;
 	private JComboBox cbTipo;
 	JRadioButton rdCasa, rdEmp ;
-	private JRadioButton dos;
-	private JRadioButton uno;
+	private JPasswordField txtCodigo;
+	private JTextField txtApellido;
+	private boolean mostrarContraseña = false;
 	/**
 	 * Launch the application.
 	 */
@@ -131,68 +135,60 @@ public class Pedir_Pedido extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nombre Quien Recibe   :");
+		JLabel lblNewLabel_1 = new JLabel("Nombre   :");
 		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1.setBounds(90, 70, 181, 36);
+		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_1.setBounds(90, 70, 84, 36);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Codigo de Seguridad (Tu lo otorgas)");
 		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_2.setBounds(35, 117, 260, 39);
+		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_2.setBounds(42, 135, 260, 39);
 		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Tipo de Carga    :");
 		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_3.setBounds(150, 167, 121, 23);
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_3.setBounds(160, 195, 121, 23);
 		contentPane.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Cual sera tu pedido   :");
 		lblNewLabel_4.setForeground(Color.WHITE);
-		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_4.setBounds(113, 200, 158, 32);
+		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_4.setBounds(127, 250, 158, 32);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Es casa o Empresa  :");
 		lblNewLabel_5.setForeground(Color.WHITE);
-		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_5.setBounds(119, 242, 152, 23);
+		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_5.setBounds(149, 335, 152, 23);
 		contentPane.add(lblNewLabel_5);
 		
 		txtNombre = new JTextField();
+		txtNombre.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(339, 79, 306, 20);
+		txtNombre.setBounds(171, 79, 139, 20);
 		contentPane.add(txtNombre);
 		
-		txtCodigo = new JTextField();
-		txtCodigo.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				if(txtCodigo.getText().length()>=10) {
-					e.consume();
-					JOptionPane.showMessageDialog(null,"Por favor un codigo del al menos 10 digitos");
-				}
-			}
-		});
-		txtCodigo.setColumns(10);
-		txtCodigo.setBounds(339, 127, 306, 20);
-		contentPane.add(txtCodigo);
-		
 		txtPedido = new JTextField();
+		txtPedido.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		txtPedido.setColumns(10);
-		txtPedido.setBounds(339, 196, 306, 44);
+		txtPedido.setBounds(353, 246, 358, 44);
 		contentPane.add(txtPedido);
 		
 		rdCasa = new JRadioButton("Casa");
+		rdCasa.setBackground(new Color(0, 0, 0));
+		rdCasa.setForeground(new Color(255, 255, 255));
 		rdCasa.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		rdCasa.setBounds(339, 246, 109, 23);
+		rdCasa.setBounds(369, 339, 109, 23);
 		contentPane.add(rdCasa);
 		
 		 rdEmp = new JRadioButton("Empresa");
+		 rdEmp.setBackground(new Color(0, 0, 0));
+		 rdEmp.setForeground(new Color(255, 255, 255));
 		rdEmp.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		rdEmp.setBounds(484, 246, 109, 23);
+		rdEmp.setBounds(514, 339, 109, 23);
 		contentPane.add(rdEmp);
 		
 		JButton btnNewButton =  new JButton("Iniciar");
@@ -200,27 +196,14 @@ public class Pedir_Pedido extends JFrame {
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				camposVacios();
-				
-				String ciudad1 = txttra1.getText().trim();
-        		String ciudad2 = txttra2.getText().trim();
-        		boolean aplicarIncremento = uno.isSelected();
-
-        		if (ciudad1.isEmpty() || ciudad2.isEmpty()) {
-        		    JOptionPane.showMessageDialog(null, "Por favor ingresa ubicaciones", "Error", JOptionPane.ERROR_MESSAGE);
-        		    return;
-        		} else {
-        		    // Llamar al método para calcular distancia y mostrar información
-        		    GoogleM.calcularDistanciaYMostrar(ciudad1, ciudad2, aplicarIncremento);
-
-        		    // Mostrar la siguiente ventana
-        		    Final_Pedido fp = new Final_Pedido();
-        		    dispose();
-        		    fp.setVisible(true);
-        		}
-        	}
+				validarCamposVacios();
+				Coti_Pedido cp=new Coti_Pedido();
+				cp.setVisible(true);
+				dispose();
+			}
+        	
 		});
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		btnNewButton.setBounds(352, 407, 109, 32);
 		contentPane.add(btnNewButton);
 		
@@ -231,73 +214,91 @@ public class Pedir_Pedido extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		cbTipo = new JComboBox();
-		cbTipo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
+		cbTipo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		cbTipo.setModel(new DefaultComboBoxModel(new String[] {"TIPO", "Pesada", "Ligera"}));
-		cbTipo.setBounds(339, 168, 134, 22);
+		cbTipo.setBounds(349, 196, 134, 22);
 		contentPane.add(cbTipo);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Deseas aportar  para el programa ecofrend del 10% de tu costo    :");
-		lblNewLabel_3_1.setForeground(Color.WHITE);
-		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_3_1.setBounds(10, 356, 477, 14);
-		contentPane.add(lblNewLabel_3_1);
+		txtCodigo = new JPasswordField();
+		txtCodigo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		txtCodigo.setBounds(346, 145, 152, 20);
+		contentPane.add(txtCodigo);
 		
-		uno = new JRadioButton("SI");
-		uno.setBounds(515, 353, 48, 23);
-		contentPane.add(uno);
+		JLabel lblNewLabel_6 = new JLabel("Apellidos  :");
+		lblNewLabel_6.setForeground(new Color(255, 255, 255));
+		lblNewLabel_6.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_6.setBounds(353, 82, 88, 14);
+		contentPane.add(lblNewLabel_6);
 		
-		dos = new JRadioButton("NO");
-		dos.setBounds(585, 353, 48, 23);
-		contentPane.add(dos);
+		txtApellido = new JTextField();
+		txtApellido.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		txtApellido.setBounds(451, 82, 260, 20);
+		contentPane.add(txtApellido);
+		txtApellido.setColumns(10);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Mostrar Codigo de Seguridad");
+		chckbxNewCheckBox.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		chckbxNewCheckBox.setIcon(new ImageIcon(Pedir_Pedido.class.getResource("/Vistas/img/candado.png")));
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				  if (mostrarContraseña) {
+	                    txtCodigo.setEchoChar('x');
+	                    mostrarContraseña = false;
+	                } else {
+	                    txtCodigo.setEchoChar((char) 0);
+	                    mostrarContraseña = true;
+	                }
+				 
+			}
+		});
+		chckbxNewCheckBox.setForeground(new Color(255, 255, 255));
+		chckbxNewCheckBox.setBackground(new Color(0, 0, 0));
+		chckbxNewCheckBox.setBounds(551, 144, 227, 23);
+		contentPane.add(chckbxNewCheckBox);
 		ButtonGroup group = new ButtonGroup();
-        group.add(uno);
-        group.add(dos);
+	        group.add(rdCasa);
+	        group.add(rdEmp);
 	}
 	
-	public void camposVacios() {
-	    if (txtNombre.getText().isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el nombre de quien recibe.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return;
-	    }
-	    if (txtCodigo.getText().isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el código de seguridad.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return;
-	    }
-	    if (cbTipo.getSelectedIndex() == 0) { 
-	        JOptionPane.showMessageDialog(null, "Por favor, selecciona el tipo de carga.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return;
-	    }
-	    if (txtPedido.getText().isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el detalle de tu pedido.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return;
-	    }
-	    if (txttra1.getText().isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, ingresa la dirección inicial.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return;
-	    }
-	    if (txttra2.getText().isEmpty()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, ingresa el destino.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return;
-	    }
-	    if (!rdCasa.isSelected() && !rdEmp.isSelected()) {
-	        JOptionPane.showMessageDialog(null, "Por favor, selecciona si es casa o empresa.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return;
-	    }
-	}	
+
 	public void guardarPedido() {
 		    	B_Datos bd=new B_Datos();
-		    String nombre=txtNombre.getText();
-		    int codigo=Integer.parseInt(txtCodigo.getText());
-		    String tipo=cbTipo.getSelectedItem().toString();
-		    String pedido=txtPedido.getText();
-		    boolean casa=rdCasa.isSelected();
-		    boolean empre=rdEmp.isSelected();
-		    String direccion=txttra1.getText();
-		    String destino=txttra2.getText();
-		    boolean resultado =bd.guardarPedido(nombre, codigo, tipo, pedido, empre, direccion, destino);
-		    if (resultado) {
-		        JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
-		    } else {
-		        JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");	    }
+		 
 	}
+	private boolean validarCamposVacios() {
+	    if (txtNombre.getText().trim().isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "El campo 'Nombre' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+	        txtNombre.requestFocus();
+	         return false;}
+	       
+	        if(txtApellido.getText().isEmpty()) {
+	        	JOptionPane.showMessageDialog(this, "El campo 'Apellidos' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+	    	txtApellido.requestFocus();
+	     return false;
+	     }
+	   
+	    if (new String(txtCodigo.getPassword()).trim().isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "El campo 'Código de Seguridad' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+	        txtCodigo.requestFocus();
+	        return false;
+	    }
+	    if (cbTipo.getSelectedIndex() == 0) { 
+	        JOptionPane.showMessageDialog(this, "Debes seleccionar un tipo de carga.", "Error", JOptionPane.ERROR_MESSAGE);
+	        cbTipo.requestFocus();
+	        return false;
+	    }
+	    if (txtPedido.getText().trim().isEmpty()) {
+	        JOptionPane.showMessageDialog(this, "El campo 'Pedido' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+	        txtPedido.requestFocus();
+	        return false;
+	    }
+	    if (!rdCasa.isSelected() && !rdEmp.isSelected()) {
+	        JOptionPane.showMessageDialog(this, "Debes seleccionar si es 'Casa' o 'Empresa'.", "Error", JOptionPane.ERROR_MESSAGE);
+	        return false;
+	    }
+	    return true;
+	
+	    
+	}
+	
 }

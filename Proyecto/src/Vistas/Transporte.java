@@ -21,6 +21,7 @@ public class Transporte extends JFrame {
     private JRadioButton RADIOSIM, RADIONOM;
     private JRadioButton rdbtnTransportaPersonalSi, rdbtnTransportaPersonalNo, rdbtnParadasContinuasSi, rdbtnParadasContinuasNo;
     private JTextField txtNombre;
+    private JTextField txtApellidos;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -86,76 +87,75 @@ public class Transporte extends JFrame {
 
         JLabel lblTipoDeTransporte = new JLabel("Tipo de Transporte    :");
         lblTipoDeTransporte.setForeground(Color.WHITE);
-        lblTipoDeTransporte.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        lblTipoDeTransporte.setBounds(135, 134, 145, 30);
+        lblTipoDeTransporte.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        lblTipoDeTransporte.setBounds(200, 134, 145, 30);
         contentPane.add(lblTipoDeTransporte);
 
         comboBox = new JComboBox<>();
         comboBox.setModel(new DefaultComboBoxModel<>(new String[]{"Transporte", "Pesado", "Ligero"}));
-        comboBox.setFont(new Font("Tahoma", Font.BOLD, 15));
-        comboBox.setBounds(318, 129, 145, 38);
+        comboBox.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        comboBox.setBounds(383, 129, 145, 38);
         contentPane.add(comboBox);
 
         JLabel lblMaterialSensible = new JLabel("¿Material Sensible?    :");
         lblMaterialSensible.setForeground(Color.WHITE);
-        lblMaterialSensible.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        lblMaterialSensible.setBounds(135, 206, 158, 30);
+        lblMaterialSensible.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        lblMaterialSensible.setBounds(200, 206, 158, 30);
         contentPane.add(lblMaterialSensible);
 
         RADIOSIM = new JRadioButton("Si");
-        RADIOSIM.setFont(new Font("Tahoma", Font.BOLD, 15));
-        RADIOSIM.setBounds(318, 210, 103, 21);
+        RADIOSIM.setBackground(new Color(0, 0, 0));
+        RADIOSIM.setForeground(new Color(255, 255, 255));
+        RADIOSIM.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        RADIOSIM.setBounds(383, 210, 103, 21);
         contentPane.add(RADIOSIM);
 
         RADIONOM = new JRadioButton("No");
-        RADIONOM.setFont(new Font("Tahoma", Font.BOLD, 15));
-        RADIONOM.setBounds(442, 210, 103, 21);
+        RADIONOM.setBackground(new Color(0, 0, 0));
+        RADIONOM.setForeground(new Color(255, 255, 255));
+        RADIONOM.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        RADIONOM.setBounds(507, 210, 103, 21);
         contentPane.add(RADIONOM);
 
         JLabel lblTransportaPersonal = new JLabel("¿Se Transporta Personal?       :");
         lblTransportaPersonal.setForeground(Color.WHITE);
-        lblTransportaPersonal.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        lblTransportaPersonal.setBounds(82, 269, 204, 30);
+        lblTransportaPersonal.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        lblTransportaPersonal.setBounds(120, 269, 231, 30);
         contentPane.add(lblTransportaPersonal);
 
         rdbtnTransportaPersonalSi = new JRadioButton("Si");
-        rdbtnTransportaPersonalSi.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnTransportaPersonalSi.setBounds(318, 273, 103, 21);
+        rdbtnTransportaPersonalSi.setBackground(new Color(0, 0, 0));
+        rdbtnTransportaPersonalSi.setForeground(new Color(255, 255, 255));
+        rdbtnTransportaPersonalSi.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        rdbtnTransportaPersonalSi.setBounds(383, 273, 103, 21);
         contentPane.add(rdbtnTransportaPersonalSi);
 
         rdbtnTransportaPersonalNo = new JRadioButton("No");
-        rdbtnTransportaPersonalNo.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnTransportaPersonalNo.setBounds(442, 273, 103, 21);
+        rdbtnTransportaPersonalNo.setBackground(new Color(0, 0, 0));
+        rdbtnTransportaPersonalNo.setForeground(new Color(255, 255, 255));
+        rdbtnTransportaPersonalNo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        rdbtnTransportaPersonalNo.setBounds(507, 273, 103, 21);
         contentPane.add(rdbtnTransportaPersonalNo);
 
         JLabel lblParadasContinuas = new JLabel("¿El destino Tiene Paradas Continuas?       :");
         lblParadasContinuas.setForeground(Color.WHITE);
-        lblParadasContinuas.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-        lblParadasContinuas.setBounds(10, 333, 287, 30);
+        lblParadasContinuas.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        lblParadasContinuas.setBounds(60, 333, 302, 30);
         contentPane.add(lblParadasContinuas);
 
         rdbtnParadasContinuasSi = new JRadioButton("Si");
-        rdbtnParadasContinuasSi.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnParadasContinuasSi.setBounds(318, 340, 103, 21);
+        rdbtnParadasContinuasSi.setBackground(new Color(0, 0, 0));
+        rdbtnParadasContinuasSi.setForeground(new Color(255, 255, 255));
+        rdbtnParadasContinuasSi.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        rdbtnParadasContinuasSi.setBounds(383, 340, 103, 21);
         contentPane.add(rdbtnParadasContinuasSi);
 
         rdbtnParadasContinuasNo = new JRadioButton("No");
-        rdbtnParadasContinuasNo.setFont(new Font("Tahoma", Font.BOLD, 15));
-        rdbtnParadasContinuasNo.setBounds(442, 340, 103, 21);
+        rdbtnParadasContinuasNo.setBackground(new Color(0, 0, 0));
+        rdbtnParadasContinuasNo.setForeground(new Color(255, 255, 255));
+        rdbtnParadasContinuasNo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        rdbtnParadasContinuasNo.setBounds(507, 340, 103, 21);
         contentPane.add(rdbtnParadasContinuasNo);
-
-        JButton btnEnviar = new JButton("Enviar");
-        btnEnviar.setIcon(new ImageIcon(Transporte.class.getResource("/Vistas/img/envio.png")));
-        btnEnviar.setBackground(new Color(255, 0, 0));
-        btnEnviar.setForeground(new Color(255, 255, 255));
-        btnEnviar.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnEnviar.setBounds(341, 390, 112, 30);
-        contentPane.add(btnEnviar);
-        btnEnviar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	guardar_transporte();
-            }
-        });
         
         ButtonGroup bgMaterialSensible = new ButtonGroup();
         ButtonGroup bgMaterialPesado = new ButtonGroup();
@@ -171,61 +171,41 @@ public class Transporte extends JFrame {
         bgParadasContinuas.add(rdbtnParadasContinuasSi);
         bgParadasContinuas.add(rdbtnParadasContinuasNo);
         
-        JLabel lblNewLabel_1 = new JLabel("Nombre del Solicitante   :");
-        lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+        JLabel lblNewLabel_1 = new JLabel("Nombre  :");
+        lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
-        lblNewLabel_1.setBounds(128, 87, 158, 14);
+        lblNewLabel_1.setBounds(88, 89, 90, 14);
         contentPane.add(lblNewLabel_1);
         
         txtNombre = new JTextField();
-        txtNombre.setBounds(320, 85, 329, 20);
+        txtNombre.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+        txtNombre.setBounds(175, 86, 179, 20);
         contentPane.add(txtNombre);
         txtNombre.setColumns(10);
-    }
-    public void guardar_transporte() {
-        try {
-            if (comboBox.getSelectedIndex() == 0) {
-                JOptionPane.showMessageDialog(null, "Selecciona un tipo de transporte.");
-                return;
-            }
-
-            if (!RADIOSIM.isSelected() && !RADIONOM.isSelected()) {
-                JOptionPane.showMessageDialog(null, "Selecciona si el material es sensible.");
-                return;
-            }
-
-            if (!rdbtnTransportaPersonalSi.isSelected() && !rdbtnTransportaPersonalNo.isSelected()) {
-                JOptionPane.showMessageDialog(null, "Selecciona si se transporta personal.");
-                return;
-            }
-
-            if (!rdbtnParadasContinuasSi.isSelected() && !rdbtnParadasContinuasNo.isSelected()) {
-                JOptionPane.showMessageDialog(null, "Selecciona si el destino tiene paradas continuas.");
-                return;
-            }
-
-            B_Datos bd = new B_Datos();
-            String nombre = txtNombre.getText(); 
-            String tipoTransporte = comboBox.getSelectedItem().toString();
-            boolean materialSensible = RADIOSIM.isSelected();
-            boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
-            boolean personal = rdbtnTransportaPersonalSi.isSelected();
-
-            boolean resultado = bd.guardarTransporte(tipoTransporte, nombre, personal, paradasContinuas, materialSensible);
-
-            if (resultado) {
-                JOptionPane.showMessageDialog(null, "Tus datos ya fueron guardados");
-                Coti_Transporte ct = new Coti_Transporte();
-                ct.setVisible(true);
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Hubo un error al guardar tus datos");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Se produjo un error inesperado.");
-        }
+        
+        JLabel lblNewLabel_2 = new JLabel("Apellidos   :");
+        lblNewLabel_2.setForeground(new Color(255, 255, 255));
+        lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
+        lblNewLabel_2.setBounds(395, 90, 84, 14);
+        contentPane.add(lblNewLabel_2);
+        
+        txtApellidos = new JTextField();
+        txtApellidos.setBounds(489, 87, 265, 20);
+        contentPane.add(txtApellidos);
+        txtApellidos.setColumns(10);
+        
+        JButton btnNewButton = new JButton("Iniciar");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Coti_Transporte ct=new Coti_Transporte();
+        		ct.setVisible(true);
+        		dispose();
+        	}
+        });
+        btnNewButton.setBackground(new Color(255, 0, 0));
+        btnNewButton.setForeground(new Color(255, 255, 255));
+        btnNewButton.setBounds(323, 374, 145, 39);
+        contentPane.add(btnNewButton);
     }
 
 }

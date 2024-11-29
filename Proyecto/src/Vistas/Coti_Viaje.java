@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controlador.B_Datos;
 import Modelo.GoogleM;
 
 import javax.swing.JLabel;
@@ -33,18 +34,19 @@ public class Coti_Viaje extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
+	private JTextField txt1;
+	private JTextField txt2;
+	private JTextField txt3;
+	private JTextField txt4;
+	private JTextField txt5;
+	private JTextField txt6;
+	private JTextField txt7;
+	private JTextField txt8;
+	private JTextField txt9;
+	private JTextField txt10;
+	private JTextField txt11;
+	private JTextField txt12;
+	JRadioButton uno;
 
 	/**
 	 * Launch the application.
@@ -150,28 +152,36 @@ public class Coti_Viaje extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Coticemos tu Viaje");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
-		lblNewLabel.setBounds(577, 10, 248, 54);
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 35));
+		lblNewLabel.setBounds(530, 10, 295, 54);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_3 = new JLabel("Deseas aportar  para el programa ecofrend del 10% de tu costo    :");
+		JLabel lblNewLabel_3 = new JLabel("Deseas aportar  para el programa Ecofriend del 10% de tu costo    :");
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
-		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 11));
-		lblNewLabel_3.setBounds(280, 484, 325, 14);
+		lblNewLabel_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		lblNewLabel_3.setBounds(281, 481, 427, 19);
 		contentPane.add(lblNewLabel_3);
 		
-		JRadioButton uno = new JRadioButton("SI");
-		uno.setBounds(723, 480, 48, 23);
+		uno = new JRadioButton("SI");
+		uno.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		uno.setBackground(new Color(0, 0, 0));
+		uno.setForeground(new Color(255, 255, 255));
+		uno.setBounds(738, 480, 48, 23);
 		contentPane.add(uno);
 		
 		JRadioButton dos = new JRadioButton("NO");
+		dos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		dos.setBackground(new Color(0, 0, 0));
+		dos.setForeground(new Color(255, 255, 255));
 		dos.setBounds(874, 480, 48, 23);
 		contentPane.add(dos);
 		
 		JButton btnNewButton = new JButton("Cotizar");
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		btnNewButton.setIcon(new ImageIcon(Coti_Viaje.class.getResource("/Vistas/img/grafico-de-cotizaciones.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				guardarFinal();
         	}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
@@ -183,145 +193,157 @@ public class Coti_Viaje extends JFrame {
 	        
 	        JLabel lblNewLabel_1 = new JLabel("Nombre de La Calle");
 	        lblNewLabel_1.setForeground(Color.WHITE);
-	        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1.setBounds(52, 152, 301, 31);
 	        contentPane.add(lblNewLabel_1);
 	        
-	        textField = new JTextField();
-	        textField.setColumns(10);
-	        textField.setBounds(398, 160, 295, 19);
-	        contentPane.add(textField);
+	        txt1 = new JTextField();
+	        txt1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt1.setColumns(10);
+	        txt1.setBounds(398, 160, 295, 19);
+	        contentPane.add(txt1);
 	        
 	        JLabel lblNewLabel_1_1 = new JLabel("NO.Exterior");
 	        lblNewLabel_1_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1.setBounds(52, 248, 301, 31);
 	        contentPane.add(lblNewLabel_1_1);
 	        
-	        textField_1 = new JTextField();
-	        textField_1.setColumns(10);
-	        textField_1.setBounds(398, 207, 295, 19);
-	        contentPane.add(textField_1);
+	        txt2 = new JTextField();
+	        txt2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt2.setColumns(10);
+	        txt2.setBounds(398, 207, 295, 19);
+	        contentPane.add(txt2);
 	        
 	        JLabel lblNewLabel_1_1_1 = new JLabel("Nombre del Barrio,Sector o Cuidad");
 	        lblNewLabel_1_1_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1_1.setBounds(52, 301, 301, 31);
 	        contentPane.add(lblNewLabel_1_1_1);
 	        
 	        JLabel lblNewLabel_1_2 = new JLabel("NO.Interior ");
 	        lblNewLabel_1_2.setForeground(Color.WHITE);
-	        lblNewLabel_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_2.setBounds(52, 207, 301, 31);
 	        contentPane.add(lblNewLabel_1_2);
 	        
-	        textField_2 = new JTextField();
-	        textField_2.setColumns(10);
-	        textField_2.setBounds(398, 256, 295, 19);
-	        contentPane.add(textField_2);
+	        txt3 = new JTextField();
+	        txt3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt3.setColumns(10);
+	        txt3.setBounds(398, 256, 295, 19);
+	        contentPane.add(txt3);
 	        
-	        textField_3 = new JTextField();
-	        textField_3.setColumns(10);
-	        textField_3.setBounds(398, 309, 295, 19);
-	        contentPane.add(textField_3);
+	        txt4 = new JTextField();
+	        txt4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt4.setColumns(10);
+	        txt4.setBounds(398, 309, 295, 19);
+	        contentPane.add(txt4);
 	        
 	        JLabel lblNewLabel_1_1_1_1 = new JLabel("Codigo Postal");
 	        lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1_1_1.setBounds(52, 355, 301, 31);
 	        contentPane.add(lblNewLabel_1_1_1_1);
 	        
-	        textField_4 = new JTextField();
-	        textField_4.setColumns(10);
-	        textField_4.setBounds(398, 363, 295, 19);
-	        contentPane.add(textField_4);
+	        txt5 = new JTextField();
+	        txt5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt5.setColumns(10);
+	        txt5.setBounds(398, 363, 295, 19);
+	        contentPane.add(txt5);
 	        
 	        JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
 	        lblNewLabel_1_1_1_1_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1_1_1_1.setBounds(52, 401, 301, 31);
 	        contentPane.add(lblNewLabel_1_1_1_1_1);
 	        
-	        textField_5 = new JTextField();
-	        textField_5.setColumns(10);
-	        textField_5.setBounds(398, 409, 295, 19);
-	        contentPane.add(textField_5);
+	        txt6 = new JTextField();
+	        txt6.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt6.setColumns(10);
+	        txt6.setBounds(398, 409, 295, 19);
+	        contentPane.add(txt6);
 	        
 	        JLabel lblNewLabel_1_3 = new JLabel("Nombre de La Calle");
 	        lblNewLabel_1_3.setForeground(Color.WHITE);
-	        lblNewLabel_1_3.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_3.setBounds(703, 152, 301, 31);
 	        contentPane.add(lblNewLabel_1_3);
 	        
-	        textField_6 = new JTextField();
-	        textField_6.setColumns(10);
-	        textField_6.setBounds(1049, 160, 295, 19);
-	        contentPane.add(textField_6);
+	        txt7 = new JTextField();
+	        txt7.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt7.setColumns(10);
+	        txt7.setBounds(1049, 160, 295, 19);
+	        contentPane.add(txt7);
 	        
 	        JLabel lblNewLabel_1_1_2 = new JLabel("NO.Exterior");
 	        lblNewLabel_1_1_2.setForeground(Color.WHITE);
-	        lblNewLabel_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1_2.setBounds(703, 248, 301, 31);
 	        contentPane.add(lblNewLabel_1_1_2);
 	        
-	        textField_7 = new JTextField();
-	        textField_7.setColumns(10);
-	        textField_7.setBounds(1049, 207, 295, 19);
-	        contentPane.add(textField_7);
+	        txt8 = new JTextField();
+	        txt8.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt8.setColumns(10);
+	        txt8.setBounds(1049, 207, 295, 19);
+	        contentPane.add(txt8);
 	        
 	        JLabel lblNewLabel_1_1_1_2 = new JLabel("Nombre del Barrio,Sector o Cuidad");
 	        lblNewLabel_1_1_1_2.setForeground(Color.WHITE);
-	        lblNewLabel_1_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1_1_2.setBounds(703, 301, 301, 31);
 	        contentPane.add(lblNewLabel_1_1_1_2);
 	        
 	        JLabel lblNewLabel_1_2_1 = new JLabel("NO.Interior ");
 	        lblNewLabel_1_2_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_2_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_2_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_2_1.setBounds(703, 207, 301, 31);
 	        contentPane.add(lblNewLabel_1_2_1);
 	        
-	        textField_8 = new JTextField();
-	        textField_8.setColumns(10);
-	        textField_8.setBounds(1049, 256, 295, 19);
-	        contentPane.add(textField_8);
+	        txt9 = new JTextField();
+	        txt9.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt9.setColumns(10);
+	        txt9.setBounds(1049, 256, 295, 19);
+	        contentPane.add(txt9);
 	        
-	        textField_9 = new JTextField();
-	        textField_9.setColumns(10);
-	        textField_9.setBounds(1049, 309, 295, 19);
-	        contentPane.add(textField_9);
+	        txt10 = new JTextField();
+	        txt10.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt10.setColumns(10);
+	        txt10.setBounds(1049, 309, 295, 19);
+	        contentPane.add(txt10);
 	        
 	        JLabel lblNewLabel_1_1_1_1_2 = new JLabel("Codigo Postal");
 	        lblNewLabel_1_1_1_1_2.setForeground(Color.WHITE);
-	        lblNewLabel_1_1_1_1_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1_1_1_2.setBounds(703, 355, 301, 31);
 	        contentPane.add(lblNewLabel_1_1_1_1_2);
 	        
-	        textField_10 = new JTextField();
-	        textField_10.setColumns(10);
-	        textField_10.setBounds(1049, 363, 295, 19);
-	        contentPane.add(textField_10);
+	        txt11 = new JTextField();
+	        txt11.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt11.setColumns(10);
+	        txt11.setBounds(1049, 363, 295, 19);
+	        contentPane.add(txt11);
 	        
 	        JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
 	        lblNewLabel_1_1_1_1_1_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_1_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 	        lblNewLabel_1_1_1_1_1_1.setBounds(703, 401, 301, 31);
 	        contentPane.add(lblNewLabel_1_1_1_1_1_1);
 	        
-	        textField_11 = new JTextField();
-	        textField_11.setColumns(10);
-	        textField_11.setBounds(1049, 409, 295, 19);
-	        contentPane.add(textField_11);
+	        txt12 = new JTextField();
+	        txt12.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+	        txt12.setColumns(10);
+	        txt12.setBounds(1049, 409, 295, 19);
+	        contentPane.add(txt12);
 	        
 	        JLabel lblNewLabel_1_4 = new JLabel("LUGAR INICIAL DEL VIAJE");
 	        lblNewLabel_1_4.setForeground(Color.WHITE);
-	        lblNewLabel_1_4.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 18));
 	        lblNewLabel_1_4.setBounds(52, 88, 301, 31);
 	        contentPane.add(lblNewLabel_1_4);
 	        
 	        JLabel lblNewLabel_1_4_1 = new JLabel("DESTINO");
 	        lblNewLabel_1_4_1.setForeground(Color.WHITE);
-	        lblNewLabel_1_4_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+	        lblNewLabel_1_4_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 18));
 	        lblNewLabel_1_4_1.setBounds(964, 88, 93, 31);
 	        contentPane.add(lblNewLabel_1_4_1);
 	        
@@ -330,4 +352,52 @@ public class Coti_Viaje extends JFrame {
 	        lblNewLabel_2.setBounds(10, 0, 457, 29);
 	        contentPane.add(lblNewLabel_2);
 	}
+	 public void guardar_Uinicial() {
+	        try {
+	            String nomCalle = txt1.getText();
+	            int noInt = Integer.parseInt(txt2.getText());
+	            int noExt = Integer.parseInt(txt3.getText()); 
+	            String nomSect = txt4.getText();
+	            int cp = Integer.parseInt(txt5.getText());    
+	            String nomEstado = txt6.getText();
+	            boolean ecofriend=uno.isSelected();
+	            B_Datos bd = new B_Datos();
+	            boolean conf =bd.coti_viaje(nomCalle, noInt, noExt, nomSect, cp, nomEstado, ecofriend);
+	            if (conf) {
+	            } else {
+	                JOptionPane.showMessageDialog(null, "Error al guardar los datos.");
+	            }
+	        } catch (NumberFormatException e) {
+	            JOptionPane.showMessageDialog(null, "Por favor, ingrese solo valores numéricos en los campos de números.");
+	        } 
+	        }
+	 public void guardar_Ufinal() {
+	        try {
+	           
+	            String nomCalle2 = txt7.getText();
+	            int noInt2 = Integer.parseInt(txt8.getText());
+	            int noExt2 = Integer.parseInt(txt9.getText());
+	            String nomSect2 = txt10.getText();
+	            int cp2 = Integer.parseInt(txt11.getText());
+	            String nomEstado2 = txt12.getText();
+	            B_Datos bd = new B_Datos();
+	            boolean conf =bd.dest_viaje(nomCalle2, noInt2, noExt2, nomSect2, cp2, nomEstado2);
+	            if (conf) {
+	               
+	            } else {
+	                JOptionPane.showMessageDialog(null, "Error al guardar los datos.");
+	            }
+	        } catch (NumberFormatException e) {
+	            JOptionPane.showMessageDialog(null, "Por favor, ingrese solo valores numéricos en los campos de números.");
+	        }
+	    }
+	    public void guardarFinal() {
+	    	guardar_Uinicial();
+	    	guardar_Ufinal(); 
+	    	JOptionPane.showMessageDialog(null, "Tu transporte fue cotizado");
+	                Final_Pedido pf = new Final_Pedido();
+	                pf.setVisible(true);
+	                dispose();
+	    }
+	
 }

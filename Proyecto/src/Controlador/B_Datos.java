@@ -81,85 +81,176 @@ public class B_Datos {
         return false;
     }
     
-    //transporte
-    public boolean guardarTransporte(String tipoTransporte, String nombre, boolean transportaPersonal, boolean paradasContinuas, boolean material_senci) {
-        boolean guardado = false;
-        String sql = "INSERT INTO transport VALUES (0,?,?,?,?,?)";
-
-        try (Connection conn = conexion(); 
-             PreparedStatement pst = conn.prepareStatement(sql)) {
-        	pst.setString(1, nombre);
-            pst.setString(2, tipoTransporte);
-            pst.setBoolean(3, material_senci);
-            pst.setBoolean(4, transportaPersonal);
-            pst.setBoolean(5, paradasContinuas);
-            
-            int filasAfectadas = pst.executeUpdate();
-            if (filasAfectadas > 0) {
-                guardado = true;
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla transporte: " + e);
-        }
-        return guardado;
-    }
-    //pedido
    
-    public boolean guardarPedido(String nombre, int codigo, String tCarga, String pedido, boolean ca_emp,String direccion, String destino) {
-        boolean guardado = false;
-        String sql = "INSERT INTO pedi VALUES (?, ?, ?, ?, ?,?,?)";
-        
-        try (Connection cn = conexion(); PreparedStatement ps = cn.prepareStatement(sql)) {
-            if (cn == null) {
-                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
-                return false;
-            }
-            ps.setString(1, nombre);
-            ps.setInt(2, codigo);
-            ps.setString(3, tCarga);
-            ps.setString(4, pedido);
-            ps.setBoolean(5, ca_emp);
-            ps.setString(6, direccion);
-            ps.setString(7, destino);
-            int filas = ps.executeUpdate();
-            if (filas > 0) {
-                guardado = true;
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla pedido: " + e.getMessage());
-        }
-        return guardado;
-    }
-     //Viaje
-    public boolean viaje(String nombre, String personas, Boolean equipamiento, boolean ninos, Date fecha, String numero) {
-        boolean guardado = false;
-        String sql = "INSERT INTO via VALUES (?, ?, ?, ?, ?, ?)"; 
+ 
 
-        try (Connection cn = conexion(); PreparedStatement ps = cn.prepareStatement(sql)) {
-            if (cn == null) {
-                JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
-                return false;
-            }
-            if (fecha == null) {
-                JOptionPane.showMessageDialog(null, "La fecha es obligatoria.");
-                return false;
-            }
-            java.sql.Date sqlDate = new java.sql.Date(fecha.getTime()); 
-            ps.setString(1, nombre);  
-            ps.setString(2, personas); 
-            ps.setBoolean(3, equipamiento); 
-            ps.setBoolean(4, ninos); 
-            ps.setDate(5, sqlDate); 
-            ps.setString(6, numero);  
-            int filas = ps.executeUpdate();
-            if (filas > 0) {
-                guardado = true;
+    public void coti_pedido(String noCalle, int noInt, int noExt, String sector, int cp, String estado, boolean ecoFriendly) {
+        String sql = "INSERT INTO coti_ped  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (Connection cn = conexion(); 
+             PreparedStatement stmt = cn.prepareStatement(sql)) {
+
+            // Configurando los parámetros
+            stmt.setString(1, noCalle);
+            stmt.setInt(2, noInt);
+            stmt.setInt(3, noExt);
+            stmt.setString(4, sector);
+            stmt.setInt(5, cp);
+            stmt.setString(6, estado);
+            stmt.setBoolean(7, ecoFriendly);
+            int filasInsertadas = stmt.executeUpdate();
+            if (filasInsertadas > 0) {
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar datos en la tabla viaje: " + e.getMessage());
-            e.printStackTrace();
+            e.printStackTrace(); // Muestra el stack trace para facilitar la depuración
+            JOptionPane.showMessageDialog(null, "Error al guardar los datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return guardado;
-    }  
-}
+    }
+    
+    
+    
+    public boolean coti_trans(String nom_calle, int no_int, int no_ext, String nom_sect, int cp, String nom_estado) {
+        String sql = "INSERT INTO coti_trans VALUES (?, ?, ?, ?, ?, ?)";
+        Connection cn = conexion();
+        PreparedStatement ps = null;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nom_calle);
+            ps.setInt(2, no_int);
+            ps.setInt(3, no_ext);
+            ps.setString(4, nom_sect);
+            ps.setInt(5, cp);
+            ps.setString(6, nom_estado);
+
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                return true;  // Si se insertaron filas, la inserción fue exitosa.
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la base de datos: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar recursos: " + e.getMessage());
+            }
+        }
+        return false;  // Si no se insertaron filas, la inserción falló.
+    }
+    
+    
+    
+    public boolean coti_Dtrans(String nom_calle, int no_int, int no_ext, String nom_sect, int cp, String nom_estado, boolean priv, boolean ecofrien) {
+        String sql = "INSERT INTO  cot_tran_dest VALUES (?, ?, ?, ?, ?, ?,?,?)";
+        Connection cn = conexion();
+        PreparedStatement ps = null;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nom_calle);
+            ps.setInt(2, no_int);
+            ps.setInt(3, no_ext);
+            ps.setString(4, nom_sect);
+            ps.setInt(5, cp);
+            ps.setString(6, nom_estado);
+            ps.setBoolean(7, priv);
+            ps.setBoolean(8, ecofrien);
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                return true; 
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la base de datos: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar recursos: " + e.getMessage());
+            }
+        }
+        return false;  // Si no se insertaron filas, la inserción falló.
+    }
+    
+    public boolean coti_viaje(String nom_calle, int no_int, int no_ext, String nom_sect, int cp, String nom_estado, boolean ecofrien) {
+        String sql = "INSERT INTO  coti_viaj VALUES (?, ?, ?, ?, ?, ?,?)";
+        Connection cn = conexion();
+        PreparedStatement ps = null;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nom_calle);
+            ps.setInt(2, no_int);
+            ps.setInt(3, no_ext);
+            ps.setString(4, nom_sect);
+            ps.setInt(5, cp);
+            ps.setString(6, nom_estado);
+            ps.setBoolean(7, ecofrien);
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                return true; 
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la base de datos: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar recursos: " + e.getMessage());
+            }
+        }
+        return false;  
+    }
+    public boolean dest_viaje(String nom_calle, int no_int, int no_ext, String nom_sect, int cp, String nom_estado) {
+        String sql = "INSERT INTO  dest_viaj VALUES (?, ?, ?, ?, ?, ?)";
+        Connection cn = conexion();
+        PreparedStatement ps = null;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, nom_calle);
+            ps.setInt(2, no_int);
+            ps.setInt(3, no_ext);
+            ps.setString(4, nom_sect);
+            ps.setInt(5, cp);
+            ps.setString(6, nom_estado);
+         
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                return true; 
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la base de datos: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar recursos: " + e.getMessage());
+            }
+        }
+        return false; 
+    }
+   
+    
+    }
+
+
+    	
+    	
+  
 
