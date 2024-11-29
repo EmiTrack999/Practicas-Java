@@ -44,6 +44,7 @@ public class Viaje extends JFrame {
 	JRadioButton rbEquipamiento, rbNiños,rbEquipamiento2, rbNoNiños ;
 	JDateChooser dateFecha;
 	private JLabel lblNewLabel_6;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -121,13 +122,13 @@ public class Viaje extends JFrame {
 		txtNombre.setForeground(new Color(0, 0, 0));
 		txtNombre.setColumns(10);
 		txtNombre.setBackground(new Color(255, 255, 255));
-		txtNombre.setBounds(377, 101, 290, 20);
+		txtNombre.setBounds(212, 101, 164, 20);
 		contentPane.add(txtNombre);
 
-		JLabel lblNewLabel_1 = new JLabel("Nombre del Solicitante   :");
+		JLabel lblNewLabel_1 = new JLabel("Nombre    :");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(180, 104, 162, 14);
+		lblNewLabel_1.setBounds(115, 104, 87, 14);
 		contentPane.add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("Cuantas personas Viajaran   :");
@@ -149,11 +150,15 @@ public class Viaje extends JFrame {
 		contentPane.add(lblNewLabel_3);
 
 		rbEquipamiento = new JRadioButton("SI");
+		rbEquipamiento.setBackground(new Color(0, 0, 0));
+		rbEquipamiento.setForeground(new Color(255, 255, 255));
 		rbEquipamiento.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		rbEquipamiento.setBounds(377, 196, 64, 23);
 		contentPane.add(rbEquipamiento);
 
 		 rbEquipamiento2 = new JRadioButton("NO");
+		 rbEquipamiento2.setBackground(new Color(0, 0, 0));
+		 rbEquipamiento2.setForeground(new Color(255, 255, 255));
 		 rbEquipamiento2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		rbEquipamiento2.setBounds(490, 196, 64, 23);
 		contentPane.add(rbEquipamiento2);
@@ -165,11 +170,15 @@ public class Viaje extends JFrame {
 		contentPane.add(lblNewLabel_3_1);
 
 		rbNiños = new JRadioButton("SI");
+		rbNiños.setBackground(new Color(0, 0, 0));
+		rbNiños.setForeground(new Color(255, 255, 255));
 		rbNiños.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		rbNiños.setBounds(377, 244, 64, 23);
 		contentPane.add(rbNiños);
 
 		 rbNoNiños = new JRadioButton("NO");
+		 rbNoNiños.setBackground(new Color(0, 0, 0));
+		 rbNoNiños.setForeground(new Color(255, 255, 255));
 		 rbNoNiños.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		rbNoNiños.setBounds(490, 244, 64, 23);
 		contentPane.add(rbNoNiños);
@@ -197,7 +206,7 @@ public class Viaje extends JFrame {
 		btnNewButton.setIcon(new ImageIcon(Viaje.class.getResource("/Vistas/img/mapa-vial.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Validaciones antes de guardar
+				
 				if (txtNombre.getText().trim().isEmpty() || 
 				    cbPersonas.getSelectedIndex() == 0 || 
 				    txtNumero.getText().trim().isEmpty()) {
@@ -223,6 +232,8 @@ public class Viaje extends JFrame {
 		grupodos.add(rbNoNiños);
 
 		dateFecha = new JDateChooser();
+		dateFecha.setForeground(new Color(255, 0, 0));
+		dateFecha.setBackground(new Color(255, 255, 255));
 		dateFecha.setBounds(371, 283, 164, 20);
 		contentPane.add(dateFecha);
 		
@@ -230,6 +241,19 @@ public class Viaje extends JFrame {
 		lblNewLabel_6.setForeground(Color.WHITE);
 		lblNewLabel_6.setBounds(10, 0, 269, 29);
 		contentPane.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("Apellidos    :");
+		lblNewLabel_7.setForeground(new Color(255, 255, 255));
+		lblNewLabel_7.setBounds(414, 105, 76, 14);
+		contentPane.add(lblNewLabel_7);
+		
+		textField = new JTextField();
+		textField.setForeground(Color.BLACK);
+		textField.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		textField.setColumns(10);
+		textField.setBackground(Color.WHITE);
+		textField.setBounds(490, 102, 234, 20);
+		contentPane.add(textField);
 	}
 
 	public void guardarViaje() {
