@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="Librerias/grpc-context-1.27.2.jar"/>
 	<classpathentry kind="lib" path="Librerias/gson-2.10.1.jar"/>
 	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="Librerias/jackson-core-2.2.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

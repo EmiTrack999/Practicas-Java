@@ -182,6 +182,7 @@ public class Coti_Viaje extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				guardarFinal();
+				coti();
         	}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
@@ -398,6 +399,39 @@ public class Coti_Viaje extends JFrame {
 	                Final_Pedido pf = new Final_Pedido();
 	                pf.setVisible(true);
 	                dispose();
+	    }
+	    public void coti() {
+	    	String cllenom;
+	    	String numeroin;
+	    	String numeroex;
+	    	String colonia;
+	    	String cp;
+	    	String estado;
+	    	cllenom=txt1.getText();
+	    	numeroin=txt2.getText();
+	    	numeroex=txt3.getText();
+	    	colonia=txt4.getText();
+	    	cp=txt5.getText();
+	    	estado=txt6.getText();
+	    	String ubicacion1=cllenom + numeroin + numeroex + colonia + cp +estado;
+	    	
+	    	String cllenom2;
+	    	String numeroin2;
+	    	String numeroex2;
+	    	String colonia2;
+	    	String cp2;
+	    	String estado2;
+	    	cllenom2=txt7.getText();
+	    	numeroin2=txt8.getText();
+	    	numeroex2=txt9.getText();
+	    	colonia2=txt10.getText();
+	    	cp2=txt11.getText();
+	    	estado2=txt12.getText();
+	    	String ubicacion2=cllenom2 + numeroin2 + numeroex2 + colonia2 + cp2 + estado2;
+	    	GoogleM gm=new GoogleM();
+	    	gm.mostrarCostos(ubicacion1, ubicacion2);
+	    	
+	    	
 	    }
 	
 }

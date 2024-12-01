@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.B_Datos;
+import Modelo.GoogleM;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -33,14 +34,20 @@ public class Coti_Pedido extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField txt1;
+	private JTextField txt2;
+	private JTextField txt3;
+	private JTextField txt4;
+	private JTextField txt5;
+	private JTextField txt6;
 	JRadioButton uno;
 	JRadioButton dos;
+	private JTextField txt7;
+	private JTextField txt8;
+	private JTextField txt9;
+	private JTextField txt10;
+	private JTextField txt11;
+	private JTextField txt12;
 
 	/**
 	 * Launch the application.
@@ -66,7 +73,7 @@ public class Coti_Pedido extends JFrame {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Coti_Pedido.class.getResource("/Vistas/img/cargofleets2.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1111, 716);
+		setBounds(100, 100, 1217, 732);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -129,74 +136,74 @@ public class Coti_Pedido extends JFrame {
 		JLabel lblNewLabel_1_3 = new JLabel("Nombre de La Calle donde se Entregara");
 		lblNewLabel_1_3.setForeground(Color.WHITE);
 		lblNewLabel_1_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_3.setBounds(191, 115, 301, 31);
+		lblNewLabel_1_3.setBounds(10, 81, 301, 31);
 		contentPane.add(lblNewLabel_1_3);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		textField.setColumns(10);
-		textField.setBounds(537, 123, 295, 19);
-		contentPane.add(textField);
+		txt1 = new JTextField();
+		txt1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+		txt1.setColumns(10);
+		txt1.setBounds(283, 93, 295, 19);
+		contentPane.add(txt1);
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("NO.Exterior");
 		lblNewLabel_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_1_2.setBounds(191, 211, 301, 31);
+		lblNewLabel_1_1_2.setBounds(10, 177, 301, 31);
 		contentPane.add(lblNewLabel_1_1_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		textField_1.setColumns(10);
-		textField_1.setBounds(537, 170, 295, 19);
-		contentPane.add(textField_1);
+		txt2 = new JTextField();
+		txt2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+		txt2.setColumns(10);
+		txt2.setBounds(283, 140, 295, 19);
+		contentPane.add(txt2);
 		
 		JLabel lblNewLabel_1_1_1_2 = new JLabel("Nombre del Barrio,Sector o Cuidad");
 		lblNewLabel_1_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_1_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_1_1_2.setBounds(191, 264, 301, 31);
+		lblNewLabel_1_1_1_2.setBounds(10, 230, 301, 31);
 		contentPane.add(lblNewLabel_1_1_1_2);
 		
 		JLabel lblNewLabel_1_2_1 = new JLabel("NO.Interior ");
 		lblNewLabel_1_2_1.setForeground(Color.WHITE);
 		lblNewLabel_1_2_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_2_1.setBounds(191, 170, 301, 31);
+		lblNewLabel_1_2_1.setBounds(10, 136, 301, 31);
 		contentPane.add(lblNewLabel_1_2_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		textField_2.setColumns(10);
-		textField_2.setBounds(537, 219, 295, 19);
-		contentPane.add(textField_2);
+		txt3 = new JTextField();
+		txt3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+		txt3.setColumns(10);
+		txt3.setBounds(283, 189, 295, 19);
+		contentPane.add(txt3);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		textField_3.setColumns(10);
-		textField_3.setBounds(537, 272, 295, 19);
-		contentPane.add(textField_3);
+		txt4 = new JTextField();
+		txt4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+		txt4.setColumns(10);
+		txt4.setBounds(283, 242, 295, 19);
+		contentPane.add(txt4);
 		
 		JLabel lblNewLabel_1_1_1_1_2 = new JLabel("Codigo Postal");
 		lblNewLabel_1_1_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_1_1_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_1_1_1_2.setBounds(191, 318, 301, 31);
+		lblNewLabel_1_1_1_1_2.setBounds(10, 284, 301, 31);
 		contentPane.add(lblNewLabel_1_1_1_1_2);
 		
-		textField_4 = new JTextField();
-		textField_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		textField_4.setColumns(10);
-		textField_4.setBounds(537, 326, 295, 19);
-		contentPane.add(textField_4);
+		txt5 = new JTextField();
+		txt5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+		txt5.setColumns(10);
+		txt5.setBounds(283, 296, 295, 19);
+		contentPane.add(txt5);
 		
 		JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
 		lblNewLabel_1_1_1_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_1_1_1_1_1_1.setBounds(191, 364, 301, 31);
+		lblNewLabel_1_1_1_1_1_1.setBounds(10, 330, 301, 31);
 		contentPane.add(lblNewLabel_1_1_1_1_1_1);
 		
-		textField_5 = new JTextField();
-		textField_5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		textField_5.setColumns(10);
-		textField_5.setBounds(537, 372, 295, 19);
-		contentPane.add(textField_5);
+		txt6 = new JTextField();
+		txt6.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
+		txt6.setColumns(10);
+		txt6.setBounds(283, 342, 295, 19);
+		contentPane.add(txt6);
 		
 		JLabel lblNewLabel = new JLabel("Coticemos tu pedido");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
@@ -228,19 +235,19 @@ public class Coti_Pedido extends JFrame {
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		        if (textField.getText().isEmpty() || textField_1.getText().isEmpty() ||
-		            textField_2.getText().isEmpty() || textField_3.getText().isEmpty() ||
-		            textField_4.getText().isEmpty() || textField_5.getText().isEmpty()) {
+		        if (txt1.getText().isEmpty() || txt2.getText().isEmpty() ||
+		            txt3.getText().isEmpty() || txt4.getText().isEmpty() ||
+		            txt5.getText().isEmpty() || txt6.getText().isEmpty()) {
 		            JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.", "Error", JOptionPane.ERROR_MESSAGE);
 		            return;
 		        }
 		        try { 	
-		            String noCalle = textField.getText().trim();
-		            int noInterior = Integer.parseInt(textField_1.getText().trim());
-		            int noExterior = Integer.parseInt(textField_2.getText().trim());
-		            String sector = textField_3.getText().trim();
-		            int codigoPostal = Integer.parseInt(textField_4.getText().trim());
-		            String estadoPais = textField_5.getText().trim();
+		            String noCalle = txt1.getText().trim();
+		            int noInterior = Integer.parseInt(txt2.getText().trim());
+		            int noExterior = Integer.parseInt(txt3.getText().trim());
+		            String sector = txt4.getText().trim();
+		            int codigoPostal = Integer.parseInt(txt5.getText().trim());
+		            String estadoPais = txt6.getText().trim();
 		            boolean ecoFriendly = uno.isSelected(); 
 		            B_Datos bd = new B_Datos();
 		            bd.coti_pedido(noCalle, noInterior, noExterior, sector, codigoPostal, estadoPais, ecoFriendly);
@@ -253,6 +260,7 @@ public class Coti_Pedido extends JFrame {
 		        } catch (Exception ex) {
 		            JOptionPane.showMessageDialog(null, "Ocurrió un error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		        }
+		        coti();
 		        
 			}
 			
@@ -264,7 +272,112 @@ public class Coti_Pedido extends JFrame {
 		ButtonGroup group = new ButtonGroup();
         group.add(uno);
         group.add(dos);
+        
+        JLabel lblNewLabel_1_3_1 = new JLabel("Nombre de La Calle");
+        lblNewLabel_1_3_1.setForeground(Color.WHITE);
+        lblNewLabel_1_3_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1_3_1.setBounds(588, 72, 301, 31);
+        contentPane.add(lblNewLabel_1_3_1);
+        
+        txt7 = new JTextField();
+        txt7.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        txt7.setColumns(10);
+        txt7.setBounds(934, 80, 295, 19);
+        contentPane.add(txt7);
+        
+        JLabel lblNewLabel_1_1_4 = new JLabel("NO.Exterior");
+        lblNewLabel_1_1_4.setForeground(Color.WHITE);
+        lblNewLabel_1_1_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1_1_4.setBounds(588, 168, 301, 31);
+        contentPane.add(lblNewLabel_1_1_4);
+        
+        txt8 = new JTextField();
+        txt8.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        txt8.setColumns(10);
+        txt8.setBounds(934, 127, 295, 19);
+        contentPane.add(txt8);
+        
+        JLabel lblNewLabel_1_1_1_2_1 = new JLabel("Nombre del Barrio,Sector o Cuidad");
+        lblNewLabel_1_1_1_2_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_2_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1_1_1_2_1.setBounds(588, 221, 301, 31);
+        contentPane.add(lblNewLabel_1_1_1_2_1);
+        
+        JLabel lblNewLabel_1_2_1_1 = new JLabel("NO.Interior ");
+        lblNewLabel_1_2_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_2_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1_2_1_1.setBounds(588, 127, 301, 31);
+        contentPane.add(lblNewLabel_1_2_1_1);
+        
+        txt9 = new JTextField();
+        txt9.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        txt9.setColumns(10);
+        txt9.setBounds(934, 176, 295, 19);
+        contentPane.add(txt9);
+        
+        txt10 = new JTextField();
+        txt10.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        txt10.setColumns(10);
+        txt10.setBounds(934, 229, 295, 19);
+        contentPane.add(txt10);
+        
+        JLabel lblNewLabel_1_1_1_1_2_1 = new JLabel("Codigo Postal");
+        lblNewLabel_1_1_1_1_2_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1_2_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1_1_1_1_2_1.setBounds(588, 275, 301, 31);
+        contentPane.add(lblNewLabel_1_1_1_1_2_1);
+        
+        txt11 = new JTextField();
+        txt11.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        txt11.setColumns(10);
+        txt11.setBounds(934, 283, 295, 19);
+        contentPane.add(txt11);
+        
+        JLabel lblNewLabel_1_1_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
+        lblNewLabel_1_1_1_1_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1_1_1_1_1_1_1.setBounds(588, 342, 301, 31);
+        contentPane.add(lblNewLabel_1_1_1_1_1_1_1);
+        
+        txt12 = new JTextField();
+        txt12.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        txt12.setColumns(10);
+        txt12.setBounds(934, 354, 295, 19);
+        contentPane.add(txt12);
 	}
+	public void coti() {
+    	String cllenom;
+    	String numeroin;
+    	String numeroex;
+    	String colonia;
+    	String cp;
+    	String estado;
+    	cllenom=txt1.getText();
+    	numeroin=txt2.getText();
+    	numeroex=txt3.getText();
+    	colonia=txt4.getText();
+    	cp=txt5.getText();
+    	estado=txt6.getText();
+    	String ubicacion1=cllenom + numeroin + numeroex + colonia + cp +estado;
+    	
+    	String cllenom2;
+    	String numeroin2;
+    	String numeroex2;
+    	String colonia2;
+    	String cp2;
+    	String estado2;
+    	cllenom2=txt7.getText();
+    	numeroin2=txt8.getText();
+    	numeroex2=txt9.getText();
+    	colonia2=txt10.getText();
+    	cp2=txt11.getText();
+    	estado2=txt12.getText();
+    	String ubicacion2=cllenom2 + numeroin2 + numeroex2 + colonia2 + cp2 + estado2;
+    	GoogleM gm=new GoogleM();
+    	gm.mostrarCostos(ubicacion1, ubicacion2);
+    	
+    	
+    }
 	}
 	
 	
