@@ -428,8 +428,10 @@ public class Coti_Viaje extends JFrame {
 	    	cp2=txt11.getText();
 	    	estado2=txt12.getText();
 	    	String ubicacion2=cllenom2 + numeroin2 + numeroex2 + colonia2 + cp2 + estado2;
+	    	boolean un=uno.isSelected();
 	    	GoogleM gm=new GoogleM();
-	    	gm.mostrarCostos(ubicacion1, ubicacion2);
+	    	gm.mostrarCostos(ubicacion1, ubicacion2, un);
+	    	
 	    	
 	    	
 	    }

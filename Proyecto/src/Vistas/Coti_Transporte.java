@@ -443,7 +443,10 @@ public class Coti_Transporte extends JFrame {
     	estado2=txt12.getText();
     	String ubicacion2=cllenom2 + numeroin2 + numeroex2 + colonia2 + cp2 + estado2;
     	GoogleM gm=new GoogleM();
-    	gm.mostrarCostos(ubicacion1, ubicacion2);
+    	Transporte tr=new Transporte();
+        String tru=tr.textoSeleccionado;
+        boolean un=uno.isSelected();
+        gm.mostrarCostos(ubicacion1, ubicacion2, tru, un);
     	
     	
     }

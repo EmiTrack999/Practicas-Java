@@ -78,12 +78,19 @@ public class GoogleM {
     }
 
     // Método para calcular el costo en pesos y dólares
-    public void mostrarCostos(String direccionOrigen, String direccionDestino) {
+ // Método para calcular el costo en pesos y dólares con incremento opcional
+    public void mostrarCostos(String direccionOrigen, String direccionDestino, boolean conIncremento) {
         double distancia = obtenerDistancia(direccionOrigen, direccionDestino);
 
         if (distancia != -1) {
             double costoPesos = distancia * COSTO_KM_PESOS;
             double costoDolares = distancia * COSTO_KM_DOLARES;
+
+            // Aplicar incremento del 10% si el RadioButton está seleccionado
+            if (conIncremento) {
+                costoPesos *= 1.1;
+                costoDolares *= 1.1;
+            }
 
             // Mostrar las direcciones, distancia y costos
             JOptionPane.showMessageDialog(null,
@@ -98,14 +105,13 @@ public class GoogleM {
                 String encodedOrigen = URLEncoder.encode(direccionOrigen, "UTF-8");
                 String encodedDestino = URLEncoder.encode(direccionDestino, "UTF-8");
 
-                // Abrir el mapa en el navegador
+                // Abrir Google Maps en el navegador
                 String urlMap = "https://www.google.com/maps/dir/?api=1&origin=" + encodedOrigen +
                         "&destination=" + encodedDestino;
                 URI uri = new URI(urlMap);
-                
-                // Verificar si el sistema soporta abrir el navegador
+
                 if (Desktop.isDesktopSupported()) {
-                    Desktop.getDesktop().browse(uri); // Abre el navegador con el mapa
+                    Desktop.getDesktop().browse(uri);
                 } else {
                     JOptionPane.showMessageDialog(null, "No se puede abrir el navegador.");
                 }
@@ -116,4 +122,54 @@ public class GoogleM {
             JOptionPane.showMessageDialog(null, "No se pudo obtener la distancia.");
         }
     }
+
+    // Método para calcular costos considerando tipo de carga y con incremento opcional
+    public void mostrarCostos(String direccionOrigen, String direccionDestino, String tipoCarga, boolean conIncremento) {
+        double distancia = obtenerDistancia(direccionOrigen, direccionDestino);
+
+        if (distancia != -1) {
+            // Ajustar el costo por tipo de carga
+            double factorCarga = tipoCarga.equalsIgnoreCase("Pesado") ? 1.5 : 1.0;
+            double costoPesos = distancia * COSTO_KM_PESOS * factorCarga;
+            double costoDolares = distancia * COSTO_KM_DOLARES * factorCarga;
+
+            // Aplicar incremento del 10% si el RadioButton está seleccionado
+            if (conIncremento) {
+                costoPesos *= 1.1;
+                costoDolares *= 1.1;
+            }
+
+            // Mostrar resultados
+            JOptionPane.showMessageDialog(null,
+                    "Dirección Origen: " + direccionOrigen + "\n" +
+                    "Dirección Destino: " + direccionDestino + "\n" +
+                    "Tipo de Carga: " + tipoCarga + "\n" +
+                    "Distancia: " + distancia + " km\n" +
+                    "Costo Estimado (Pesos): " + costoPesos + " MXN\n" +
+                    "Costo Estimado (Dólares): " + costoDolares + " USD");
+
+            // Codificar las direcciones para abrir Google Maps
+            try {
+                String encodedOrigen = URLEncoder.encode(direccionOrigen, "UTF-8");
+                String encodedDestino = URLEncoder.encode(direccionDestino, "UTF-8");
+
+                String urlMap = "https://www.google.com/maps/dir/?api=1&origin=" + encodedOrigen +
+                        "&destination=" + encodedDestino;
+                URI uri = new URI(urlMap);
+
+                if (Desktop.isDesktopSupported()) {
+                    Desktop.getDesktop().browse(uri);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede abrir el navegador.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo obtener la distancia.");
+        }
+    }
+
+    
+
 }

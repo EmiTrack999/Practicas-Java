@@ -22,6 +22,7 @@ public class Transporte extends JFrame {
     private JRadioButton rdbtnTransportaPersonalSi, rdbtnTransportaPersonalNo, rdbtnParadasContinuasSi, rdbtnParadasContinuasNo;
     private JTextField txtNombre;
     private JTextField txtApellidos;
+    String textoSeleccionado;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -92,10 +93,19 @@ public class Transporte extends JFrame {
         contentPane.add(lblTipoDeTransporte);
 
         comboBox = new JComboBox<>();
-        comboBox.setModel(new DefaultComboBoxModel<>(new String[]{"Transporte", "Pesado", "Ligero"}));
+        comboBox.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		textoSeleccionado = comboBox.getSelectedItem().toString();
+                System.out.println("Texto seleccionado: " + textoSeleccionado);
+        	}
+        });
+        comboBox.setModel(new DefaultComboBoxModel(new String[] {"Transporte", "Pesado", "Ligero"}));
         comboBox.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
         comboBox.setBounds(383, 129, 145, 38);
         contentPane.add(comboBox);
+  
+
+
 
         JLabel lblMaterialSensible = new JLabel("¿Material Sensible?    :");
         lblMaterialSensible.setForeground(Color.WHITE);
