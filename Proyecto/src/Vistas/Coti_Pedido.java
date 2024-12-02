@@ -73,7 +73,7 @@ public class Coti_Pedido extends JFrame {
 		setResizable(false);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Coti_Pedido.class.getResource("/Vistas/img/cargofleets2.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1217, 732);
+		setBounds(100, 100, 1302, 732);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -208,7 +208,7 @@ public class Coti_Pedido extends JFrame {
 		JLabel lblNewLabel = new JLabel("Coticemos tu pedido");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 30));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(397, 10, 257, 38);
+		lblNewLabel.setBounds(518, 11, 257, 38);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Deseas aportar  para el programa ecofrend del 10% de tu costo    :");
@@ -251,7 +251,9 @@ public class Coti_Pedido extends JFrame {
 		            boolean ecoFriendly = uno.isSelected(); 
 		            B_Datos bd = new B_Datos();
 		            bd.coti_pedido(noCalle, noInterior, noExterior, sector, codigoPostal, estadoPais, ecoFriendly);
-		            JOptionPane.showMessageDialog(null, "tu pedido fue cotizado");
+		              coti();
+		              JOptionPane.showMessageDialog(null, "tu pedido fue cotizado"); 
+		          
 		            Final_Pedido fp=new Final_Pedido();
 		            fp.setVisible(true);
 		            dispose();
@@ -260,14 +262,14 @@ public class Coti_Pedido extends JFrame {
 		        } catch (Exception ex) {
 		            JOptionPane.showMessageDialog(null, "Ocurrió un error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		        }
-		        coti();
+		       
 		        
 			}
 			
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.setIcon(new ImageIcon(Coti_Pedido.class.getResource("/Vistas/img/bolsa-de-valores.png")));
-		btnNewButton.setBounds(469, 516, 168, 45);
+		btnNewButton.setBounds(566, 524, 168, 45);
 		contentPane.add(btnNewButton);
 		ButtonGroup group = new ButtonGroup();
         group.add(uno);
@@ -344,6 +346,11 @@ public class Coti_Pedido extends JFrame {
         txt12.setColumns(10);
         txt12.setBounds(934, 354, 295, 19);
         contentPane.add(txt12);
+        
+        JLabel lblNewLabel_1 = new JLabel("New label");
+        lblNewLabel_1.setIcon(new ImageIcon(Coti_Pedido.class.getResource("/Vistas/img/telefono-inteligente.png")));
+        lblNewLabel_1.setBounds(345, 72, 618, 599);
+        contentPane.add(lblNewLabel_1);
 	}
 	public void coti() {
     	String cllenom;

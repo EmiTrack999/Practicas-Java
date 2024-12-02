@@ -206,17 +206,11 @@ public class Viaje extends JFrame {
 		btnNewButton.setIcon(new ImageIcon(Viaje.class.getResource("/Vistas/img/mapa-vial.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				guardarViaje();
+				Coti_Viaje cv=new Coti_Viaje();
+				cv.setVisible(true);
+				dispose();
 				
-				if (txtNombre.getText().trim().isEmpty() || 
-				    cbPersonas.getSelectedIndex() == 0 || 
-				    txtNumero.getText().trim().isEmpty()) {
-					JOptionPane.showMessageDialog(contentPane,
-						"Por favor, complete todos los campos obligatorios.",
-						"Campos Vacíos",
-						JOptionPane.WARNING_MESSAGE);
-				} else {
-					 guardarViaje();
-				}
 			}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));

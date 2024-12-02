@@ -266,7 +266,7 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_2);
         
         JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
-        lblNewLabel_1_1_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1_1.setForeground(new Color(0, 0, 0));
         lblNewLabel_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         lblNewLabel_1_1_1_1_1.setBounds(57, 373, 301, 31);
         contentPane.add(lblNewLabel_1_1_1_1_1);
@@ -361,6 +361,11 @@ public class Coti_Transporte extends JFrame {
         });
         btnNewButton.setBounds(623, 605, 172, 41);
         contentPane.add(btnNewButton);
+        
+        JLabel lblNewLabel_3 = new JLabel("");
+        lblNewLabel_3.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/camiones.png")));
+        lblNewLabel_3.setBounds(4, 198, 853, 594);
+        contentPane.add(lblNewLabel_3);
     }
     
     public void guardar_Uinicial() {
@@ -398,7 +403,7 @@ public class Coti_Transporte extends JFrame {
 
            
             if (conf) {
-               
+               coti();
             } else {
                 JOptionPane.showMessageDialog(null, "Error al guardar los datos.");
             }

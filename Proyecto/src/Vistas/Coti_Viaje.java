@@ -352,6 +352,15 @@ public class Coti_Viaje extends JFrame {
 	        lblNewLabel_2.setForeground(Color.WHITE);
 	        lblNewLabel_2.setBounds(10, 0, 457, 29);
 	        contentPane.add(lblNewLabel_2);
+	        
+	        JLabel lblNewLabel_4 = new JLabel("");
+	        lblNewLabel_4.setIcon(new ImageIcon(Coti_Viaje.class.getResource("/Vistas/img/viajar.png")));
+	        lblNewLabel_4.setBounds(0, 237, 632, 484);
+	        contentPane.add(lblNewLabel_4);
+	        
+	        JLabel label = new JLabel("New label");
+	        label.setBounds(1228, 37, 46, 14);
+	        contentPane.add(label);
 	}
 	 public void guardar_Uinicial() {
 	        try {
@@ -435,5 +444,4 @@ public class Coti_Viaje extends JFrame {
 	    	
 	    	
 	    }
-	
 }
