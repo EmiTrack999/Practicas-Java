@@ -69,7 +69,7 @@ public class SegundaVista extends JFrame {
         setTitle("Cargo Fleets Solutions");
         setResizable(false);
         setIconImage(Toolkit.getDefaultToolkit().getImage(SegundaVista.class.getResource("/Vistas/Logo de la empresa.jpeg")));
-        setBounds(100, 100, 730, 441);
+        setBounds(100, 100, 730, 555);
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -125,7 +125,7 @@ public class SegundaVista extends JFrame {
         JLabel lblNewLabel = new JLabel("Ingresa tu correo");
         lblNewLabel.setForeground(new Color(255, 255, 255));
         lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        lblNewLabel.setBounds(308, 86, 108, 14);
+        lblNewLabel.setBounds(305, 211, 118, 20);
         desktopPane.add(lblNewLabel);
 
         txtCorreo = new JTextField();
@@ -138,20 +138,20 @@ public class SegundaVista extends JFrame {
     				}
         	}
         });
-        txtCorreo.setBounds(242, 120, 241, 20);
+        txtCorreo.setBounds(242, 241, 241, 20);
         desktopPane.add(txtCorreo);
         txtCorreo.setColumns(10);
 
         JLabel lblNewLabel_1 = new JLabel("Crea tu contraseña");
         lblNewLabel_1.setForeground(new Color(255, 255, 255));
         lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        lblNewLabel_1.setBounds(308, 159, 115, 14);
+        lblNewLabel_1.setBounds(305, 271, 118, 14);
         desktopPane.add(lblNewLabel_1);
 
         JLabel lblNewLabel_2 = new JLabel("Confirma tu contraseña");
         lblNewLabel_2.setForeground(new Color(255, 255, 255));
         lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
-        lblNewLabel_2.setBounds(297, 226, 148, 14);
+        lblNewLabel_2.setBounds(285, 325, 148, 14);
         desktopPane.add(lblNewLabel_2);
 
         JButton btnNewButton = new JButton("Registrarme");
@@ -182,7 +182,7 @@ public class SegundaVista extends JFrame {
                 }
             }
         });
-        btnNewButton.setBounds(285, 307, 137, 31);
+        btnNewButton.setBounds(285, 440, 137, 31);
         desktopPane.add(btnNewButton);
 
         JLabel lblNewLabel_3 = new JLabel("Registro");
@@ -201,7 +201,7 @@ public class SegundaVista extends JFrame {
 				}
         	}
         });
-        txtContra.setBounds(242, 184, 241, 20);
+        txtContra.setBounds(242, 295, 241, 20);
         desktopPane.add(txtContra);
 
         txtConfir = new JPasswordField();
@@ -214,7 +214,7 @@ public class SegundaVista extends JFrame {
 				}
         	}
         });
-        txtConfir.setBounds(242, 251, 241, 20);
+        txtConfir.setBounds(242, 349, 241, 20);
         desktopPane.add(txtConfir);
         
         JCheckBox mostrarcontra = new JCheckBox("Mostrar Contraseña");
@@ -234,8 +234,13 @@ public class SegundaVista extends JFrame {
                   }
         	}
         });
-        mostrarcontra.setBounds(278, 278, 186, 14);
+        mostrarcontra.setBounds(269, 386, 186, 25);
         desktopPane.add(mostrarcontra);
+        
+        JLabel lblNewLabel_4 = new JLabel("");
+        lblNewLabel_4.setIcon(new ImageIcon(SegundaVista.class.getResource("/Vistas/img/REGSITROOOS.png")));
+        lblNewLabel_4.setBounds(295, 68, 128, 139);
+        desktopPane.add(lblNewLabel_4);
     }
 
     public void registrar() {

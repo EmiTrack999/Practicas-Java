@@ -127,7 +127,8 @@ public class Coti_Pedido extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(0, 0, 0));
+		contentPane.setForeground(new Color(0, 138, 138));
+		contentPane.setBackground(new Color(0, 138, 138));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -194,7 +195,7 @@ public class Coti_Pedido extends JFrame {
 		contentPane.add(txt5);
 		
 		JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
-		lblNewLabel_1_1_1_1_1_1.setForeground(Color.WHITE);
+		lblNewLabel_1_1_1_1_1_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_1_1_1_1_1_1.setBounds(10, 330, 301, 31);
 		contentPane.add(lblNewLabel_1_1_1_1_1_1);
@@ -214,21 +215,21 @@ public class Coti_Pedido extends JFrame {
 		JLabel lblNewLabel_3_1 = new JLabel("Deseas aportar  para el programa ecofrend del 10% de tu costo    :");
 		lblNewLabel_3_1.setForeground(Color.WHITE);
 		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-		lblNewLabel_3_1.setBounds(181, 437, 477, 14);
+		lblNewLabel_3_1.setBounds(173, 383, 477, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
 		uno = new JRadioButton("SI");
 		uno.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
 		uno.setBackground(new Color(0, 0, 0));
 		uno.setForeground(new Color(255, 255, 255));
-		uno.setBounds(686, 434, 48, 23);
+		uno.setBounds(682, 379, 48, 23);
 		contentPane.add(uno);
 		
 		dos = new JRadioButton("NO");
 		dos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
 		dos.setBackground(new Color(0, 0, 0));
 		dos.setForeground(new Color(255, 255, 255));
-		dos.setBounds(756, 434, 57, 23);
+		dos.setBounds(764, 379, 57, 23);
 		contentPane.add(dos);
 		
 		JButton btnNewButton = new JButton("Cotizar");
@@ -347,9 +348,10 @@ public class Coti_Pedido extends JFrame {
         txt12.setBounds(934, 354, 295, 19);
         contentPane.add(txt12);
         
-        JLabel lblNewLabel_1 = new JLabel("New label");
-        lblNewLabel_1.setIcon(new ImageIcon(Coti_Pedido.class.getResource("/Vistas/img/telefono-inteligente.png")));
-        lblNewLabel_1.setBounds(345, 72, 618, 599);
+        JLabel lblNewLabel_1 = new JLabel("");
+        lblNewLabel_1.setForeground(new Color(0, 0, 0));
+        lblNewLabel_1.setIcon(new ImageIcon(Coti_Pedido.class.getResource("/Vistas/img/grafico-de-barras.png")));
+        lblNewLabel_1.setBounds(165, 218, 391, 599);
         contentPane.add(lblNewLabel_1);
 	}
 	public void coti() {

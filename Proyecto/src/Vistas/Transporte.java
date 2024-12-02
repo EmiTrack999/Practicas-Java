@@ -216,6 +216,16 @@ public class Transporte extends JFrame {
         btnNewButton.setForeground(new Color(255, 255, 255));
         btnNewButton.setBounds(323, 374, 145, 39);
         contentPane.add(btnNewButton);
+        
+        JLabel lblNewLabel_3 = new JLabel("");
+        lblNewLabel_3.setIcon(new ImageIcon(Transporte.class.getResource("/Vistas/img/comercio.png")));
+        lblNewLabel_3.setBounds(10, 20, 75, 105);
+        contentPane.add(lblNewLabel_3);
+        
+        JLabel lblNewLabel_4 = new JLabel("");
+        lblNewLabel_4.setIcon(new ImageIcon(Transporte.class.getResource("/Vistas/img/Camionetas.png")));
+        lblNewLabel_4.setBounds(633, 231, 88, 105);
+        contentPane.add(lblNewLabel_4);
     }
 
 }

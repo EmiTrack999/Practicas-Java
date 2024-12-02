@@ -258,6 +258,21 @@ public class Pedir_Pedido extends JFrame {
 		ButtonGroup group = new ButtonGroup();
 	        group.add(rdCasa);
 	        group.add(rdEmp);
+	        
+	        JLabel lblNewLabel_7 = new JLabel("New label");
+	        lblNewLabel_7.setIcon(new ImageIcon(Pedir_Pedido.class.getResource("/Vistas/img/pedido-en-linea.png")));
+	        lblNewLabel_7.setBounds(20, 23, 72, 76);
+	        contentPane.add(lblNewLabel_7);
+	        
+	        JLabel lblNewLabel_8 = new JLabel("");
+	        lblNewLabel_8.setIcon(new ImageIcon(Pedir_Pedido.class.getResource("/Vistas/img/pedido-en-linea (1).png")));
+	        lblNewLabel_8.setBounds(690, 321, 88, 92);
+	        contentPane.add(lblNewLabel_8);
+	        
+	        JLabel lblNewLabel_9 = new JLabel("");
+	        lblNewLabel_9.setIcon(new ImageIcon(Pedir_Pedido.class.getResource("/Vistas/img/Pedido Grande.png")));
+	        lblNewLabel_9.setBounds(20, 260, 199, 193);
+	        contentPane.add(lblNewLabel_9);
 	}
 	
 

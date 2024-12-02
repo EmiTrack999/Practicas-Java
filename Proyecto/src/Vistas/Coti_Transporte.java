@@ -268,7 +268,7 @@ public class Coti_Transporte extends JFrame {
         JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
         lblNewLabel_1_1_1_1_1.setForeground(new Color(0, 0, 0));
         lblNewLabel_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
-        lblNewLabel_1_1_1_1_1.setBounds(57, 373, 301, 31);
+        lblNewLabel_1_1_1_1_1.setBounds(57, 379, 301, 19);
         contentPane.add(lblNewLabel_1_1_1_1_1);
         
         txt6 = new JTextField();

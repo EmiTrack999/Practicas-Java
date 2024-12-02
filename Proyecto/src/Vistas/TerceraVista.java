@@ -50,6 +50,7 @@ public class TerceraVista extends JFrame {
 	private JPasswordField txtConfir;
 	private JCheckBox MostrarContraseña;
 	 private boolean mostrarContraseña = false;
+	 private JLabel lblNewLabel_4;
 
 	/**
 	 * Launch the application.
@@ -75,7 +76,7 @@ public class TerceraVista extends JFrame {
 		setResizable(false);
 		setTitle("Cargo Fleets Solutions");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 721, 436);
+		setBounds(100, 100, 721, 613);
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -130,19 +131,19 @@ public class TerceraVista extends JFrame {
 		JLabel lblNewLabel = new JLabel("Ingresa tu Telefono:");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setBounds(272, 73, 138, 14);
+		lblNewLabel.setBounds(272, 222, 138, 14);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Crea tu Contraseña:");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(272, 159, 132, 14);
+		lblNewLabel_1.setBounds(272, 276, 132, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Confirma tu contraseña:");
 		lblNewLabel_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 14));
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
-		lblNewLabel_2.setBounds(261, 235, 149, 14);
+		lblNewLabel_2.setBounds(260, 346, 149, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		txtTelefono = new JTextField();
@@ -155,7 +156,7 @@ public class TerceraVista extends JFrame {
 				}
 			}
 		});
-		txtTelefono.setBounds(219, 98, 250, 20);
+		txtTelefono.setBounds(219, 246, 250, 20);
 		contentPane.add(txtTelefono);
 		txtTelefono.setColumns(10);
 		
@@ -201,7 +202,7 @@ public class TerceraVista extends JFrame {
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(255, 0, 0));
-		btnNewButton.setBounds(272, 315, 138, 32);
+		btnNewButton.setBounds(272, 470, 138, 32);
 		contentPane.add(btnNewButton);
 		
 		txtContra = new JPasswordField();
@@ -214,7 +215,7 @@ public class TerceraVista extends JFrame {
 				}
 			}
 		});
-		txtContra.setBounds(219, 184, 250, 20);
+		txtContra.setBounds(219, 316, 250, 20);
 		contentPane.add(txtContra);
 		
 		txtConfir = new JPasswordField();
@@ -227,7 +228,7 @@ public class TerceraVista extends JFrame {
 				}
 			}
 		});
-		txtConfir.setBounds(219, 259, 250, 20);
+		txtConfir.setBounds(219, 370, 250, 20);
 		contentPane.add(txtConfir);
 		
 		MostrarContraseña = new JCheckBox("Mostar Contraseña");
@@ -249,8 +250,13 @@ public class TerceraVista extends JFrame {
 	                }
 			}
 		});
-		MostrarContraseña.setBounds(272, 286, 158, 14);
+		MostrarContraseña.setBounds(272, 412, 158, 32);
 		contentPane.add(MostrarContraseña);
+		
+		lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon(TerceraVista.class.getResource("/Vistas/img/REGSITROOOS.png")));
+		lblNewLabel_4.setBounds(272, 58, 128, 139);
+		contentPane.add(lblNewLabel_4);
 	}
 	public void registrar() {
 		B_Datos bd=new B_Datos();

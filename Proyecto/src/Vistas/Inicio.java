@@ -51,7 +51,7 @@ public class Inicio extends JFrame {
 		setTitle("Cargo Fleets Solutions");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 793, 495);
+		setBounds(100, 100, 919, 495);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -118,8 +118,8 @@ public class Inicio extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Iniciar Pedido");
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/entrega-de-pedidos.png")));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		btnNewButton.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/orden.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Pedir_Pedido pp=new Pedir_Pedido();
@@ -129,12 +129,12 @@ public class Inicio extends JFrame {
 		});
 		btnNewButton.setForeground(new Color(255, 255, 255));
 		btnNewButton.setBackground(new Color(61, 175, 188));
-		btnNewButton.setBounds(276, 120, 218, 41);
+		btnNewButton.setBounds(202, 107, 360, 81);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Iniciar Transporte");
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		btnNewButton_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/transporte.png")));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 24));
+		btnNewButton_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/AGUATIERRAETAC.png")));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Transporte tra=new Transporte();
@@ -145,12 +145,12 @@ public class Inicio extends JFrame {
 		});
 		btnNewButton_1.setForeground(new Color(255, 255, 255));
 		btnNewButton_1.setBackground(new Color(61, 175, 188));
-		btnNewButton_1.setBounds(276, 210, 218, 41);
+		btnNewButton_1.setBounds(202, 210, 360, 97);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Iniciar Viaje");
-		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		btnNewButton_2.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/viaje-de-negocios.png")));
+		btnNewButton_2.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/volar.png")));
+		btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Viaje vi=new Viaje();
@@ -160,12 +160,12 @@ public class Inicio extends JFrame {
 		});
 		btnNewButton_2.setForeground(new Color(255, 255, 255));
 		btnNewButton_2.setBackground(new Color(61, 175, 188));
-		btnNewButton_2.setBounds(278, 294, 216, 41);
+		btnNewButton_2.setBounds(202, 345, 360, 81);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/cargofleets2.png")));
-		lblNewLabel_1.setBounds(10, 32, 250, 158);
+		lblNewLabel_1.setIcon(new ImageIcon(Inicio.class.getResource("/Vistas/img/WhatsApp Image 2024-11-18 at 8.30.38 PM.jpeg")));
+		lblNewLabel_1.setBounds(572, 0, 323, 225);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
