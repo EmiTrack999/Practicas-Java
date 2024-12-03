@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controlador.B_Datos;
-import Controlador.Modelo;
+import Modelo.Modelo;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;

@@ -11,6 +11,8 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import Modelo.Modelo;
+
 public class B_Datos {
     PreparedStatement ps;
     Connection cn;
@@ -224,6 +226,39 @@ public class B_Datos {
             ps.setString(4, nom_sect);
             ps.setInt(5, cp);
             ps.setString(6, nom_estado);
+         
+            int filas = ps.executeUpdate();
+            if (filas > 0) {
+                return true; 
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la base de datos: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (cn != null) {
+                    cn.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar recursos: " + e.getMessage());
+            }
+        }
+        return false; 
+    }
+    public boolean guarda_ped(String Nombre, String Apellido, String transporte, boolean Senci, boolean persona, boolean paradas) {
+        String sql = "INSERT INTO  transporte VALUES (?, ?, ?, ?, ?, ?)";
+        Connection cn = conexion();
+        PreparedStatement ps = null;
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, Nombre);
+            ps.setString(2, Apellido);
+            ps.setString(3, transporte);
+            ps.setBoolean(4, Senci);
+            ps.setBoolean(5, persona);
+            ps.setBoolean(6, paradas);
          
             int filas = ps.executeUpdate();
             if (filas > 0) {

@@ -5,7 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import Controlador.B_Datos;
-import Controlador.Modelo;
+import Modelo.Modelo;
+
 import javax.swing.JMenuBar;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenu;
