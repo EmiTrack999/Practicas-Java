@@ -227,5 +227,29 @@ public class Transporte extends JFrame {
         lblNewLabel_4.setBounds(633, 231, 88, 105);
         contentPane.add(lblNewLabel_4);
     }
+    public void guardar_Ufinal() {
+        try {
+           
+            String nomCalle2 = txtNombre.getText();
+            String noInt2 = txtApellidos.getText();
+            String noExt2 = txt9.getText();
+            String nomSect2 = txt10.getText();
+            int cp2 = Integer.parseInt(txt11.getText());
+            String nomEstado2 = txt12.getText();
+            boolean isPriv = rbPriv.isSelected();
+            boolean isEcoFrien = uno.isSelected(); 
+            B_Datos bd = new B_Datos();
+            boolean conf = bd.coti_Dtrans(nomCalle2, noInt2, noExt2, nomSect2, cp2, nomEstado2, isPriv, isEcoFrien);
+
+           
+            if (conf) {
+               coti();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al guardar los datos.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese solo valores numéricos en los campos de números.");
+        }
+    }
 
 }
