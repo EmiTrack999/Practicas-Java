@@ -227,7 +227,7 @@ public class Transporte extends JFrame {
         lblNewLabel_4.setBounds(633, 231, 88, 105);
         contentPane.add(lblNewLabel_4);
     }
-    public void guardar_Ufinal() {
+   /* public void guardar_Ufinal() {
         try {
            
             String nomCalle2 = txtNombre.getText();
@@ -250,6 +250,6 @@ public class Transporte extends JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Por favor, ingrese solo valores numéricos en los campos de números.");
         }
-    }
+    }*/
 
 }

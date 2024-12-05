@@ -158,7 +158,7 @@ public class Coti_Pedido extends JFrame {
 		txt2.setBounds(283, 140, 295, 19);
 		contentPane.add(txt2);
 		
-		JLabel lblNewLabel_1_1_1_2 = new JLabel("Nombre del Barrio,Sector o Cuidad");
+		JLabel lblNewLabel_1_1_1_2 = new JLabel("Nombre del Municipio,Sector o Cuidad");
 		lblNewLabel_1_1_1_2.setForeground(Color.WHITE);
 		lblNewLabel_1_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
 		lblNewLabel_1_1_1_2.setBounds(10, 230, 301, 31);
@@ -236,6 +236,7 @@ public class Coti_Pedido extends JFrame {
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				coti();
 		        if (txt1.getText().isEmpty() || txt2.getText().isEmpty() ||
 		            txt3.getText().isEmpty() || txt4.getText().isEmpty() ||
 		            txt5.getText().isEmpty() || txt6.getText().isEmpty()) {
@@ -300,7 +301,7 @@ public class Coti_Pedido extends JFrame {
         txt8.setBounds(934, 127, 295, 19);
         contentPane.add(txt8);
         
-        JLabel lblNewLabel_1_1_1_2_1 = new JLabel("Nombre del Barrio,Sector o Cuidad");
+        JLabel lblNewLabel_1_1_1_2_1 = new JLabel("Nombre del Municipio,Sector o Cuidad");
         lblNewLabel_1_1_1_2_1.setForeground(Color.WHITE);
         lblNewLabel_1_1_1_2_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         lblNewLabel_1_1_1_2_1.setBounds(588, 221, 301, 31);
@@ -356,35 +357,29 @@ public class Coti_Pedido extends JFrame {
 	}
 	public void coti() {
     	String cllenom;
-    	String numeroin;
-    	String numeroex;
     	String colonia;
     	String cp;
     	String estado;
     	cllenom=txt1.getText();
-    	numeroin=txt2.getText();
-    	numeroex=txt3.getText();
+    	
     	colonia=txt4.getText();
     	cp=txt5.getText();
     	estado=txt6.getText();
-    	String ubicacion1=cllenom + numeroin + numeroex + colonia + cp +estado;
+
     	
     	String cllenom2;
-    	String numeroin2;
-    	String numeroex2;
     	String colonia2;
     	String cp2;
     	String estado2;
     	cllenom2=txt7.getText();
-    	numeroin2=txt8.getText();
-    	numeroex2=txt9.getText();
+    
     	colonia2=txt10.getText();
     	cp2=txt11.getText();
     	estado2=txt12.getText();
-    	String ubicacion2=cllenom2 + numeroin2 + numeroex2 + colonia2 + cp2 + estado2;
     	boolean un=uno.isSelected();
     	GoogleM gm=new GoogleM();
-    	gm.mostrarCostos(ubicacion1, ubicacion2, un);
+    	gm.mostrarCostos(cllenom, colonia, estado, cp, colonia2, colonia2, estado2, cp2, un);
+    	
     	
     	
     	
