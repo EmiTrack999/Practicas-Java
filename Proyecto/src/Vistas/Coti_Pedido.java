@@ -112,7 +112,7 @@ public class Coti_Pedido extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(0, 138, 138));
-		contentPane.setBackground(new Color(0, 138, 138));
+		contentPane.setBackground(new Color(0, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -495,6 +495,11 @@ public class Coti_Pedido extends JFrame {
         lblNewLabel_1.setIcon(new ImageIcon(Coti_Pedido.class.getResource("/Vistas/img/grafico-de-barras.png")));
         lblNewLabel_1.setBounds(165, 218, 391, 599);
         contentPane.add(lblNewLabel_1);
+        
+        JLabel lblNewLabel_2 = new JLabel("");
+        lblNewLabel_2.setIcon(new ImageIcon(Coti_Pedido.class.getResource("/Vistas/img/portapapeles.png")));
+        lblNewLabel_2.setBounds(1018, 0, 330, 381);
+        contentPane.add(lblNewLabel_2);
 	}
 	public void coti() {
     	String cllenom;

@@ -124,7 +124,7 @@ public class Transporte extends JFrame {
         RADIONOM.setBackground(new Color(0, 0, 0));
         RADIONOM.setForeground(new Color(255, 255, 255));
         RADIONOM.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
-        RADIONOM.setBounds(507, 210, 103, 21);
+        RADIONOM.setBounds(507, 210, 61, 21);
         contentPane.add(RADIONOM);
 
         JLabel lblTransportaPersonal = new JLabel("¿Se Transporta Personal?       :");
@@ -221,9 +221,8 @@ public class Transporte extends JFrame {
         JButton btnNewButton = new JButton("Iniciar");
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		Coti_Transporte ct=new Coti_Transporte();
-        		ct.setVisible(true);
-        		dispose();
+        		 guardarTransporte();
+        		
         	}
         });
         btnNewButton.setBackground(new Color(255, 0, 0));
@@ -237,8 +236,8 @@ public class Transporte extends JFrame {
         contentPane.add(lblNewLabel_3);
         
         JLabel lblNewLabel_4 = new JLabel("");
-        lblNewLabel_4.setIcon(new ImageIcon(Transporte.class.getResource("/Vistas/img/Camionetas.png")));
-        lblNewLabel_4.setBounds(633, 231, 88, 105);
+        lblNewLabel_4.setIcon(new ImageIcon(Transporte.class.getResource("/Vistas/img/autobus.png")));
+        lblNewLabel_4.setBounds(552, 142, 268, 299);
         contentPane.add(lblNewLabel_4);
     }
    
@@ -285,6 +284,11 @@ public class Transporte extends JFrame {
     	        return;
     	    }
     	    bd.guarda_tra(nombre, apellidos, tipoTransporte, materialSensible, transportaPersonal, paradasContinuas);
+            JOptionPane.showMessageDialog(null, "tus datos fueron guardados");
+
+    	    Coti_Transporte ct=new Coti_Transporte();
+    		ct.setVisible(true);
+    		dispose();
     }
 
 }

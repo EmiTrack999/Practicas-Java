@@ -281,7 +281,7 @@ public class B_Datos {
         return false; 
     }
     public boolean guarda_ped(String Nombre, String Apellido, String Codigo, String Carga, String Su_ped, boolean Casa_emp) {
-        String sql = "INSERT INTO  pedir_ped VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO  pedirpedido VALUES (?, ?, ?, ?, ?, ?)";
         Connection cn = conexion();
         PreparedStatement ps = null;
         try {
@@ -314,7 +314,7 @@ public class B_Datos {
         return false; 
     }
     public boolean guarda_viaje(String Nombre, String Apellido, String Persona, boolean Equi, boolean niños, Date Fecha,String Num_de_seg) {
-        String sql = "INSERT INTO  Viaje VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO  Viaje VALUES (?, ?, ?, ?, ?, ?,?)";
         Connection cn = conexion();
         PreparedStatement ps = null;
         try {
@@ -324,7 +324,9 @@ public class B_Datos {
             ps.setString(3, Persona);
             ps.setBoolean(4, Equi);
             ps.setBoolean(5, niños);
-            ps.setDate(6, (java.sql.Date) Fecha);
+            java.sql.Date fechaSql = new java.sql.Date(Fecha.getTime());
+            ps.setDate(6, fechaSql);
+            ps.setString(7, Num_de_seg);
          
             int filas = ps.executeUpdate();
             if (filas > 0) {

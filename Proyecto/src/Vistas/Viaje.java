@@ -47,6 +47,8 @@ public class Viaje extends JFrame {
 	JDateChooser dateFecha;
 	private JLabel lblNewLabel_6;
 	private JTextField txtApellido;
+	private JLabel lblNewLabel_8;
+	private JLabel lblNewLabel_9;
 
 	/**
 	 * Launch the application.
@@ -179,7 +181,7 @@ public class Viaje extends JFrame {
 
 		JLabel lblNewLabel_3_1 = new JLabel("Llevan Niños menores de 5 años    :");
 		lblNewLabel_3_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		lblNewLabel_3_1.setForeground(Color.WHITE);
+		lblNewLabel_3_1.setForeground(new Color(0, 128, 255));
 		lblNewLabel_3_1.setBounds(110, 248, 234, 14);
 		contentPane.add(lblNewLabel_3_1);
 
@@ -199,13 +201,13 @@ public class Viaje extends JFrame {
 
 		JLabel lblNewLabel_4 = new JLabel("Fecha de Solicitud de Viaje   :");
 		lblNewLabel_4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		lblNewLabel_4.setForeground(new Color(255, 255, 255));
+		lblNewLabel_4.setForeground(new Color(0, 128, 255));
 		lblNewLabel_4.setBounds(155, 289, 189, 14);
 		contentPane.add(lblNewLabel_4);
 
 		JLabel lblNewLabel_5 = new JLabel("Numero al cual Comunicarse     :");
 		lblNewLabel_5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		lblNewLabel_5.setForeground(new Color(255, 255, 255));
+		lblNewLabel_5.setForeground(new Color(0, 128, 255));
 		lblNewLabel_5.setBounds(127, 331, 217, 14);
 		contentPane.add(lblNewLabel_5);
 
@@ -223,7 +225,7 @@ public class Viaje extends JFrame {
 			}
 		});
 		txtNumero.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		txtNumero.setBounds(377, 328, 290, 20);
+		txtNumero.setBounds(375, 328, 164, 20);
 		contentPane.add(txtNumero);
 		txtNumero.setColumns(10);
 
@@ -233,9 +235,7 @@ public class Viaje extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				guardarViaje();
-				Coti_Viaje cv=new Coti_Viaje();
-				cv.setVisible(true);
-				dispose();
+				
 				
 			}
 		});
@@ -286,6 +286,16 @@ public class Viaje extends JFrame {
 		txtApellido.setBackground(Color.WHITE);
 		txtApellido.setBounds(490, 102, 234, 20);
 		contentPane.add(txtApellido);
+		
+		lblNewLabel_8 = new JLabel("");
+		lblNewLabel_8.setIcon(new ImageIcon(Viaje.class.getResource("/Vistas/img/viaje-en-el-tiempo.png")));
+		lblNewLabel_8.setBounds(580, 85, 208, 248);
+		contentPane.add(lblNewLabel_8);
+		
+		lblNewLabel_9 = new JLabel("");
+		lblNewLabel_9.setIcon(new ImageIcon(Viaje.class.getResource("/Vistas/img/excursion.png")));
+		lblNewLabel_9.setBounds(0, 141, 418, 312);
+		contentPane.add(lblNewLabel_9);
 	}
 
 	public void guardarViaje() {
@@ -295,27 +305,24 @@ public class Viaje extends JFrame {
 	    boolean equip = rbEquipamiento.isSelected();
 	    boolean niños = rbNiños.isSelected();
 	    Date fecha = dateFecha.getDate();
-	    String numero = txtNumero.getText().trim();
+	   String numero=txtNumero.getText();
+
 	    if (fecha == null) {
 	        JOptionPane.showMessageDialog(null, "Por favor, selecciona una fecha.");
 	        return;
 	    }
-
 	    if (fecha.before(new Date())) {
 	        JOptionPane.showMessageDialog(null, "La fecha ya pasó.");
 	        return;
 	    }
-
 	    if (nombre.isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "El nombre es obligatorio.");
 	        return;
 	    }
-
-	    if (numero.isEmpty()) {
+	    if (txtNumero.getText().isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "El número es obligatorio.");
 	        return;
 	    }
-
 	    if (personas == null || personas.isEmpty()) {
 	        JOptionPane.showMessageDialog(null, "Selecciona el número de personas.");
 	        return;
@@ -324,11 +331,20 @@ public class Viaje extends JFrame {
 	        JOptionPane.showMessageDialog(null, "Por favor, selecciona si llevan equipamiento.");
 	        return;
 	    }
-
 	    if (!rbNiños.isSelected() && !rbNoNiños.isSelected()) {
 	        JOptionPane.showMessageDialog(null, "Por favor, selecciona si llevan niños.");
 	        return;
-	    }	   
-	    bd.guarda_viaje(nombre, numero, personas, equip, niños, fecha, numero);
+	    }
+
+	    boolean exito = bd.guarda_viaje(nombre, nombre, personas, equip, niños, fecha, numero);
+	    if (exito) {
+	        JOptionPane.showMessageDialog(null, "Tus datos fueron guardados con éxito.");
+	        Coti_Viaje cv = new Coti_Viaje();
+	        cv.setVisible(true);
+	        dispose();
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Hubo un error al guardar los datos.");
+	    }
 	}
+
 }

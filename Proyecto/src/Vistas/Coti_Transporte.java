@@ -98,24 +98,6 @@ public class Coti_Transporte extends JFrame {
 				dispose();
         	}
         });
-        
-        JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ubicaciones Disponibles");
-        mntmNewMenuItem_2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		String url="https://municipiosdisponibles.netlify.app/";
-				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
-					try {
-						Desktop.getDesktop().browse(new URI(url));
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (URISyntaxException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}				}
-        	}
-        });
-        mnNewMenu.add(mntmNewMenuItem_2);
         mnNewMenu.add(mntmNewMenuItem);
         
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("Ayuda");
@@ -157,13 +139,13 @@ public class Coti_Transporte extends JFrame {
         JLabel lblNewLabel_1_1_2 = new JLabel("¿Deseas Aportar Para el Programa Ecofriend del 10% de Tu costo?");
         lblNewLabel_1_1_2.setForeground(Color.WHITE);
         lblNewLabel_1_1_2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
-        lblNewLabel_1_1_2.setBounds(277, 513, 562, 31);
+        lblNewLabel_1_1_2.setBounds(279, 525, 562, 31);
         contentPane.add(lblNewLabel_1_1_2);
 
         JLabel lblNewLabel_1_1_3 = new JLabel("EL viaje Sera Privado o Publico");
         lblNewLabel_1_1_3.setForeground(Color.WHITE);
         lblNewLabel_1_1_3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
-        lblNewLabel_1_1_3.setBounds(330, 446, 269, 31);
+        lblNewLabel_1_1_3.setBounds(393, 447, 269, 31);
         contentPane.add(lblNewLabel_1_1_3);
 
         txt1 = new JTextField();
@@ -232,14 +214,14 @@ public class Coti_Transporte extends JFrame {
         uno.setBackground(new Color(0, 0, 0));
         uno.setForeground(new Color(255, 255, 255));
         uno.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
-        uno.setBounds(825, 517, 48, 23);
+        uno.setBounds(827, 529, 48, 23);
         contentPane.add(uno);
         
         dos = new JRadioButton("NO");
         dos.setBackground(new Color(0, 0, 0));
         dos.setForeground(new Color(255, 255, 255));
         dos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
-        dos.setBounds(970, 518, 59, 23);
+        dos.setBounds(970, 529, 59, 23);
         contentPane.add(dos);
         
         
@@ -300,9 +282,9 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(txt4);
         
         JLabel lblNewLabel_1_1_1_1 = new JLabel("Codigo Postal");
-        lblNewLabel_1_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1.setForeground(new Color(0, 0, 0));
         lblNewLabel_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
-        lblNewLabel_1_1_1_1.setBounds(57, 306, 301, 31);
+        lblNewLabel_1_1_1_1.setBounds(137, 308, 183, 31);
         contentPane.add(lblNewLabel_1_1_1_1);
         
         txt5 = new JTextField();
@@ -520,8 +502,8 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(btnNewButton);
         
         JLabel lblNewLabel_3 = new JLabel("");
-        lblNewLabel_3.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/camiones.png")));
-        lblNewLabel_3.setBounds(4, 198, 853, 594);
+        lblNewLabel_3.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/viaje-de-negocios.png")));
+        lblNewLabel_3.setBounds(0, 144, 853, 594);
         contentPane.add(lblNewLabel_3);
         
         JLabel lblNewLabel_1_1_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
@@ -529,6 +511,16 @@ public class Coti_Transporte extends JFrame {
         lblNewLabel_1_1_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         lblNewLabel_1_1_1_1_1_1_1.setBounds(57, 383, 301, 31);
         contentPane.add(lblNewLabel_1_1_1_1_1_1_1);
+        
+        JLabel lblNewLabel_4 = new JLabel("");
+        lblNewLabel_4.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/solicitud.png")));
+        lblNewLabel_4.setBounds(1240, -11, 265, 204);
+        contentPane.add(lblNewLabel_4);
+        
+        JLabel lblNewLabel_5 = new JLabel("");
+        lblNewLabel_5.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/WhatsApp Image 2024-11-18 at 8.30.38 PM.jpeg")));
+        lblNewLabel_5.setBounds(1077, 535, 351, 270);
+        contentPane.add(lblNewLabel_5);
     }
     
     public void guardar_Uinicial() {

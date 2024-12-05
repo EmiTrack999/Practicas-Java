@@ -98,24 +98,6 @@ public class Coti_Viaje extends JFrame {
 					}				}
 			}
 		});
-		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ubicaciones Disponibles");
-		mntmNewMenuItem_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String url="https://municipiosdisponibles.netlify.app/";
-				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
-					try {
-						Desktop.getDesktop().browse(new URI(url));
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (URISyntaxException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}				}
-			}
-		});
-		mnNewMenu.add(mntmNewMenuItem_3);
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Regresar al menu");
@@ -184,7 +166,7 @@ public class Coti_Viaje extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				guardarFinal();
-				coti();
+				
         	}
 		});
 		btnNewButton.setBackground(new Color(255, 0, 0));
@@ -505,10 +487,6 @@ public class Coti_Viaje extends JFrame {
 	        lblNewLabel_4.setIcon(new ImageIcon(Coti_Viaje.class.getResource("/Vistas/img/viajar.png")));
 	        lblNewLabel_4.setBounds(0, 237, 632, 484);
 	        contentPane.add(lblNewLabel_4);
-	        
-	        JLabel label = new JLabel("New label");
-	        label.setBounds(1228, 37, 46, 14);
-	        contentPane.add(label);
 	}
 	 public void guardar_Uinicial() {
 	        try {
@@ -552,6 +530,7 @@ public class Coti_Viaje extends JFrame {
 	    public void guardarFinal() {
 	    	guardar_Uinicial();
 	    	guardar_Ufinal(); 
+	    	coti();
 	    	JOptionPane.showMessageDialog(null, "Tu transporte fue cotizado");
 	                Final_Pedido pf = new Final_Pedido();
 	                pf.setVisible(true);

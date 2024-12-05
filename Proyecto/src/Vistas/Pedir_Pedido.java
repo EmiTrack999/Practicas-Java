@@ -211,10 +211,7 @@ public class Pedir_Pedido extends JFrame {
 		btnNewButton.setBackground(new Color(255, 0, 0));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				validarCamposVacios();
-				Coti_Pedido cp=new Coti_Pedido();
-				cp.setVisible(true);
-				dispose();
+				guardarPedido();
 			}
         	
 		});
@@ -359,7 +356,11 @@ public class Pedir_Pedido extends JFrame {
 	     
 	    }
 	  bd.guarda_ped(nombre, apellidos, codigoSeguridad, tipoCarga, pedido, ubicacion);
-	
+      JOptionPane.showMessageDialog(null, "tus datos fueron guardados");
+
+	  Coti_Pedido cp=new Coti_Pedido();
+		cp.setVisible(true);
+		dispose();
 	    
 	}
 	
