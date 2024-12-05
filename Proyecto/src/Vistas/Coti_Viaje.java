@@ -210,6 +210,7 @@ public class Coti_Viaje extends JFrame {
 	        txt2.addKeyListener(new KeyAdapter() {
 	        	@Override
 	        	public void keyTyped(KeyEvent e) {if(txt2.getText().length()>4) {
+	        		e.consume();
 	        			JOptionPane.showMessageDialog(null, "no poner mas de 4 digitos");
 	        		}
 	        	}
@@ -239,8 +240,9 @@ public class Coti_Viaje extends JFrame {
 	        txt3 = new JTextField();
 	        txt3.addKeyListener(new KeyAdapter() {
 	        	@Override
-	        	public void keyTyped(KeyEvent e) {if(txt3.getText().length()>2){
-	        			JOptionPane.showMessageDialog(null, "no poner mas de 2 digitos");
+	        	public void keyTyped(KeyEvent e) {if(txt3.getText().length()>4){
+	        		e.consume();
+	        			JOptionPane.showMessageDialog(null, "no poner mas de 4 digitos");
 	        		}
 	        	}
 	        });
@@ -282,8 +284,9 @@ public class Coti_Viaje extends JFrame {
 	        txt5 = new JTextField();
 	        txt5.addKeyListener(new KeyAdapter() {
 	        	@Override
-	        	public void keyTyped(KeyEvent e) {if(txt5.getText().length()>4) {
-	        			JOptionPane.showMessageDialog(null, "no poner mas de 4 digitos");
+	        	public void keyTyped(KeyEvent e) {if(txt5.getText().length()>5) {
+	        		e.consume();
+	        			JOptionPane.showMessageDialog(null, "no poner mas de 5 digitos");
 	        		}
 	        	}
 	        });
@@ -354,8 +357,9 @@ public class Coti_Viaje extends JFrame {
 	        txt8 = new JTextField();
 	        txt8.addKeyListener(new KeyAdapter() {
 	        	@Override
-	        	public void keyTyped(KeyEvent e) {if(txt8.getText().length()>3) {
-	        			JOptionPane.showMessageDialog(null, "no poner mas de 3 digitos");
+	        	public void keyTyped(KeyEvent e) {if(txt8.getText().length()>4) {
+	        		e.consume();
+	        			JOptionPane.showMessageDialog(null, "no poner mas de 4 digitos");
 	        		}
 	        	}
 	        });
@@ -384,8 +388,9 @@ public class Coti_Viaje extends JFrame {
 	        txt9 = new JTextField();
 	        txt9.addKeyListener(new KeyAdapter() {
 	        	@Override
-	        	public void keyTyped(KeyEvent e) {if(txt9.getText().length()>2) {
-	        			JOptionPane.showMessageDialog(null, "no poner mas de 2 digitos");
+	        	public void keyTyped(KeyEvent e) {if(txt9.getText().length()>4) {
+	        		e.consume();
+	        			JOptionPane.showMessageDialog(null, "no poner mas de 4 digitos");
 	        		}
 	        	}
 	        });
@@ -427,8 +432,9 @@ public class Coti_Viaje extends JFrame {
 	        txt11 = new JTextField();
 	        txt11.addKeyListener(new KeyAdapter() {
 	        	@Override
-	        	public void keyTyped(KeyEvent e) {if(txt11.getText().length()>4) {
-	        			JOptionPane.showMessageDialog(null, "no poner mas de 4 digitos");
+	        	public void keyTyped(KeyEvent e) {if(txt11.getText().length()>5) {
+	        		e.consume();
+	        			JOptionPane.showMessageDialog(null, "no poner mas de 5 digitos");
 	        		}
 	        	}
 	        });
@@ -531,7 +537,7 @@ public class Coti_Viaje extends JFrame {
 	    	guardar_Uinicial();
 	    	guardar_Ufinal(); 
 	    	coti();
-	    	JOptionPane.showMessageDialog(null, "Tu transporte fue cotizado");
+	    	JOptionPane.showMessageDialog(null, "Tu viaje esta en camino");
 	                Final_Pedido pf = new Final_Pedido();
 	                pf.setVisible(true);
 	                dispose();

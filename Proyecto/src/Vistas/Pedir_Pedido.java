@@ -90,24 +90,6 @@ public class Pedir_Pedido extends JFrame {
 				dispose();
 			}
 		});
-		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Ubicaciones Disponibles");
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String url="https://municipiosdisponibles.netlify.app/";
-				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
-					try {
-						Desktop.getDesktop().browse(new URI(url));
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (URISyntaxException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}				}
-			}
-		});
-		mnNewMenu.add(mntmNewMenuItem_2);
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Ayuda");

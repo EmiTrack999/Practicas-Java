@@ -184,8 +184,8 @@ public class TerceraVista extends JFrame {
 				if (telefono.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu correo");
 				  
-				} else if (!db.validarCorreo(telefono)) {
-				    JOptionPane.showMessageDialog(null, "Correo inválido");
+				} else if (!db.validarTelefono(telefono)) {
+				    JOptionPane.showMessageDialog(null, "telefono inválido");
 				} else if (contraseña.isEmpty()) {
 				    JOptionPane.showMessageDialog(null, "Ingresa tu contraseña");
 				} else if (confirmarContraseña.isEmpty()) {
@@ -193,10 +193,16 @@ public class TerceraVista extends JFrame {
 				} else if (!contraseña.equals(confirmarContraseña)) {
 				    JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
 				 
-				 } else {
-					 registrar();
+				 } else  if(txtContra.getText().length()<6) {
+					
+						JOptionPane.showMessageDialog(null,"mas de 6 digitos en tu contraseña");
+					 }else {
+						 registrar();
+						 dispose();
+					 }
+					
 				 
-				}
+				
 				
 			}
 		});

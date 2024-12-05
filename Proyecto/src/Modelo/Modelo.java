@@ -38,8 +38,8 @@ public void setContraseña(String contraseña) {
 	this.contraseña = contraseña;
 }
 public boolean validarCorreo(String correo) {
-    String email = "^[a-zA-Z0-9._%+-]+@[gmail]+.com";
-    Pattern EMAIL_PATTERN = Pattern.compile(email);
+	String email = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+	Pattern EMAIL_PATTERN = Pattern.compile(email);
     return correo != null && !correo.isEmpty() && EMAIL_PATTERN.matcher(correo).matches();
 }
 public boolean validarTelefono(String telefono) {

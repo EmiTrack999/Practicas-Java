@@ -289,7 +289,7 @@ public class Viaje extends JFrame {
 		
 		lblNewLabel_8 = new JLabel("");
 		lblNewLabel_8.setIcon(new ImageIcon(Viaje.class.getResource("/Vistas/img/viaje-en-el-tiempo.png")));
-		lblNewLabel_8.setBounds(580, 85, 208, 248);
+		lblNewLabel_8.setBounds(619, 97, 208, 248);
 		contentPane.add(lblNewLabel_8);
 		
 		lblNewLabel_9 = new JLabel("");

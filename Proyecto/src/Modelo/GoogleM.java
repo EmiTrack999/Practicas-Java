@@ -133,7 +133,6 @@ public class GoogleM {
                             JOptionPane.showMessageDialog(null, "Ocurrió un error al intentar abrir el mapa.");
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Operación cancelada.");
                     }
                 }
             });
@@ -202,7 +201,7 @@ public class GoogleM {
                             JOptionPane.showMessageDialog(null, "Ocurrió un error al intentar abrir el mapa.");
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Operación cancelada.");
+                      
                     }
                 }
             });

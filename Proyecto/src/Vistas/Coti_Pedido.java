@@ -109,6 +109,24 @@ public class Coti_Pedido extends JFrame {
 						}				}
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Info. de Ecofrend");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String url="https://ayudaalusuario.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem);
 		mnNewMenu.add(mntmNewMenuItem_2);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(0, 138, 138));
@@ -154,8 +172,9 @@ public class Coti_Pedido extends JFrame {
 		txt2.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if(txt2.getText().length()>3) {
-					JOptionPane.showMessageDialog(null, "no mas de 3 digitos");
+				if(txt2.getText().length()>4) {
+					e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
 				}
 			}
 		});
@@ -185,8 +204,9 @@ public class Coti_Pedido extends JFrame {
 		txt3.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if(txt3.getText().length()>1) {
-					JOptionPane.showMessageDialog(null, "no mas de 1 digitos");
+				if(txt3.getText().length()>4) {
+					e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
 
 				}
 			}
@@ -229,8 +249,9 @@ public class Coti_Pedido extends JFrame {
 		txt5 = new JTextField();
 		txt5.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyTyped(KeyEvent e) {if(txt5.getText().length()>4) {
-					JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
+			public void keyTyped(KeyEvent e) {if(txt5.getText().length()>5) {
+				e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 5 digitos");
 
 				}
 			}
@@ -299,14 +320,15 @@ public class Coti_Pedido extends JFrame {
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				coti();
+				
 		        if (txt1.getText().isEmpty() || txt2.getText().isEmpty() ||
 		            txt3.getText().isEmpty() || txt4.getText().isEmpty() ||
 		            txt5.getText().isEmpty() || txt6.getText().isEmpty()) {
 		            JOptionPane.showMessageDialog(null, "Todos los campos deben estar llenos.", "Error", JOptionPane.ERROR_MESSAGE);
+		            
 		            return;
 		        }
-		        try { 	
+		        try { coti();	
 		            String noCalle = txt1.getText().trim();
 		            int noInterior = Integer.parseInt(txt2.getText().trim());
 		            int noExterior = Integer.parseInt(txt3.getText().trim());
@@ -316,8 +338,8 @@ public class Coti_Pedido extends JFrame {
 		            boolean ecoFriendly = uno.isSelected(); 
 		            B_Datos bd = new B_Datos();
 		            bd.coti_pedido(noCalle, noInterior, noExterior, sector, codigoPostal, estadoPais, ecoFriendly);
-		              coti();
-		              JOptionPane.showMessageDialog(null, "tu pedido fue cotizado"); 
+		            
+		              JOptionPane.showMessageDialog(null, "tu pedido esta siendo enviado"); 
 		          
 		            Final_Pedido fp=new Final_Pedido();
 		            fp.setVisible(true);
@@ -374,8 +396,9 @@ public class Coti_Pedido extends JFrame {
         txt8 = new JTextField();
         txt8.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt8.getText().length()>3) {
-					JOptionPane.showMessageDialog(null, "no mas de 3 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt8.getText().length()>4) {
+        		e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
 
         		}
         	}
@@ -405,8 +428,9 @@ public class Coti_Pedido extends JFrame {
         txt9 = new JTextField();
         txt9.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt9.getText().length()>1) {
-					JOptionPane.showMessageDialog(null, "no mas de 1 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt9.getText().length()>4) {
+        		e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
 
         		}
         	}
@@ -449,8 +473,9 @@ public class Coti_Pedido extends JFrame {
         txt11 = new JTextField();
         txt11.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt11.getText().length()>4) {
-					JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt11.getText().length()>5) {
+        		e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 5 digitos");
 
         		}
         	}

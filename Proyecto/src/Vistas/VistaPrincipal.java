@@ -199,9 +199,11 @@ public class VistaPrincipal extends JFrame {
                     JOptionPane.showMessageDialog(null, "Confirma tu contraseña");
                 } else if (!contraseña.equals(confirmarContraseña)) {
                     JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
-                } else {
+                } else  if(txtContra.getText().length()<6) {
+					JOptionPane.showMessageDialog(null,"mas de 6 digitos en tu contraseña");
+				}
                     iniciarSesion(); 
-                }
+                
             }
         });
         btIniciar.setBounds(340, 307, 139, 31);

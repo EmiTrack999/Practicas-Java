@@ -116,6 +116,24 @@ public class Coti_Transporte extends JFrame {
 					}				}
         	}
         });
+        
+        JMenuItem mntmNewMenuItem_2 = new JMenuItem("Info. de Ecofrend");
+        mntmNewMenuItem_2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String url="https://ayudaalusuario.netlify.app/";
+				if(Desktop.isDesktopSupported()&&Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+					try {
+						Desktop.getDesktop().browse(new URI(url));
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}				}
+        	}
+        });
+        mnNewMenu.add(mntmNewMenuItem_2);
         mnNewMenu.add(mntmNewMenuItem_1);
         contentPane = new JPanel();
         contentPane.setBackground(Color.BLACK);
@@ -195,8 +213,9 @@ public class Coti_Transporte extends JFrame {
         txt2 = new JTextField();
         txt2.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt2.getText().length()>3) {
-        			JOptionPane.showMessageDialog(null, "no mas de 3 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt2.getText().length()>4) {
+        		e.consume();
+        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
         		}
         	}
         });
@@ -247,8 +266,9 @@ public class Coti_Transporte extends JFrame {
         txt3 = new JTextField();
         txt3.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt3.getText().length()>1) {
-        			JOptionPane.showMessageDialog(null, "no mas de 1 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt3.getText().length()>4) {
+        		e.consume();
+        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
         		}
         	}
         });
@@ -293,8 +313,9 @@ public class Coti_Transporte extends JFrame {
         	public void keyReleased(KeyEvent e) {
         	}
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt5.getText().length()>4) {
-        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt5.getText().length()>5) {
+        		e.consume();
+        			JOptionPane.showMessageDialog(null, "no mas de 5 digitos");
 
         		}
         	}
@@ -372,8 +393,9 @@ public class Coti_Transporte extends JFrame {
         txt8 = new JTextField();
         txt8.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt8.getText().length()>3) {
-        			JOptionPane.showMessageDialog(null, "no mas de 3 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt8.getText().length()>4) {
+        		e.consume();
+        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
 
         		}
         	}
@@ -403,8 +425,9 @@ public class Coti_Transporte extends JFrame {
         txt9 = new JTextField();
         txt9.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt9.getText().length()>1) {
-        			JOptionPane.showMessageDialog(null, "no mas de 1 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt9.getText().length()>4) {
+        		e.consume();
+        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
 
         		}
         	}
@@ -447,8 +470,9 @@ public class Coti_Transporte extends JFrame {
         txt11 = new JTextField();
         txt11.addKeyListener(new KeyAdapter() {
         	@Override
-        	public void keyTyped(KeyEvent e) {if(txt11.getText().length()>4) {
-        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
+        	public void keyTyped(KeyEvent e) {if(txt11.getText().length()>5) {
+        		e.consume();
+        			JOptionPane.showMessageDialog(null, "no mas de 5 digitos");
 
         		}
         	}
@@ -495,7 +519,7 @@ public class Coti_Transporte extends JFrame {
         btnNewButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		guardarFinal();
-        		coti();
+        		
         	}
         });
         btnNewButton.setBounds(623, 605, 172, 41);
@@ -569,7 +593,7 @@ public class Coti_Transporte extends JFrame {
     public void guardarFinal() {
     	guardar_Uinicial();
     	guardar_Ufinal(); 
-    	JOptionPane.showMessageDialog(null, "Tu transporte fue cotizado");
+    	JOptionPane.showMessageDialog(null, "Tu transporte esta siendo enviado");
                 Final_Pedido pf = new Final_Pedido();
                 pf.setVisible(true);
                 dispose();
@@ -599,7 +623,7 @@ public class Coti_Transporte extends JFrame {
     	Transporte tr=new Transporte();
         String tru=tr.textoSeleccionado;
         boolean un=uno.isSelected();
-        gm.mostrarCostos(cllenom, colonia, estado, cp, cllenom2, colonia2, estado2, tru, un);
+        gm.mostrarCostos(cllenom, colonia, estado, cp, cllenom2, colonia2, estado2, cp2, un);
         
     	
     	
