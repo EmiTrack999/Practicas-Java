@@ -29,6 +29,8 @@ import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Coti_Transporte extends JFrame {
 
@@ -165,6 +167,18 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_1_3);
 
         txt1 = new JTextField();
+        txt1.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt1.getText().length()>40) {
+        			JOptionPane.showMessageDialog(null,"no mas de 40 digitos");
+        		}
+        	}
+        });
+        txt1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt1.setBounds(403, 111, 295, 19);
         contentPane.add(txt1);
@@ -197,6 +211,18 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_1);
         
         txt2 = new JTextField();
+        txt2.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt2.getText().length()>3) {
+        			JOptionPane.showMessageDialog(null, "no mas de 3 digitos");
+        		}
+        	}
+        });
+        txt2.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt2.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt2.setColumns(10);
         txt2.setBounds(403, 158, 295, 19);
@@ -237,12 +263,37 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_2);
         
         txt3 = new JTextField();
+        txt3.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt3.getText().length()>1) {
+        			JOptionPane.showMessageDialog(null, "no mas de 1 digitos");
+        		}
+        	}
+        });
+        txt3.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt3.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt3.setColumns(10);
         txt3.setBounds(403, 207, 295, 19);
         contentPane.add(txt3);
         
         txt4 = new JTextField();
+        txt4.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt4.getText().length()>30) {
+        			JOptionPane.showMessageDialog(null, "no mas de 30 digitos");
+
+        		}
+        	}
+        });
+        txt4.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt4.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt4.setColumns(10);
         txt4.setBounds(403, 260, 295, 19);
@@ -255,6 +306,22 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_1_1_1);
         
         txt5 = new JTextField();
+        txt5.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyReleased(KeyEvent e) {
+        	}
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt5.getText().length()>4) {
+        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
+
+        		}
+        	}
+        });
+        txt5.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt5.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt5.setColumns(10);
         txt5.setBounds(403, 314, 295, 19);
@@ -272,6 +339,19 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_1_1_1_1);
         
         txt6 = new JTextField();
+        txt6.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt6.getText().length()>30) {
+        			JOptionPane.showMessageDialog(null, "no mas de 30 digitos");
+
+        		}
+        	}
+        });
+        txt6.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt6.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt6.setColumns(10);
         txt6.setBounds(403, 385, 295, 19);
@@ -284,6 +364,18 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_3);
         
         txt7 = new JTextField();
+        txt7.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt7.getText().length()>40) {
+        			JOptionPane.showMessageDialog(null, "no mas de 40 digitos");
+        		}
+        	}
+        });
+        txt7.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt7.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt7.setColumns(10);
         txt7.setBounds(1074, 111, 295, 19);
@@ -296,6 +388,19 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_1_4);
         
         txt8 = new JTextField();
+        txt8.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt8.getText().length()>3) {
+        			JOptionPane.showMessageDialog(null, "no mas de 3 digitos");
+
+        		}
+        	}
+        });
+        txt8.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt8.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt8.setColumns(10);
         txt8.setBounds(1074, 158, 295, 19);
@@ -314,12 +419,38 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_2_1);
         
         txt9 = new JTextField();
+        txt9.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt9.getText().length()>1) {
+        			JOptionPane.showMessageDialog(null, "no mas de 1 digitos");
+
+        		}
+        	}
+        });
+        txt9.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt9.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt9.setColumns(10);
         txt9.setBounds(1074, 207, 295, 19);
         contentPane.add(txt9);
         
         txt10 = new JTextField();
+        txt10.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt10.getText().length()>30) {
+        			JOptionPane.showMessageDialog(null, "no mas de 30 digitos");
+
+        		}
+        	}
+        });
+        txt10.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt10.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt10.setColumns(10);
         txt10.setBounds(1074, 260, 295, 19);
@@ -332,6 +463,19 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_1_1_1_2);
         
         txt11 = new JTextField();
+        txt11.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt11.getText().length()>4) {
+        			JOptionPane.showMessageDialog(null, "no mas de 4 digitos");
+
+        		}
+        	}
+        });
+        txt11.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt11.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt11.setColumns(10);
         txt11.setBounds(1074, 314, 295, 19);
@@ -344,6 +488,19 @@ public class Coti_Transporte extends JFrame {
         contentPane.add(lblNewLabel_1_1_1_1_1_1);
         
         txt12 = new JTextField();
+        txt12.addKeyListener(new KeyAdapter() {
+        	@Override
+        	public void keyTyped(KeyEvent e) {if(txt12.getText().length()>30) {
+        			JOptionPane.showMessageDialog(null, "no mas de 30 digitos");
+
+        		}
+        	}
+        });
+        txt12.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         txt12.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
         txt12.setColumns(10);
         txt12.setBounds(1074, 385, 295, 19);
@@ -366,6 +523,12 @@ public class Coti_Transporte extends JFrame {
         lblNewLabel_3.setIcon(new ImageIcon(Coti_Transporte.class.getResource("/Vistas/img/camiones.png")));
         lblNewLabel_3.setBounds(4, 198, 853, 594);
         contentPane.add(lblNewLabel_3);
+        
+        JLabel lblNewLabel_1_1_1_1_1_1_1 = new JLabel("Nombre del Estado o Pais ");
+        lblNewLabel_1_1_1_1_1_1_1.setForeground(Color.WHITE);
+        lblNewLabel_1_1_1_1_1_1_1.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 17));
+        lblNewLabel_1_1_1_1_1_1_1.setBounds(57, 383, 301, 31);
+        contentPane.add(lblNewLabel_1_1_1_1_1_1_1);
     }
     
     public void guardar_Uinicial() {
@@ -449,5 +612,4 @@ public class Coti_Transporte extends JFrame {
     	
     	
     }
-
     }

@@ -166,6 +166,21 @@ public class Pedir_Pedido extends JFrame {
 		contentPane.add(lblNewLabel_5);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNombre.getText().length()>30) {
+					e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 30 digitos");
+
+				}
+			}
+		});
+		txtNombre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		txtNombre.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		txtNombre.setColumns(10);
 		txtNombre.setBounds(171, 79, 139, 20);
@@ -220,6 +235,15 @@ public class Pedir_Pedido extends JFrame {
 		contentPane.add(cbTipo);
 		
 		txtCodigo = new JPasswordField();
+		txtCodigo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtCodigo.getText().length()>6) {
+					e.consume();
+					JOptionPane.showMessageDialog(null, "no mas de 6 digitos");
+				}
+			}
+		});
 		txtCodigo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		txtCodigo.setBounds(346, 145, 152, 20);
 		contentPane.add(txtCodigo);
@@ -231,6 +255,25 @@ public class Pedir_Pedido extends JFrame {
 		contentPane.add(lblNewLabel_6);
 		
 		txtApellido = new JTextField();
+		txtApellido.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+	if(txtApellido.getText().length()>30) {
+					
+					JOptionPane.showMessageDialog(null, "no mas de 30 digitos");
+
+				}
+			}
+		});
+		txtApellido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(txtApellido.getText().length()>30) {
+					
+					JOptionPane.showMessageDialog(null, "no mas de 30 digitos");
+
+				}
+			}
+		});
 		txtApellido.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		txtApellido.setBounds(451, 82, 260, 20);
 		contentPane.add(txtApellido);
@@ -278,40 +321,44 @@ public class Pedir_Pedido extends JFrame {
 
 	public void guardarPedido() {
 		    	B_Datos bd=new B_Datos();
-		 
-	}
-	private boolean validarCamposVacios() {
+		    	 String nombre = txtNombre.getText().trim();
+		    	    String apellidos = txtApellido.getText().trim();
+		    	    String codigoSeguridad = new String(txtCodigo.getPassword()).trim();
+		    	    String tipoCarga = cbTipo.getSelectedItem() != null ? cbTipo.getSelectedItem().toString() : "";
+		    	    String pedido = txtPedido.getText().trim();
+		    	    boolean ubicacion = rdCasa.isSelected();
+
 	    if (txtNombre.getText().trim().isEmpty()) {
 	        JOptionPane.showMessageDialog(this, "El campo 'Nombre' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
 	        txtNombre.requestFocus();
-	         return false;}
+	        }
 	       
 	        if(txtApellido.getText().isEmpty()) {
 	        	JOptionPane.showMessageDialog(this, "El campo 'Apellidos' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
 	    	txtApellido.requestFocus();
-	     return false;
+	    
 	     }
 	   
 	    if (new String(txtCodigo.getPassword()).trim().isEmpty()) {
 	        JOptionPane.showMessageDialog(this, "El campo 'Código de Seguridad' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
 	        txtCodigo.requestFocus();
-	        return false;
+	        
 	    }
 	    if (cbTipo.getSelectedIndex() == 0) { 
 	        JOptionPane.showMessageDialog(this, "Debes seleccionar un tipo de carga.", "Error", JOptionPane.ERROR_MESSAGE);
 	        cbTipo.requestFocus();
-	        return false;
+	       
 	    }
 	    if (txtPedido.getText().trim().isEmpty()) {
 	        JOptionPane.showMessageDialog(this, "El campo 'Pedido' no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
 	        txtPedido.requestFocus();
-	        return false;
+	       
 	    }
 	    if (!rdCasa.isSelected() && !rdEmp.isSelected()) {
 	        JOptionPane.showMessageDialog(this, "Debes seleccionar si es 'Casa' o 'Empresa'.", "Error", JOptionPane.ERROR_MESSAGE);
-	        return false;
+	     
 	    }
-	    return true;
+	  bd.guarda_ped(nombre, apellidos, codigoSeguridad, tipoCarga, pedido, ubicacion);
 	
 	    
 	}

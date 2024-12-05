@@ -188,6 +188,13 @@ public class Transporte extends JFrame {
         contentPane.add(lblNewLabel_1);
         
         txtNombre = new JTextField();
+        txtNombre.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(txtNombre.getText().length()>30) {
+        			JOptionPane.showMessageDialog(null, "no poner mas de 30 digitos");
+        		}
+        	}
+        });
         txtNombre.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 16));
         txtNombre.setBounds(175, 86, 179, 20);
         contentPane.add(txtNombre);
@@ -200,6 +207,13 @@ public class Transporte extends JFrame {
         contentPane.add(lblNewLabel_2);
         
         txtApellidos = new JTextField();
+        txtApellidos.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(txtApellidos.getText().length()>40) {
+        			JOptionPane.showMessageDialog(null, "no poner mas de 40 digitos");
+        		}
+        	}
+        });
         txtApellidos.setBounds(489, 87, 265, 20);
         contentPane.add(txtApellidos);
         txtApellidos.setColumns(10);
@@ -227,29 +241,50 @@ public class Transporte extends JFrame {
         lblNewLabel_4.setBounds(633, 231, 88, 105);
         contentPane.add(lblNewLabel_4);
     }
-   /* public void guardar_Ufinal() {
-        try {
-           
-            String nomCalle2 = txtNombre.getText();
-            String noInt2 = txtApellidos.getText();
-            String noExt2 = txt9.getText();
-            String nomSect2 = txt10.getText();
-            int cp2 = Integer.parseInt(txt11.getText());
-            String nomEstado2 = txt12.getText();
-            boolean isPriv = rbPriv.isSelected();
-            boolean isEcoFrien = uno.isSelected(); 
-            B_Datos bd = new B_Datos();
-            boolean conf = bd.coti_Dtrans(nomCalle2, noInt2, noExt2, nomSect2, cp2, nomEstado2, isPriv, isEcoFrien);
+   
+    	public void guardarTransporte() {
+    	
+    	    B_Datos bd = new B_Datos(); 
 
-           
-            if (conf) {
-               coti();
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al guardar los datos.");
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Por favor, ingrese solo valores numéricos en los campos de números.");
-        }
-    }*/
+    	   
+    	    String nombre = txtNombre.getText().trim();
+    	    String apellidos = txtApellidos.getText().trim();
+    	    String tipoTransporte = comboBox.getSelectedItem() != null ? comboBox.getSelectedItem().toString() : "";
+    	    boolean materialSensible = RADIOSIM.isSelected();
+    	    boolean transportaPersonal = rdbtnTransportaPersonalSi.isSelected();
+    	    boolean paradasContinuas = rdbtnParadasContinuasSi.isSelected();
+
+    	   
+    	    if (nombre.isEmpty()) {
+    	        JOptionPane.showMessageDialog(null, "El campo 'Nombre' es obligatorio.");
+    	        return;
+    	    }
+
+    	    if (apellidos.isEmpty()) {
+    	        JOptionPane.showMessageDialog(null, "El campo 'Apellidos' es obligatorio.");
+    	        return;
+    	    }
+
+    	    if (tipoTransporte.isEmpty() || tipoTransporte.equals("Transporte")) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona un tipo de transporte válido.");
+    	        return;
+    	    }
+
+    	    if (!RADIOSIM.isSelected() && !RADIONOM.isSelected()) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona si el transporte lleva material sensible.");
+    	        return;
+    	    }
+
+    	    if (!rdbtnTransportaPersonalSi.isSelected() && !rdbtnTransportaPersonalNo.isSelected()) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona si el transporte lleva personal.");
+    	        return;
+    	    }
+
+    	    if (!rdbtnParadasContinuasSi.isSelected() && !rdbtnParadasContinuasNo.isSelected()) {
+    	        JOptionPane.showMessageDialog(null, "Selecciona si el destino tiene paradas continuas.");
+    	        return;
+    	    }
+    	    bd.guarda_tra(nombre, apellidos, tipoTransporte, materialSensible, transportaPersonal, paradasContinuas);
+    }
 
 }

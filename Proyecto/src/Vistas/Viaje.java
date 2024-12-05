@@ -29,6 +29,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Viaje extends JFrame {
 
@@ -44,7 +46,7 @@ public class Viaje extends JFrame {
 	JRadioButton rbEquipamiento, rbNiños,rbEquipamiento2, rbNoNiños ;
 	JDateChooser dateFecha;
 	private JLabel lblNewLabel_6;
-	private JTextField textField;
+	private JTextField txtApellido;
 
 	/**
 	 * Launch the application.
@@ -118,6 +120,18 @@ public class Viaje extends JFrame {
 		contentPane.add(lblNewLabel);
 
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {if(txtNombre.getText().length()>30) {
+					JOptionPane.showMessageDialog(null, "no poner mas de 30 digitos");
+				}
+			}
+		});
+		txtNombre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		txtNombre.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		txtNombre.setForeground(new Color(0, 0, 0));
 		txtNombre.setColumns(10);
@@ -196,6 +210,18 @@ public class Viaje extends JFrame {
 		contentPane.add(lblNewLabel_5);
 
 		txtNumero = new JTextField();
+		txtNumero.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {if(txtNumero.getText().length()>11) {
+					JOptionPane.showMessageDialog(null, "pon un numero de 10 digitos");
+				}
+			}
+		});
+		txtNumero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		txtNumero.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
 		txtNumero.setBounds(377, 328, 290, 20);
 		contentPane.add(txtNumero);
@@ -241,13 +267,25 @@ public class Viaje extends JFrame {
 		lblNewLabel_7.setBounds(414, 105, 76, 14);
 		contentPane.add(lblNewLabel_7);
 		
-		textField = new JTextField();
-		textField.setForeground(Color.BLACK);
-		textField.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
-		textField.setColumns(10);
-		textField.setBackground(Color.WHITE);
-		textField.setBounds(490, 102, 234, 20);
-		contentPane.add(textField);
+		txtApellido = new JTextField();
+		txtApellido.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {if(txtApellido.getText().length()>40) {
+				JOptionPane.showMessageDialog(null, "no mas de 40 digitos");
+			}
+			}
+		});
+		txtApellido.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+		});
+		txtApellido.setForeground(Color.BLACK);
+		txtApellido.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 15));
+		txtApellido.setColumns(10);
+		txtApellido.setBackground(Color.WHITE);
+		txtApellido.setBounds(490, 102, 234, 20);
+		contentPane.add(txtApellido);
 	}
 
 	public void guardarViaje() {
@@ -291,5 +329,6 @@ public class Viaje extends JFrame {
 	        JOptionPane.showMessageDialog(null, "Por favor, selecciona si llevan niños.");
 	        return;
 	    }	   
+	    bd.guarda_viaje(nombre, numero, personas, equip, niños, fecha, numero);
 	}
 }

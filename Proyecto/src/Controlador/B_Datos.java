@@ -313,7 +313,7 @@ public class B_Datos {
         }
         return false; 
     }
-    public boolean guarda_viaje(String Nombre, String Apellido, String Persona, boolean Equi, boolean niños, Date Fecha,int Num_de_seg) {
+    public boolean guarda_viaje(String Nombre, String Apellido, String Persona, boolean Equi, boolean niños, Date Fecha,String Num_de_seg) {
         String sql = "INSERT INTO  Viaje VALUES (?, ?, ?, ?, ?, ?)";
         Connection cn = conexion();
         PreparedStatement ps = null;
